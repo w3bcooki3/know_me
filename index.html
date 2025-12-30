@@ -1144,6 +1144,123 @@
                 padding: 1rem;
             }
         }
+    /*--Tryhackme --*/
+        .thm-section {
+        padding: 5rem 1rem;
+        text-align: center;
+        }
+
+        .thm-container {
+        max-width: 850px;
+        margin: 0 auto;
+        }
+
+        .thm-card {
+        position: relative;
+        padding: 3.5rem 3rem;
+        border-radius: 24px;
+        background: rgba(20, 20, 20, 0.85);
+        backdrop-filter: blur(14px);
+        border: 1px solid rgba(0, 170, 255, 0.15);
+        box-shadow:
+            0 30px 60px rgba(0, 0, 0, 0.6),
+            0 0 40px rgba(0, 170, 255, 0.08);
+        overflow: hidden;
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .thm-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            120deg,
+            transparent,
+            rgba(0, 170, 255, 0.15),
+            transparent
+        );
+        animation: scan 6s linear infinite;
+        }
+
+        @keyframes scan {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(100%); }
+        }
+
+        .thm-card:hover {
+        transform: translateY(-8px);
+        box-shadow:
+            0 40px 80px rgba(0, 0, 0, 0.8),
+            0 0 60px rgba(0, 170, 255, 0.25);
+        }
+
+        .thm-header {
+        margin-bottom: 1.5rem;
+        }
+
+        .thm-icon {
+        font-size: 2.5rem;
+        color: #00aaff;
+        margin-bottom: 0.5rem;
+        text-shadow: 0 0 20px rgba(0, 170, 255, 0.6);
+        }
+
+        .thm-header h3 {
+        font-size: 2rem;
+        font-weight: 800;
+        color: #ffffff;
+        }
+
+        .thm-subtitle {
+        display: block;
+        margin-top: 0.4rem;
+        font-size: 0.95rem;
+        color: #7dd3fc;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        }
+
+        .thm-description {
+        max-width: 620px;
+        margin: 1.5rem auto 2.5rem;
+        color: #b5b5b5;
+        font-size: 1.05rem;
+        line-height: 1.6;
+        }
+
+        .thm-badge-wrapper iframe {
+        width: 100%;
+        max-width: 600px;
+        height: 220px;
+        border: none;
+        margin-bottom: 2.5rem;
+        transition: transform 0.3s ease;
+        }
+
+        .thm-badge-wrapper iframe:hover {
+        transform: scale(1.02);
+        }
+
+        .thm-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 0.9rem 2.2rem;
+        font-size: 1rem;
+        font-weight: 600;
+        color: #0a0a0a;
+        background: linear-gradient(135deg, #00aaff, #38bdf8);
+        border-radius: 999px;
+        text-decoration: none;
+        box-shadow: 0 10px 30px rgba(0, 170, 255, 0.5);
+        transition: all 0.3s ease;
+        }
+
+        .thm-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 45px rgba(0, 170, 255, 0.7);
+        }
+
     </style>
 </head>
 <body>
@@ -1184,7 +1301,7 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <h1 class="fade-in-up">Fnu Rahul</h1>
-            <h2 class="fade-in-up">Security Operations Engineer | AWS Certified | Network Security Specialist</h2>
+            <h2 class="fade-in-up">Security Operations Engineer | AWS Certified | Blue Team Player</h2>
             <div class="terminal fade-in-up">
                 <div class="terminal-header">
                     <div class="terminal-btn btn-red"></div>
@@ -1679,6 +1796,40 @@
         </div>
     </div>
 
+
+    <section id="tryhackme" class="thm-section">
+        <h2 class="section-title fade-in-up">Hands-On Experience</h2>
+
+        <div class="thm-container fade-in-up">
+            <div class="thm-card">
+                <div class="thm-header">
+                    <i class="fas fa-shield-alt thm-icon"></i>
+                    <h3>TryHackMe Profile</h3>
+                    <span class="thm-subtitle">Offensive & Defensive Security Labs</span>
+                </div>
+                <p class="thm-description">
+                    Actively sharpening skills in threat detection, exploitation, privilege escalation,
+                    and defensive monitoring through real-world simulations.
+                </p>
+                <div class="thm-badge-wrapper">
+                    <iframe
+                    src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=228100"
+                    title="TryHackMe Badge"
+                    loading="lazy">
+                    </iframe>
+                </div>
+                <a href="https://tryhackme.com/p/j0b"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="thm-button">
+                    <i class="fas fa-terminal"></i> View Full Profile
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+
     
 
     <section id="contact">
@@ -1905,23 +2056,44 @@
         }
 
         const terminalText = document.getElementById('typing-text');
-        const lines = [
-            '<span class="command-prompt">rahul@secops:~$</span> <span class="command">./init_portfolio.sh</span>',
-            '<span class="command-success">[✓] Initializing Security Operations Engineer portfolio...</span>',
-            '',
-            '<span class="command-prompt">rahul@secops:~$</span> <span class="command">cat ~/expertise.txt</span>',
-            '<span class="command-output">→ Security Platforms: Ivanti Connect Secure | QRadar | Splunk | Palo Alto PanOS and Panorama| Checkpoint</span>',
-            '<span class="command-output">→ Network Security: Firewalls | SSL VPN | DNS | Proxy | Wireshark</span>',
-            '<span class="command-output">→ Cloud: AWS (EC2, VPC, IAM) | Azure Front Door</span>',
-            '<span class="command-output">→ Automation: PowerShell | Ansible | YAML | API Integration</span>',
-            '',
-            '<span class="command-prompt">rahul@secops:~$</span> <span class="command">./display_impact.sh</span>',
-            '<span class="command-success">⚡ Automated health checks → Saved 40 min/day</span>',
-            '<span class="command-success">⚡ Secured NYC Government infrastructure</span>',
-            '<span class="command-success">⚡ AWS Hackathon 3rd | Cybersecurity Hackathon 1st</span>',
-            '',
-            '<span class="command-success">[✓] Portfolio loaded. System ready.</span>',
+        const TERMINAL_CONFIG = {
+            typingSpeed: 25,        // ms per character
+            lineDelay: 200,         // ms between lines
+            initialDelay: 1000      // ms before starting
+        };
+        const terminalLines = [
+            { type: 'prompt', cmd: './init_portfolio.sh' },
+            { type: 'success', text: '[✓] Initializing portfolio...' },
+            { type: 'blank' },
+            
+            { type: 'prompt', cmd: 'cat ~/expertise.txt' },
+            { type: 'output', text: '→ Security Platforms: Ivanti Connect Secure | QRadar | Splunk | Palo Alto PanOS & Panorama | Checkpoint' },
+            { type: 'output', text: '→ Network Security: Firewalls | SSL VPN | DNS | Proxy | Wireshark' },
+            { type: 'output', text: '→ Cloud: AWS (EC2, VPC, IAM, Load Balancers) | Azure Front Door' },
+            { type: 'output', text: '→ Automation: PowerShell | Ansible | YAML | API Integration' },
+            { type: 'blank' },
+            
+            { type: 'prompt', cmd: './display_impact.sh' },
+            { type: 'success', text: '⚡ Automated health checks → Saved 40 min/day' },
+            { type: 'success', text: '⚡ Secured NYC Government infrastructure' },
+            { type: 'success', text: '⚡ AWS Hackathon 3rd | Cybersecurity Hackathon 1st' },
+            { type: 'blank' },
+            
+            { type: 'success', text: '[✓] Portfolio loaded. System ready.' }
         ];
+
+        function formatLine(line) {
+            const templates = {
+                prompt: (cmd) => `<span class="command-prompt">rahul@secops:~$</span> <span class="command">${cmd}</span>`,
+                output: (text) => `<span class="command-output">${text}</span>`,
+                success: (text) => `<span class="command-success">${text}</span>`,
+                blank: () => ''
+            };
+            
+            if (line.type === 'prompt') return templates.prompt(line.cmd);
+            if (line.type === 'blank') return templates.blank();
+            return templates[line.type](line.text);
+        }
 
         let lineIndex = 0;
         let charIndex = 0;
@@ -1929,26 +2101,45 @@
         terminalText.innerHTML = '';
 
         function typeWriter() {
-            if (lineIndex < lines.length) {
-                if (charIndex < lines[lineIndex].length) {
-                    if (lines[lineIndex].charAt(charIndex) === '<') {
-                        let tagEnd = lines[lineIndex].indexOf('>', charIndex);
-                        currentLine += lines[lineIndex].substring(charIndex, tagEnd + 1);
+            let lineIndex = 0;
+            let charIndex = 0;
+            let currentHTML = '';
+            const formattedLines = terminalLines.map(formatLine);
+            
+            function typeCharacter() {
+                if (lineIndex >= formattedLines.length) return;
+                
+                const currentLine = formattedLines[lineIndex];
+                
+                if (charIndex < currentLine.length) {
+                    // Skip HTML tags to avoid displaying them character by character
+                    if (currentLine.charAt(charIndex) === '<') {
+                        const tagEnd = currentLine.indexOf('>', charIndex);
+                        currentHTML += currentLine.substring(charIndex, tagEnd + 1);
                         charIndex = tagEnd + 1;
                     } else {
-                        currentLine += lines[lineIndex].charAt(charIndex);
+                        currentHTML += currentLine.charAt(charIndex);
                         charIndex++;
                     }
-                    terminalText.innerHTML = currentLine;
-                    setTimeout(typeWriter, 25);
+                    
+                    // Use DocumentFragment for better performance (reduces reflows)
+                    terminalText.innerHTML = currentHTML;
+                    setTimeout(typeCharacter, TERMINAL_CONFIG.typingSpeed);
                 } else {
-                    terminalText.innerHTML += '<br>';
+                    // Move to next line
+                    currentHTML += '<br>';
+                    terminalText.innerHTML = currentHTML;
                     lineIndex++;
                     charIndex = 0;
-                    currentLine = terminalText.innerHTML;
-                    setTimeout(typeWriter, 200);
+                    
+                    if (lineIndex < formattedLines.length) {
+                        setTimeout(typeCharacter, TERMINAL_CONFIG.lineDelay);
+                    }
                 }
             }
+            
+            // Start typing after initial delay
+            setTimeout(typeCharacter, TERMINAL_CONFIG.initialDelay);
         }
 
         document.querySelectorAll('.nav-links a[href^="#"]').forEach(anchor => {
