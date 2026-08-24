@@ -3,1492 +3,884 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rahul — Security Operations Engineer</title>
-<meta name="description" content="Rahul — Security Operations Engineer. CompTIA CSAP (Security+ / CySA+), AWS Certified. Defending NYC government infrastructure.">
+<title>Rahul — Security Operations Engineer, New York City</title>
+<meta name="description" content="Rahul — Security Operations Engineer keeping New York City government infrastructure running. Firewalls, SIEM, DNS, proxy, VPN. CompTIA CSAP, AWS certified. Every claim has evidence attached.">
+<meta name="theme-color" content="#0D0D0D">
+
+<!-- Link previews (LinkedIn, Slack, iMessage). Add a 1200x630 image at ./media/og-card.png -->
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Rahul — Security Operations Engineer, New York City">
+<meta property="og:description" content="Firewalls, SIEM, DNS, proxy and VPN across NYC government infrastructure. Every claim on this page has evidence attached.">
+<meta property="og:image" content="./media/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg:        #0b1015;
-  --panel:     #10161d;
-  --panel-2:   #141c25;
-  --line:      #1d2732;
-  --line-soft: #16202a;
+:root{
+  --ink:#0D0D0D;
+  --paper:#F2F2F0;
+  --white:#FFFFFF;
+  --rule:#D6D6D2;
+  --grey:#5C5C58;
+  --grey2:#333331;
 
-  --text:      #dce3ea;
-  --muted:     #7e8c99;
-  --faint:     #55636f;
+  --blue:#0039A6;
+  --yellow:#FCCC0A;
+  --green:#00933C;
+  --red:#EE352E;
+  --orange:#FF6319;
+  --purple:#B933AD;
 
-  --amber:     #e8b448;   --amber-dim: #8a6c2b;
-  --info:      #58a6ff;   --ok:        #3fb950;   --warn:      #e8834a;   --crit:      #f0564f;   --font-display: 'Archivo', sans-serif;
-  --font-body:    'IBM Plex Sans', sans-serif;
-  --font-mono:    'IBM Plex Mono', monospace;
+  --display:'Archivo',sans-serif;
+  --body:'Public Sans',sans-serif;
+  --data:'IBM Plex Mono',monospace;
 
-  --maxw: 1180px;
-  --radius: 6px;
+  --maxw:1080px;
+  --pad:clamp(20px,4vw,40px);
 }
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:68px}
+body{
+  background:var(--paper);color:var(--ink);
+  font-family:var(--body);font-size:17px;line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:clip; /* clip, not hidden — hidden can break position:sticky */
+}
+::selection{background:var(--yellow);color:var(--ink)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+/* ============ SIGNAGE BAR ============ */
+.signbar{position:sticky;top:0;z-index:70;background:var(--ink);color:var(--white)}
+.signbar .wrap{display:flex;align-items:center;gap:18px;height:56px}
+.signbar .mark{
+  font-family:var(--display);font-weight:900;font-size:15px;
+  letter-spacing:.14em;text-transform:uppercase;text-decoration:none;white-space:nowrap;
+}
+.signbar .mark .dot{color:var(--yellow)}
+.signbar nav{display:flex;gap:20px;margin-left:auto}
+.signbar nav a{
+  font-family:var(--data);font-size:12.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:#B9B9B5;text-decoration:none;padding:4px 0;border-bottom:2px solid transparent;
+}
+.signbar nav a:hover{color:var(--white);border-bottom-color:var(--yellow)}
+.signbar .status{
+  display:flex;align-items:center;gap:9px;margin-left:auto;
+  font-family:var(--data);font-size:12px;letter-spacing:.09em;text-transform:uppercase;white-space:nowrap;
+}
+.signbar nav + .status{margin-left:20px}
+.pulse{width:9px;height:9px;border-radius:50%;background:var(--green);
+  box-shadow:0 0 0 0 rgba(0,147,60,.7);animation:pulse 2.6s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(0,147,60,.6)}70%{box-shadow:0 0 0 9px rgba(0,147,60,0)}100%{box-shadow:0 0 0 0 rgba(0,147,60,0)}}
 
-html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+/* ============ HERO ============ */
+.hero{padding:clamp(46px,7vw,82px) 0 0}
+.kicker{
+  font-family:var(--data);font-size:12.5px;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--grey);border-bottom:2px solid var(--ink);padding-bottom:10px;margin-bottom:28px;
+  display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+}
+.kicker .avail{color:var(--green);font-weight:600}
+h1{
+  font-family:var(--display);font-weight:900;
+  font-size:clamp(58px,13.5vw,146px);line-height:.85;
+  letter-spacing:-.045em;text-transform:uppercase;overflow-wrap:break-word;
+}
+h1 .stop{color:var(--yellow)}
+.role{
+  font-family:var(--display);font-weight:800;
+  font-size:clamp(19px,3.4vw,36px);line-height:1.05;letter-spacing:-.02em;
+  color:var(--blue);margin-top:16px;
+}
+.standfirst{
+  max-width:600px;margin-top:20px;font-size:clamp(17px,2vw,20px);color:var(--grey2);
+}
+.standfirst b{font-weight:700;color:var(--ink);box-shadow:inset 0 -.5em 0 var(--yellow)}
 
-body {
-  font-family: var(--font-body);
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.65;
-  font-size: 16px;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+.acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{
+  font-family:var(--data);font-size:13px;font-weight:600;letter-spacing:.06em;
+  text-transform:uppercase;text-decoration:none;padding:14px 24px;
+  border:2px solid var(--ink);display:inline-flex;align-items:center;gap:10px;cursor:pointer;
+  transition:transform .13s ease,background .13s ease,color .13s ease,border-color .13s ease;
 }
+.btn-solid{background:var(--ink);color:var(--white)}
+.btn-solid:hover{background:var(--blue);border-color:var(--blue);transform:translate(-2px,-2px)}
+.btn-line{background:transparent;color:var(--ink)}
+.btn-line:hover{background:var(--ink);color:var(--white);transform:translate(-2px,-2px)}
 
-::selection { background: var(--amber); color: #0b1015; }
+/* ---- file fields ---- */
+.fields{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  margin-top:38px;border-top:2px solid var(--ink);
+}
+.field{padding:14px 20px 14px 0;border-bottom:1px solid var(--rule)}
+.field dt{
+  font-family:var(--data);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--grey);margin-bottom:3px;
+}
+.field dd{font-size:15.5px;font-weight:600;line-height:1.45}
+.field dd .go{color:var(--green)}
 
-body::after {
-  content: '';
-  position: fixed; inset: 0;
-  pointer-events: none; z-index: 999;
-  background: repeating-linear-gradient(
-    0deg, transparent 0 3px, rgba(255,255,255,0.006) 3px 4px);
+/* ============ SERVICE BOARD ============ */
+.board{margin-top:clamp(40px,6vw,64px);background:var(--white);border:2px solid var(--ink)}
+.board-head{
+  background:var(--ink);color:var(--white);
+  display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;
+  padding:13px 20px;
 }
+.board-head h2{font-family:var(--display);font-weight:800;font-size:15px;letter-spacing:.16em;text-transform:uppercase}
+.board-head .clock{font-family:var(--data);font-size:12.5px;color:#B9B9B5;letter-spacing:.06em}
+.svc{
+  display:grid;grid-template-columns:56px 1fr 150px;align-items:center;gap:18px;
+  padding:17px 20px;border-top:1px solid var(--rule);
+}
+.svc:first-of-type{border-top:none}
+.bullet{
+  width:46px;height:46px;border-radius:50%;display:grid;place-items:center;
+  font-family:var(--display);font-weight:900;font-size:14px;color:var(--white);
+}
+.b-blue{background:var(--blue)}.b-orange{background:var(--orange)}
+.b-green{background:var(--green)}.b-purple{background:var(--purple)}
+.b-red{background:var(--red)}.b-yellow{background:var(--yellow);color:var(--ink)}
+.svc h3{font-family:var(--display);font-weight:800;font-size:18px;letter-spacing:-.01em}
+.svc p{font-size:14.5px;color:var(--grey);line-height:1.5}
+.svc .state{
+  font-family:var(--data);font-size:11.5px;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--green);text-align:right;white-space:nowrap;
+}
+.svc .state::before{content:'● '}
 
-a { color: var(--info); text-decoration: none; }
-a:hover { text-decoration: underline; }
-
-:focus-visible {
-  outline: 2px solid var(--amber);
-  outline-offset: 3px;
-  border-radius: 2px;
+/* ---- metrics ---- */
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);border:2px solid var(--ink);border-top:none;background:var(--white)}
+.metrics div{padding:22px 20px;border-right:1px solid var(--rule)}
+.metrics div:last-child{border-right:none}
+.metrics .n{
+  font-family:var(--display);font-weight:900;font-size:clamp(28px,4.6vw,42px);
+  line-height:1;letter-spacing:-.03em;display:block;
 }
-
-.mono { font-family: var(--font-mono); }
-
-.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
-
-.statusbar {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  background: rgba(11,16,21,0.88);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--line);
-}
-.statusbar .wrap {
-  display: flex; align-items: center; justify-content: space-between;
-  height: 52px; gap: 16px;
-}
-.brand {
-  font-family: var(--font-mono); font-weight: 600; font-size: 13px;
-  letter-spacing: 0.08em; color: var(--text); white-space: nowrap;
-}
-.brand:hover { text-decoration: none; color: var(--amber); }
-.brand .tld { color: var(--amber); }
-.statusnav { display: flex; gap: 22px; }
-.statusnav a {
-  font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.06em;
-  color: var(--muted); text-transform: lowercase;
-}
-.statusnav a:hover { color: var(--amber); text-decoration: none; }
-.statusnav a::before { content: './'; color: var(--faint); }
-.clockbox {
-  display: flex; align-items: center; gap: 10px;
-  font-family: var(--font-mono); font-size: 12px; color: var(--muted);
-  white-space: nowrap;
-}
-.dot-live {
-  width: 7px; height: 7px; border-radius: 50%;
-  background: var(--ok);
-  box-shadow: 0 0 8px rgba(63,185,80,0.7);
-  animation: blink 2.4s ease-in-out infinite;
-}
-@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.35} }
-
-.hero { padding: 140px 0 72px; }
-.eyebrow {
-  font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.14em;
-  color: var(--amber); text-transform: uppercase;
-  display: flex; align-items: center; gap: 12px; margin-bottom: 26px;
-}
-.eyebrow::before { content: ''; width: 34px; height: 1px; background: var(--amber); }
-
-.hero h1 {
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-size: clamp(44px, 8.5vw, 104px);
-  line-height: 0.95;
-  letter-spacing: -0.03em;
-  text-transform: uppercase;
-  margin-bottom: 8px;
-}
-.hero h1 .thin { color: var(--faint); font-weight: 700; }
-.hero .role {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(20px, 3.2vw, 34px);
-  letter-spacing: -0.01em;
-  color: var(--muted);
-  margin-bottom: 28px;
-}
-.hero .role em { color: var(--amber); font-style: normal; }
-
-.hero .lede {
-  max-width: 560px; color: var(--muted); font-size: 17px;
-  margin-bottom: 34px;
-}
-.hero .lede strong { color: var(--text); font-weight: 600; }
-
-.new-cert-flag {
-  display: inline-flex; align-items: center; gap: 10px;
-  font-family: var(--font-mono); font-size: 12px;
-  color: var(--ok);
-  border: 1px solid rgba(63,185,80,0.35);
-  background: rgba(63,185,80,0.06);
-  padding: 7px 14px; border-radius: 4px;
-  margin-bottom: 30px;
-}
-.new-cert-flag .tag {
-  background: var(--ok); color: #0b1015; font-weight: 600;
-  padding: 1px 7px; border-radius: 3px; font-size: 11px;
-}
-
-.hero-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 48px; align-items: start;
-}
-
-.cta-row { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 42px; }
-.btn {
-  font-family: var(--font-mono); font-size: 13px; font-weight: 600;
-  letter-spacing: 0.04em;
-  padding: 13px 24px; border-radius: 4px; cursor: pointer;
-  border: 1px solid transparent;
-  display: inline-flex; align-items: center; gap: 9px;
-  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
-}
-.btn:hover { text-decoration: none; transform: translateY(-2px); }
-.btn:active { transform: translateY(0); }
-.btn-amber { background: var(--amber); color: #0b1015; }
-.btn-amber:hover { box-shadow: 0 6px 24px rgba(232,180,72,0.35); }
-.btn-ghost {
-  background: transparent; color: var(--text); border-color: var(--line);
-}
-.btn-ghost:hover { border-color: var(--amber); color: var(--amber); }
-
-.readout {
-  display: grid; grid-template-columns: repeat(4, auto);
-  gap: 0; border: 1px solid var(--line); border-radius: var(--radius);
-  overflow: hidden; width: fit-content;
-}
-.readout div {
-  padding: 14px 22px; border-right: 1px solid var(--line);
-  background: var(--panel);
-}
-.readout div:last-child { border-right: none; }
-.readout .val {
-  font-family: var(--font-mono); font-weight: 600; font-size: 20px;
-  color: var(--amber); display: block; line-height: 1.2;
-}
-.readout .lbl {
-  font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.1em;
-  color: var(--faint); text-transform: uppercase;
+.metrics .n small{font-size:.45em;color:var(--grey);margin-left:2px}
+.metrics .l{
+  font-family:var(--data);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--grey);margin-top:8px;display:block;line-height:1.45;
 }
 
-.terminal {
-  background: #0d1319;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 24px 60px rgba(0,0,0,0.45);
+/* ============ SECTIONS ============ */
+section{padding:clamp(58px,8vw,92px) 0}
+.sec-mark{
+  font-family:var(--data);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--grey);border-bottom:1px solid var(--rule);padding-bottom:8px;margin-bottom:20px;
+  display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
 }
-.term-head {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 10px 16px;
-  background: var(--panel-2);
-  border-bottom: 1px solid var(--line);
-  font-family: var(--font-mono); font-size: 12px; color: var(--muted);
+h2{
+  font-family:var(--display);font-weight:900;
+  font-size:clamp(32px,6vw,62px);line-height:.94;letter-spacing:-.035em;text-transform:uppercase;
 }
-.term-head .sess { color: var(--faint); }
-.term-head .live { color: var(--ok); display: flex; align-items: center; gap: 7px; }
-.term-body {
-  padding: 18px 18px 14px;
-  font-family: var(--font-mono); font-size: 13px; line-height: 1.75;
-  height: 400px; overflow-y: auto;
-  scrollbar-width: thin; scrollbar-color: var(--line) transparent;
-}
-.term-body::-webkit-scrollbar { width: 8px; }
-.term-body::-webkit-scrollbar-thumb { background: var(--line); border-radius: 4px; }
-.tl { white-space: pre-wrap; word-break: break-word; }
-.tl .p  { color: var(--ok); }
-.tl .cmd{ color: var(--text); }
-.tl .c-amber { color: var(--amber); }
-.tl .c-info  { color: var(--info); }
-.tl .c-ok    { color: var(--ok); }
-.tl .c-warn  { color: var(--warn); }
-.tl .c-mut   { color: var(--muted); }
-.tl .c-dim   { color: var(--faint); }
-.term-input-row {
-  display: flex; align-items: center; gap: 8px;
-  padding: 0 18px 16px;
-  font-family: var(--font-mono); font-size: 13px;
-}
-.term-input-row .p { color: var(--ok); flex-shrink: 0; }
-#termInput {
-  flex: 1; background: transparent; border: none; outline: none;
-  color: var(--text); font-family: var(--font-mono); font-size: 13px;
-  caret-color: var(--amber);
-}
-.term-hint {
-  padding: 8px 18px; border-top: 1px solid var(--line-soft);
-  font-family: var(--font-mono); font-size: 11px; color: var(--faint);
-}
-.term-hint b { color: var(--muted); font-weight: 500; }
+.intro{color:var(--grey2);max-width:58ch;margin-top:12px;font-size:16.5px}
 
-section { padding: 88px 0; border-top: 1px solid var(--line-soft); }
-.sec-head { margin-bottom: 52px; }
-.sec-id {
-  font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.14em;
-  color: var(--amber); text-transform: uppercase; margin-bottom: 14px;
-  display: flex; align-items: center; gap: 12px;
+/* ---- findings ---- */
+.findings{margin-top:32px;border-top:3px solid var(--ink)}
+details.finding{border-bottom:1px solid var(--rule);background:var(--white)}
+details.finding summary{
+  list-style:none;cursor:pointer;padding:20px 22px;
+  display:grid;grid-template-columns:34px 1fr 30px;gap:18px;align-items:baseline;
 }
-.sec-id::before { content: ''; width: 34px; height: 1px; background: var(--amber); }
-.sec-head h2 {
-  font-family: var(--font-display); font-weight: 900;
-  font-size: clamp(30px, 5vw, 52px); letter-spacing: -0.02em;
-  text-transform: uppercase; line-height: 1.02;
+details.finding summary::-webkit-details-marker{display:none}
+details.finding summary:hover .claim{box-shadow:inset 0 -.5em 0 var(--yellow)}
+.fnum{font-family:var(--data);font-size:12px;color:var(--grey);padding-top:5px;letter-spacing:.06em}
+.claim{
+  font-family:var(--display);font-weight:800;
+  font-size:clamp(18px,2.6vw,25px);line-height:1.22;letter-spacing:-.02em;
+  transition:box-shadow .15s ease;
 }
-.sec-head p { color: var(--muted); max-width: 620px; margin-top: 14px; }
+.plus{
+  font-family:var(--data);font-size:19px;color:var(--blue);text-align:right;
+  line-height:1;padding-top:6px;
+}
+details.finding .plus::after{content:'+'}
+details.finding[open] .plus::after{content:'–'}
+.evidence{padding:0 22px 22px 74px;max-width:70ch}
+.evidence p{color:var(--grey2);font-size:16px}
+.evidence p + p{margin-top:9px}
+.evidence b{font-weight:700;color:var(--ink)}
+.evidence .src{
+  font-family:var(--data);font-size:12px;color:var(--grey);letter-spacing:.02em;
+  margin-top:14px;padding-top:11px;border-top:2px solid var(--ink);line-height:1.7;
+}
+.evidence .src b{color:var(--ink)}
 
-.eventlog { display: flex; flex-direction: column; }
-.event {
-  display: grid; grid-template-columns: 220px 1fr;
-  gap: 36px; padding: 34px 0;
-  border-top: 1px solid var(--line-soft);
-  position: relative;
+/* ---- line map ---- */
+.linemap{position:relative;padding-left:62px;margin-top:34px}
+.linemap::before{content:'';position:absolute;left:21px;top:12px;bottom:12px;width:8px;background:var(--blue)}
+.station{position:relative;padding-bottom:44px}
+.station:last-child{padding-bottom:0}
+.station::before{
+  content:'';position:absolute;left:-48px;top:7px;width:24px;height:24px;border-radius:50%;
+  background:var(--white);border:6px solid var(--ink);
 }
-.event:last-child { border-bottom: 1px solid var(--line-soft); }
-.event .when {
-  font-family: var(--font-mono); font-size: 12.5px; color: var(--faint);
-  line-height: 1.9; padding-top: 4px;
+.station.now::before{border-color:var(--green);background:var(--green);box-shadow:0 0 0 5px rgba(0,147,60,.2)}
+.station .when{font-family:var(--data);font-size:12.5px;letter-spacing:.05em;color:var(--grey);margin-bottom:4px}
+.station .when .tag{
+  background:var(--green);color:var(--white);padding:2px 8px;margin-left:8px;
+  font-weight:600;letter-spacing:.1em;font-size:11px;
 }
-.event .when .range { color: var(--muted); display: block; }
-.event .when .status-open { color: var(--ok); }
-.event h3 {
-  font-family: var(--font-display); font-weight: 800; font-size: 21px;
-  letter-spacing: -0.01em; margin-bottom: 2px;
-}
-.event .org {
-  font-family: var(--font-mono); font-size: 13px; color: var(--amber);
-  margin-bottom: 14px;
-}
-.event ul { list-style: none; }
-.event ul li {
-  color: var(--muted); padding: 4px 0 4px 20px; position: relative;
-  font-size: 15px;
-}
-.event ul li::before {
-  content: '>'; position: absolute; left: 0;
-  font-family: var(--font-mono); color: var(--amber-dim); font-size: 13px;
-  top: 6px;
-}
-.event ul li b, .event ul li strong { color: var(--text); font-weight: 600; }
+.station h3{font-family:var(--display);font-weight:800;font-size:clamp(21px,3vw,27px);letter-spacing:-.02em}
+.station .org{font-family:var(--data);font-size:13.5px;color:var(--blue);font-weight:600;margin:2px 0 14px}
+.station ul{list-style:none;display:grid;gap:9px;max-width:68ch}
+.station li{position:relative;padding-left:26px;color:var(--grey2);font-size:16px}
+.station li::before{content:'';position:absolute;left:0;top:12px;width:14px;height:2px;background:var(--ink)}
+.station li b{font-weight:700;color:var(--ink)}
 
-.tier { margin-bottom: 56px; }
-.tier:last-child { margin-bottom: 0; }
-.tier-head {
-  display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap;
-  margin-bottom: 8px;
+/* ---- credential rows ---- */
+.credtier{margin-top:34px}
+.credtier:first-of-type{margin-top:32px}
+.credtier > h3{
+  font-family:var(--data);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+  border-bottom:3px solid var(--ink);padding-bottom:8px;
+  display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline;
 }
-.tier-head h3 {
-  font-family: var(--font-display); font-weight: 800; font-size: 22px;
-  letter-spacing: -0.01em;
-}
-.tier-tag {
-  font-family: var(--font-mono); font-size: 11px; font-weight: 600;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  padding: 3px 10px; border-radius: 3px;
-}
-.tier-tag.t1 { color: var(--amber); border: 1px solid var(--amber-dim); background: rgba(232,180,72,0.07); }
-.tier-tag.t2 { color: var(--info);  border: 1px solid rgba(88,166,255,0.35); background: rgba(88,166,255,0.06); }
-.tier-tag.t3 { color: var(--muted); border: 1px solid var(--line); background: var(--panel); }
-.tier-desc {
-  font-family: var(--font-mono); font-size: 12.5px; color: var(--faint);
-  margin-bottom: 24px;
-}
+.credtier > h3 em{font-style:normal;color:var(--grey);letter-spacing:.09em}
 
-.findings {
-  border: 1px solid var(--line); border-radius: var(--radius);
-  overflow: hidden; margin-bottom: 22px;
+/* Row is a plain container. The thumbnail/name is a button (opens the badge image);
+   the verify link is a real anchor (goes to Credly). No nested interactives. */
+.cred{
+  display:grid;grid-template-columns:1fr auto;align-items:center;
+  background:var(--white);border-bottom:1px solid var(--rule);
+  transition:background .13s ease,transform .13s ease;
 }
-.finding {
-  display: grid; grid-template-columns: 130px 260px 1fr;
-  gap: 24px; align-items: baseline;
-  padding: 18px 24px;
-  background: var(--panel);
-  border-bottom: 1px solid var(--line-soft);
+.cred:hover{background:var(--yellow);transform:translateX(4px)}
+.credmain{
+  display:grid;grid-template-columns:70px 1fr;gap:20px;align-items:center;
+  width:100%;text-align:left;background:none;border:none;
+  padding:14px 0 14px 14px;font:inherit;color:inherit;cursor:pointer;
 }
-.finding:nth-child(even) { background: var(--panel-2); }
-.finding:last-child { border-bottom: none; }
-.finding .f-tag {
-  font-family: var(--font-mono); font-size: 11px; font-weight: 600;
-  letter-spacing: 0.1em; color: var(--ok);
+.credmain .thumb{height:50px;display:grid;place-items:center}
+.credmain .thumb img{max-height:50px;max-width:66px;object-fit:contain}
+.credmain .thumb .fb{display:none;font-family:var(--data);font-size:9.5px;color:var(--grey)}
+.credmain .name{font-size:16.5px;font-weight:700;line-height:1.3}
+.credmain .name small{
+  display:block;font-family:var(--data);font-size:12px;font-weight:400;
+  color:var(--grey);margin-top:3px;letter-spacing:.02em;
 }
-.finding .f-tag::before { content: '● '; }
-.finding .f-name { font-weight: 600; color: var(--text); font-size: 15px; }
-.finding .f-evidence {
-  font-family: var(--font-mono); font-size: 12.5px; color: var(--muted);
-  line-height: 1.7;
+.cred:hover .name small{color:var(--grey2)}
+.vr{
+  font-family:var(--data);font-size:11.5px;font-weight:600;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--blue);white-space:nowrap;text-decoration:none;
+  padding:14px 18px;display:block;
 }
-.verdict {
-  display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
-  border: 1px solid var(--amber-dim); border-radius: var(--radius);
-  background: rgba(232,180,72,0.06);
-  padding: 20px 24px; margin-bottom: 56px;
+a.vr:hover{text-decoration:underline}
+.cred:hover .vr{color:var(--ink)}
+
+/* ---- capability table ---- */
+.captable{margin-top:32px;border-top:3px solid var(--ink)}
+.caprow{
+  display:grid;grid-template-columns:38px 176px 1fr;gap:20px;align-items:start;
+  padding:17px 0;border-bottom:1px solid var(--rule);
 }
-.verdict .v-label {
-  font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em;
-  color: var(--muted); text-transform: uppercase;
+.dotmark{width:22px;height:22px;border-radius:50%;margin-top:3px}
+.caprow dt{
+  font-family:var(--data);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--grey);padding-top:3px;
 }
-.verdict .v-value {
-  font-family: var(--font-display); font-weight: 900; font-size: 26px;
-  letter-spacing: 0.02em; color: var(--amber); text-transform: uppercase;
-  line-height: 1;
+.caprow dd{font-size:16px;color:var(--grey2)}
+.caprow dd b{color:var(--ink);font-weight:700}
+.caprow dd em{font-style:normal;color:var(--grey)}
+
+/* ---- off record ---- */
+.offrecord{border:2px solid var(--ink);background:var(--white);padding:28px;margin-top:38px}
+.offrecord h3{font-family:var(--data);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:5px}
+.offrecord .hint{font-family:var(--data);font-size:12px;color:var(--grey);margin-bottom:18px}
+.qa{display:grid;gap:15px}
+.qa .q{
+  font-family:var(--data);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--grey);display:block;margin-bottom:3px;
 }
-.verdict .v-note {
-  font-family: var(--font-mono); font-size: 12px; color: var(--faint);
-  margin-left: auto;
+.redact{
+  background:var(--ink);color:transparent;cursor:pointer;border:none;
+  padding:2px 7px;font:inherit;font-size:16px;text-align:left;line-height:1.55;
+  transition:background .18s ease,color .18s ease;
 }
-.plan-head {
-  font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em;
-  color: var(--muted); text-transform: uppercase; margin-bottom: 18px;
+.redact:hover,.redact.open{background:transparent;color:var(--ink);box-shadow:inset 0 -.5em 0 var(--yellow)}
+
+/* ---- projects ---- */
+.projrow{
+  border-bottom:1px solid var(--rule);padding:26px 0;
+  display:grid;grid-template-columns:38px 1fr;gap:20px;
 }
-.plan {
-  background: var(--panel); border: 1px solid var(--line);
-  border-radius: var(--radius); padding: 22px;
-  transition: border-color 0.18s ease;
-}
-.plan:hover { border-color: var(--amber-dim); }
-.plan h4 {
-  font-family: var(--font-display); font-weight: 800; font-size: 17px;
-  margin-bottom: 8px;
-}
-.plan p { color: var(--muted); font-size: 14px; line-height: 1.65; }
-.plan .p-big {
-  font-family: var(--font-display); font-weight: 900; font-size: 44px;
-  line-height: 1; color: var(--amber); letter-spacing: -0.02em;
-  margin-bottom: 12px;
-}
-.plan .p-big small {
-  font-size: 15px; font-weight: 700; color: var(--muted);
-  letter-spacing: 0.04em; margin-left: 6px;
-}
-.plan .p-proof {
-  font-family: var(--font-mono); font-size: 12px; color: var(--faint);
-  margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line-soft);
-  line-height: 1.7;
+.projrow:first-of-type{border-top:3px solid var(--ink);margin-top:32px}
+.projrow .tp{font-family:var(--data);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--grey)}
+.projrow h3{font-family:var(--display);font-weight:900;font-size:clamp(24px,3.4vw,32px);letter-spacing:-.03em;margin:4px 0 8px;text-transform:uppercase}
+.projrow p{color:var(--grey2);max-width:66ch;font-size:16px}
+.projrow .aw{display:inline-block;margin-top:11px;font-family:var(--data);font-size:12.5px;font-weight:600;background:var(--yellow);padding:4px 10px}
+.projrow .st{font-family:var(--data);font-size:12px;color:var(--grey);margin-top:13px}
+.projrow .st a{color:var(--blue);font-weight:600}
+.projmark{
+  width:34px;height:34px;border-radius:50%;display:grid;place-items:center;
+  font-family:var(--display);font-weight:900;font-size:11px;color:var(--white);
 }
 
-.proj-grid {
-  display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
-}
-.proj {
-  background: var(--panel); border: 1px solid var(--line);
-  border-radius: var(--radius); padding: 26px;
-  display: flex; flex-direction: column; gap: 10px;
-  transition: transform 0.18s ease, border-color 0.18s ease;
-}
-.proj:hover { transform: translateY(-4px); border-color: var(--amber-dim); }
-.proj .p-type {
-  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em;
-  color: var(--amber); text-transform: uppercase;
-}
-.proj h3 {
-  font-family: var(--font-display); font-weight: 800; font-size: 21px;
-  letter-spacing: -0.01em;
-}
-.proj p { color: var(--muted); font-size: 14.5px; }
-.proj .p-award {
-  font-family: var(--font-mono); font-size: 12px; color: var(--ok);
-}
-.proj .p-stack {
-  font-family: var(--font-mono); font-size: 12px; color: var(--faint);
-  margin-top: auto; padding-top: 12px; border-top: 1px solid var(--line-soft);
-}
-.edu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-.edu {
-  background: var(--panel); border: 1px solid var(--line);
-  border-radius: var(--radius); padding: 26px;
-}
-.edu .e-when {
-  font-family: var(--font-mono); font-size: 12px; color: var(--faint);
-  margin-bottom: 10px;
-}
-.edu h3 {
-  font-family: var(--font-display); font-weight: 800; font-size: 19px;
-  margin-bottom: 2px;
-}
-.edu .e-school {
-  font-family: var(--font-mono); font-size: 13px; color: var(--amber);
-  margin-bottom: 12px;
-}
-.edu p { color: var(--muted); font-size: 14px; }
-.edu p b { color: var(--text); font-weight: 600; }
+/* ---- education ---- */
+.edugrid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:3px solid var(--ink);margin-top:32px}
+.edu{background:var(--white);border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);padding:24px}
+.edu:last-child{border-right:none}
+.edu .when{font-family:var(--data);font-size:12px;color:var(--grey);margin-bottom:9px}
+.edu h3{font-family:var(--display);font-weight:800;font-size:19px;letter-spacing:-.015em}
+.edu .school{font-family:var(--data);font-size:13px;color:var(--blue);font-weight:600;margin:3px 0 11px}
+.edu p{font-size:15px;color:var(--grey2)}
 
-.cert-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 16px;
-}
-.cert {
-  background: var(--panel); border: 1px solid var(--line);
-  border-radius: var(--radius); overflow: hidden; cursor: pointer;
-  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
-  text-align: left; padding: 0; color: inherit; font: inherit;
-  display: flex; flex-direction: column;
-}
-.cert:hover, .cert:focus-visible {
-  transform: translateY(-4px);
-  border-color: var(--amber-dim);
-  box-shadow: 0 16px 40px rgba(0,0,0,0.4);
-}
-.cert-img {
-  height: 150px; display: flex; align-items: center; justify-content: center;
-  background: var(--panel-2); border-bottom: 1px solid var(--line);
-  padding: 18px;
-}
-.cert-img img {
-  max-height: 100%; max-width: 100%; object-fit: contain;
-  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.4));
-}
-.cert-img .fallback {
-  font-family: var(--font-mono); font-size: 11px; color: var(--faint);
-  letter-spacing: 0.1em; display: none;
-}
-.cert-info { padding: 16px 18px 18px; flex: 1; display: flex; flex-direction: column; gap: 4px; }
-.cert-info h4 { font-size: 15px; font-weight: 600; line-height: 1.4; }
-.cert-info .issuer {
-  font-family: var(--font-mono); font-size: 12px; color: var(--muted);
-}
-.cert-info .view {
-  font-family: var(--font-mono); font-size: 11px; color: var(--faint);
-}
-.cert:hover .view { color: var(--amber); }
-.cert-actions {
-  display: flex; align-items: center; gap: 16px;
-  margin-top: auto; padding-top: 10px;
-}
-.cert-actions .verify {
-  font-family: var(--font-mono); font-size: 11px; font-weight: 600;
-  color: var(--ok); text-decoration: none;
-  border: 1px solid rgba(63,185,80,0.35); border-radius: 3px;
-  padding: 3px 9px;
-  transition: all 0.15s ease;
-}
-.cert-actions .verify:hover {
-  background: rgba(63,185,80,0.1); border-color: var(--ok);
-  text-decoration: none;
-}
+/* ---- contact ---- */
+.contact{background:var(--ink);color:var(--white)}
+.contact h2{color:var(--white)}
+.contact .sec-mark{color:#9A9A96;border-color:#2E2E2A}
+.contact .intro{color:#D0D0CC;max-width:54ch;margin-bottom:32px}
+.contact .btn-solid{background:var(--yellow);color:var(--ink);border-color:var(--yellow)}
+.contact .btn-solid:hover{background:var(--white);border-color:var(--white)}
+.contact .btn-line{border-color:#4A4A46;color:var(--white)}
+.contact .btn-line:hover{background:var(--white);color:var(--ink);border-color:var(--white)}
 
-.modal {
-  display: none; position: fixed; inset: 0; z-index: 1000;
-  background: rgba(5,8,11,0.92);
-  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-  align-items: center; justify-content: center; padding: 28px;
+.endbar{
+  background:var(--ink);color:#7A7A76;border-top:1px solid #2A2A26;
+  font-family:var(--data);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;
+  padding:20px 0;
 }
-.modal.active { display: flex; }
-.modal-inner { max-width: min(920px, 94vw); animation: mZoom 0.22s ease; }
-@keyframes mZoom { from { transform: scale(0.94); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-.modal-inner img {
-  max-width: 100%; max-height: 76vh; object-fit: contain;
-  border-radius: 6px; border: 1px solid var(--line);
-  display: block; margin: 0 auto;
-}
-.modal-meta {
-  margin-top: 18px; text-align: center;
-  font-family: var(--font-mono);
-}
-.modal-meta h3 { font-size: 16px; font-weight: 600; color: var(--text); }
-.modal-meta p { font-size: 13px; color: var(--amber); margin-top: 4px; }
-.modal-close {
-  position: absolute; top: 22px; right: 26px;
-  background: transparent; border: 1px solid var(--line);
-  color: var(--muted); font-family: var(--font-mono); font-size: 13px;
-  padding: 8px 16px; border-radius: 4px; cursor: pointer;
-  transition: all 0.15s ease;
-}
-.modal-close:hover { border-color: var(--crit); color: var(--crit); }
+.endbar .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.endbar b{color:var(--yellow);font-weight:500}
 
-.rules-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-  gap: 16px;
+/* ---- modal ---- */
+.modal{display:none;position:fixed;inset:0;z-index:200;background:rgba(13,13,13,.95);align-items:center;justify-content:center;padding:26px}
+.modal.on{display:flex}
+.modal img{max-width:min(860px,92vw);max-height:74vh;object-fit:contain;background:var(--white);padding:14px;border:2px solid var(--white)}
+.modal .cap{text-align:center;margin-top:16px;font-family:var(--data);font-size:13px;color:var(--white)}
+.modal .cap span{display:block;color:var(--yellow);margin-top:4px}
+.modal .x{
+  position:absolute;top:22px;right:24px;background:transparent;color:var(--white);
+  border:2px solid var(--white);font-family:var(--data);font-size:12px;letter-spacing:.1em;
+  text-transform:uppercase;padding:9px 16px;cursor:pointer;
 }
-.rulegroup {
-  background: var(--panel); border: 1px solid var(--line);
-  border-radius: var(--radius); padding: 22px;
-  transition: border-color 0.18s ease;
-}
-.rulegroup:hover { border-color: var(--amber-dim); }
-.rulegroup .rg-head {
-  font-family: var(--font-mono); font-size: 12.5px; margin-bottom: 16px;
-  color: var(--faint);
-}
-.rulegroup .rg-head .name { color: var(--amber); }
-.rulegroup .rg-head .count { color: var(--muted); }
-.chips { display: flex; flex-wrap: wrap; gap: 8px; }
-.chip {
-  font-family: var(--font-mono); font-size: 12px; color: var(--text);
-  background: var(--panel-2); border: 1px solid var(--line);
-  padding: 6px 12px; border-radius: 4px;
-  transition: all 0.15s ease; cursor: default;
-}
-.chip:hover { border-color: var(--amber); color: var(--amber); transform: translateY(-2px); }
+.modal .x:hover{background:var(--white);color:var(--ink)}
 
-.thm-panel {
-  background: var(--panel); border: 1px solid var(--line);
-  border-radius: var(--radius); padding: 36px;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;
-}
-.thm-panel h3 {
-  font-family: var(--font-display); font-weight: 800; font-size: 24px;
-  margin-bottom: 12px;
-}
-.thm-panel p { color: var(--muted); margin-bottom: 22px; font-size: 15px; }
-.focus-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 26px; }
-.focus-tags span {
-  font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.06em;
-  padding: 5px 12px; border-radius: 3px; text-transform: uppercase;
-}
-.focus-tags .f1 { color: var(--amber); border: 1px solid var(--amber-dim); }
-.focus-tags .f2 { color: var(--info); border: 1px solid rgba(88,166,255,0.35); }
-.focus-tags .f3 { color: var(--ok); border: 1px solid rgba(63,185,80,0.35); }
-.thm-embed {
-  background: #0d1319; border: 1px solid var(--line); border-radius: 6px;
-  padding: 14px; min-height: 220px;
-}
-.thm-embed iframe { width: 100%; height: 220px; border: none; border-radius: 4px; }
+.rv{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s cubic-bezier(.22,1,.36,1)}
+.rv.in{opacity:1;transform:none}
 
-.escalation {
-  border: 1px solid var(--line); border-radius: var(--radius);
-  background: linear-gradient(180deg, var(--panel) 0%, var(--panel-2) 100%);
-  padding: 56px 48px;
+@media(max-width:860px){
+  .metrics{grid-template-columns:1fr 1fr}
+  .metrics div:nth-child(-n+2){border-bottom:1px solid var(--rule)}
+  .metrics div:nth-child(2n){border-right:none}
+  .edugrid{grid-template-columns:1fr}
+  .edu{border-right:none}
+  .svc{grid-template-columns:46px 1fr;gap:14px}
+  .svc .state{grid-column:2;text-align:left}
 }
-.escalation .sec-id { justify-content: flex-start; }
-.escalation h2 {
-  font-family: var(--font-display); font-weight: 900;
-  font-size: clamp(28px, 4.6vw, 46px); letter-spacing: -0.02em;
-  text-transform: uppercase; line-height: 1.05; margin-bottom: 16px;
-  max-width: 720px;
+@media(max-width:680px){
+  .signbar nav{display:none}
+  .linemap{padding-left:42px}
+  .linemap::before{left:11px;width:6px}
+  .station::before{left:-40px;width:20px;height:20px;border-width:5px}
+  .evidence{padding-left:22px}
+  .caprow{grid-template-columns:26px 1fr;gap:14px}
+  .caprow dt{grid-column:2;padding-top:0}
+  .caprow dd{grid-column:2}
+  .dotmark{width:16px;height:16px}
+  .cred{grid-template-columns:1fr}
+  .credmain{grid-template-columns:56px 1fr;gap:14px;padding:14px 14px 8px}
+  .vr{padding:0 14px 14px 14px}
+  .projrow{grid-template-columns:1fr;gap:0}
+  .projmark{display:none}
 }
-.escalation h2 .hl { color: var(--amber); }
-.escalation > p { color: var(--muted); max-width: 560px; margin-bottom: 34px; }
-.esc-paths { display: flex; flex-wrap: wrap; gap: 14px; }
-
-footer {
-  border-top: 1px solid var(--line);
-  padding: 34px 0 44px;
-}
-footer .wrap {
-  display: flex; justify-content: space-between; align-items: center;
-  gap: 16px; flex-wrap: wrap;
-  font-family: var(--font-mono); font-size: 12px; color: var(--faint);
-}
-footer a { color: var(--muted); }
-footer a:hover { color: var(--amber); }
-
-.rv { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22,1,0.36,1); }
-.rv.in { opacity: 1; transform: none; }
-
-@media (max-width: 980px) {
-  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
-  .thm-panel { grid-template-columns: 1fr; }
-  .readout { grid-template-columns: repeat(2, 1fr); width: 100%; }
-  .readout div:nth-child(2) { border-right: none; }
-  .readout div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
-}
-@media (max-width: 720px) {
-  .statusnav { display: none; }
-  .hero { padding: 110px 0 56px; }
-  section { padding: 64px 0; }
-  .finding { grid-template-columns: 1fr; gap: 6px; padding: 16px 18px; }
-  .proj-grid, .edu-grid { grid-template-columns: 1fr; }
-  .verdict .v-note { margin-left: 0; width: 100%; }
-  .event { grid-template-columns: 1fr; gap: 10px; padding: 26px 0; }
-  .event .when { display: flex; gap: 14px; flex-wrap: wrap; padding-top: 0; }
-  .event .when .range { display: inline; }
-  .escalation { padding: 38px 24px; }
-  .term-body { height: 330px; }
-  #termInput { font-size: 16px; } .btn { width: 100%; justify-content: center; }
-  .esc-paths .btn, .cta-row .btn { width: auto; flex: 1 1 46%; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after {
-    animation-duration: 0.001s !important;
-    transition-duration: 0.001s !important;
-  }
-  .rv { opacity: 1; transform: none; }
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001s!important;transition-duration:.001s!important}
+  .rv{opacity:1;transform:none}
 }
 </style>
 </head>
 <body>
 
-<header class="statusbar">
+<header class="signbar">
   <div class="wrap">
-    <a class="brand" href="#top">rahul<span class="tld">@secops</span>:~</a>
-    <nav class="statusnav" aria-label="Sections">
-      <a href="#assessment">assessment</a>
-      <a href="#experience">experience</a>
-      <a href="#certs">certifications</a>
-      <a href="#skills">skills</a>
-      <a href="#projects">projects</a>
-      <a href="#contact">contact</a>
+    <a class="mark" href="#top">Rahul<span class="dot">.</span> — SecOps</a>
+    <nav aria-label="Sections">
+      <a href="#assessment">Assessment</a>
+      <a href="#experience">Experience</a>
+      <a href="#credentials">Credentials</a>
+      <a href="#capability">Capability</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
     </nav>
-    <div class="clockbox">
-      <span class="dot-live" aria-hidden="true"></span>
-      <span id="utcClock" aria-label="Current UTC time">--:--:-- UTC</span>
-    </div>
+    <span class="status"><span class="pulse" aria-hidden="true"></span>Open to new roles</span>
   </div>
 </header>
 
 <main id="top">
-<section class="hero" style="border-top:none;">
+
+<section class="hero">
   <div class="wrap">
-    <p class="eyebrow">Security Operations // NYC Government Infrastructure</p>
+    <p class="kicker">
+      <span>Security operations · New York City government</span>
+      <span class="avail">Open to new roles</span>
+    </p>
 
-    <h1>Rahul<span class="thin">.</span></h1>
-    <p class="role">Security Operations Engineer — <em>Blue Team and SecOps</em></p>
+    <h1>Rahul<span class="stop">.</span></h1>
+    <p class="role">Security Operations Engineer</p>
 
-    <div class="new-cert-flag" role="note">
-      <span class="tag">NEW</span>
-      <span>CompTIA CSAP earned — CySA+ passed, Security+ renewed</span>
+    <p class="standfirst">
+      I keep New York City government infrastructure running — firewalls, SIEM, DNS,
+      proxy and remote access across multiple agencies. When the work repeats, I automate it:
+      <b>40 minutes returned to my team, every day</b>, and it compounds with every check I add.
+    </p>
+
+    <div class="acts">
+      <a class="btn btn-solid" href="mailto:hicanwetalk@proton.me">Start a conversation</a>
+      <a class="btn btn-line" href="./docs/Resume_Rahul.pdf" download>Download Resume</a>
     </div>
 
-    <div class="hero-grid">
-      <div>
-        <p class="lede">
-          I run day-to-day security operations for <strong>New York City government
-          infrastructure</strong> — Firewalls, SIEM, DNS, Proxy, SSLVPN, and Site-to-Site VPN. I also automate the repetitive work
-          (<strong>40+ minutes saved daily</strong>) so the team can focus on
-          what actually needs a human.
-        </p>
+    <dl class="fields">
+      <div class="field"><dt>Current posting</dt><dd>NYC Office of Technology &amp; Innovation</dd></div>
+      <div class="field"><dt>Location</dt><dd>New York City</dd></div>
+      <div class="field"><dt>Domains</dt><dd>Firewall · SIEM · DNS · Proxy · VPN</dd></div>
+      <div class="field"><dt>Credentials</dt><dd>5 proctored · <span class="go">all verifiable</span></dd></div>
+    </dl>
 
-        <div class="cta-row">
-          <a class="btn btn-amber" href="mailto:hicanwetalk@proton.me">→ Open a conversation</a>
-          <a class="btn btn-ghost" href="./docs/FRahul_Resume.docx" download>↓ resume.docx</a>
-        </div>
-
-        <div class="readout" role="list" aria-label="Key stats">
-          <div role="listitem"><span class="val">4</span><span class="lbl">Industry Certs</span></div>
-          <div role="listitem"><span class="val">3</span><span class="lbl">Palo Alto Trainings</span></div>
-          <div role="listitem"><span class="val">2+</span><span class="lbl">Yrs in SecOps</span></div>
-          <div role="listitem"><span class="val">40m</span><span class="lbl">Saved daily</span></div>
-        </div>
+    <!-- SIGNATURE: coverage board -->
+    <div class="board rv">
+      <div class="board-head">
+        <h2>Coverage — what I run</h2>
+        <span class="clock" id="clock">--:--:-- UTC</span>
       </div>
-
-            <div class="terminal rv" aria-label="Interactive terminal — type help to explore">
-        <div class="term-head">
-          <span class="sess">session: recruiter@visitor — tty1</span>
-          <span class="live"><span class="dot-live"></span>LIVE</span>
-        </div>
-        <div class="term-body" id="termBody" tabindex="0"></div>
-        <div class="term-input-row" onclick="document.getElementById('termInput').focus()">
-          <span class="p">$</span>
-          <input id="termInput" type="text" autocomplete="off" spellcheck="false"
-                 aria-label="Terminal input — type help for commands" placeholder="type a command…">
-        </div>
-        <div class="term-hint">try <b>help</b> · <b>certs</b> · <b>skills</b> · <b>contact</b> · <b>sudo hire rahul</b></div>
+      <div class="svc">
+        <span class="bullet b-blue" aria-hidden="true">FW</span>
+        <div><h3>Firewall &amp; policy</h3>
+          <p>Palo Alto (Panorama) and Checkpoint rule design, review and optimisation across agency networks.</p></div>
+        <span class="state">Daily</span>
       </div>
+      <div class="svc">
+        <span class="bullet b-orange" aria-hidden="true">SIEM</span>
+        <div><h3>Detection &amp; log pipeline</h3>
+          <p>IBM QRadar ingestion and parsing — finding the sources that stopped reporting before anyone else notices.</p></div>
+        <span class="state">Daily</span>
+      </div>
+      <div class="svc">
+        <span class="bullet b-green" aria-hidden="true">DNS</span>
+        <div><h3>DNS &amp; name services</h3>
+          <p>Infoblox records (A, CNAME, MX, TXT, SRV) for multiple NYC agencies, plus proxy configuration.</p></div>
+        <span class="state">Daily</span>
+      </div>
+      <div class="svc">
+        <span class="bullet b-purple" aria-hidden="true">VPN</span>
+        <div><h3>Remote access</h3>
+          <p>Ivanti Connect Secure SSL VPN and site-to-site tunnels — the thing everyone notices only when it breaks.</p></div>
+        <span class="state">Daily</span>
+      </div>
+      <div class="svc">
+        <span class="bullet b-yellow" aria-hidden="true">AUTO</span>
+        <div><h3>Automation</h3>
+          <p>PowerShell and Ansible health checks against the Panorama and Ivanti APIs, documented and handed to the team.</p></div>
+        <span class="state">Daily</span>
+      </div>
+    </div>
+
+    <div class="metrics rv">
+      <div><span class="n">40<small>min</small></span><span class="l">Returned to the team daily</span></div>
+      <div><span class="n">5</span><span class="l">Proctored certifications</span></div>
+      <div><span class="n">2.5<small>yr</small></span><span class="l">Defending city systems</span></div>
+      <div><span class="n">1st</span><span class="l">John Jay cyber hackathon</span></div>
     </div>
   </div>
 </section>
 
 <section id="assessment">
   <div class="wrap">
-    <div class="sec-head rv">
-      <p class="sec-id">00 // Executive summary</p>
-      <h2>Candidate Assessment</h2>
-      <p>The report your hiring manager actually wants. Findings first, evidence attached, verdict at the bottom.</p>
-    </div>
+    <p class="sec-mark"><span>01 — Assessment</span><span>5 claims · evidence attached</span></p>
+    <h2>What the file says</h2>
+    <p class="intro">Every claim below opens to show the evidence behind it. Nothing here is asserted without something you can verify or interrogate in an interview.</p>
 
-    <div class="findings rv" role="table" aria-label="Assessment findings">
-      <div class="finding" role="row">
-        <span class="f-tag">CONFIRMED</span>
-        <span class="f-name">Force multiplier</span>
-        <span class="f-evidence">Built PowerShell + Ansible health-check automation → 40+ min/day returned to the team, every day, compounding.</span>
-      </div>
-      <div class="finding" role="row">
-        <span class="f-tag">CONFIRMED</span>
-        <span class="f-name">Ramps on any stack, fast</span>
-        <span class="f-evidence">Self-taught AWS → Solutions Architect cert. Learned QRadar, Palo Alto, and Azure DevOps in production, not a sandbox.</span>
-      </div>
-      <div class="finding" role="row">
-        <span class="f-tag">CONFIRMED</span>
-        <span class="f-name">Trusted at city scale</span>
-        <span class="f-evidence">Active firewall, SIEM, DNS, proxy, and VPN responsibilities across NYC government infrastructure — since 2024-01.</span>
-      </div>
-      <div class="finding" role="row">
-        <span class="f-tag">CONFIRMED</span>
-        <span class="f-name">Certified analyst, not just operator</span>
-        <span class="f-evidence">CompTIA CSAP stack (Security+ + CySA+) earned 2026 · AWS SAA + CCP · 3 Palo Alto trainings — tiered honestly below.</span>
-      </div>
-      <div class="finding" role="row">
-        <span class="f-tag">CONFIRMED</span>
-        <span class="f-name">Performs under competition</span>
-        <span class="f-evidence">1st place — PROTECT cybersecurity hackathon @JJAY · 3rd place — AWS hackathon @QCC · active TryHackMe practice.</span>
-      </div>
-    </div>
+    <div class="findings">
+      <details class="finding rv">
+        <summary><span class="fnum">01</span><span class="claim">Turns repeated work into automation that outlives him.</span><span class="plus" aria-hidden="true"></span></summary>
+        <div class="evidence">
+          <p>Daily platform health checks used to be a manual click-through across two systems. I rewrote them as PowerShell and Ansible tasks hitting the Panorama and Ivanti Connect Secure REST APIs, handled auth and partial-failure states, and documented the runbook so anyone on the team can run or extend it.</p>
+          <p>That's roughly <b>3.5 hours a week</b> returned permanently — and it compounds, because the next check added costs minutes instead of an hour.</p>
+          <p class="src">Evidence — <b>~40 minutes saved per daily cycle</b>. NYC OTI, 2024 to present. Ask me to walk through the playbook structure and how I handled API auth and failure states.</p>
+        </div>
+      </details>
 
-    <div class="verdict rv">
-      <span class="v-label">Recommendation</span>
-      <span class="v-value">Hire</span>
-      <span class="v-note">my SLA to your team below ↓</span>
-    </div>
+      <details class="finding rv">
+        <summary><span class="fnum">02</span><span class="claim">Learns unfamiliar platforms in production, in weeks not quarters.</span><span class="plus" aria-hidden="true"></span></summary>
+        <div class="evidence">
+          <p>QRadar, Palo Alto Panorama and Ansible were all new to me in January 2024. Within two months I was making production changes on all three — under change control, with senior review until I no longer needed it. AWS I taught myself off-hours and confirmed with the Solutions Architect exam rather than claiming it on a resume. Ansible I picked up specifically because I wanted to ship the health-check automation and needed a tool that would let me.</p>
+          <p>I'd rather be measured on that than promise it — <b>hand me your stack and check in at 45 days</b>.</p>
+          <p class="src">Evidence — three unfamiliar platforms to daily operator inside one role · <b>AWS SAA and CCP</b>, self-taught, Credly-verified · three Palo Alto instructor-led courses applied on live infrastructure.</p>
+        </div>
+      </details>
 
-    <p class="plan-head rv">My SLA — what you get when you hire me</p>
-    <div class="proj-grid">
-      <div class="plan rv">
-        <p class="p-big">45<small>DAYS</small></p>
-        <h4>Hand me any technology — I'll master it</h4>
-        <p>New SIEM, new firewall vendor, new cloud. Give me 45 days and I'm not just using it, I'm the person others ask about it.</p>
-        <p class="p-proof">track record: self-taught AWS → Solutions Architect cert · learned QRadar &amp; Palo Alto live in production · picked up Ansible to ship automation</p>
-      </div>
+      <details class="finding rv">
+        <summary><span class="fnum">03</span><span class="claim">Trusted with infrastructure a city depends on.</span><span class="plus" aria-hidden="true"></span></summary>
+        <div class="evidence">
+          <p>Firewall policy, DNS records, proxy configuration and remote access for multiple New York City agencies — an environment where a bad rule change is a public-facing outage, not a rollback in staging.</p>
+          <p class="src">Evidence — <b>NYC Office of Technology &amp; Innovation</b>, January 2024 to present. References available on request.</p>
+        </div>
+      </details>
 
-      <div class="plan rv">
-        <p class="p-big">×2<small>OUTPUT</small></p>
-        <h4>The work of two people</h4>
-        <p>Not by grinding longer hours — by automating everything repeatable and moving fast on what's left. Hire one, staff two.</p>
-        <p class="p-proof">track record: 40 min returned to the team every single day · ~3.5 hrs/week, compounding · built with PowerShell + Ansible over API, documented for the team</p>
-      </div>
+      <details class="finding rv">
+        <summary><span class="fnum">04</span><span class="claim">Writes the incident down so it doesn't happen twice.</span><span class="plus" aria-hidden="true"></span></summary>
+        <div class="evidence">
+          <p>I respond to live outages, write the root cause analysis, and drive the corrective action to closure — the part most people skip once the alert goes green.</p>
+          <p>I also repaired QRadar ingestion and parsing gaps that were silently costing detection coverage. A rule is worthless if its log source stopped shipping three weeks ago, and nobody files a ticket for that because nothing visibly breaks.</p>
+          <p class="src">Evidence — <b>RCA authorship at NYC OTI</b>. Happy to talk through a sanitised example end to end.</p>
+        </div>
+      </details>
+
+      <details class="finding rv">
+        <summary><span class="fnum">05</span><span class="claim">Builds security tools nobody asked him to build.</span><span class="plus" aria-hidden="true"></span></summary>
+        <div class="evidence">
+          <p>OSINTVault is a fully offline, backend-free OSINT workspace for analysts who can't send case data to somebody else's cloud. PROTECT is a cybercrime reporting platform I led and shipped, designed so ordinary New Yorkers can report a threat without knowing the vocabulary.</p>
+          <p class="src">Evidence — <a href="https://github.com/w3bcooki3" target="_blank" rel="noopener"><b>github.com/w3bcooki3</b></a> · 1st place, John Jay College cybersecurity hackathon · 3rd place, AWS hackathon at Queensborough.</p>
+        </div>
+      </details>
     </div>
   </div>
 </section>
 
 <section id="experience">
   <div class="wrap">
-    <div class="sec-head rv">
-      <p class="sec-id">01 // Event log</p>
-      <h2>Experience</h2>
-      <p>Every role logged with a timestamp. The current one is still open.</p>
-    </div>
+    <p class="sec-mark"><span>02 — Chronology</span><span>3 stops · current terminus at the top</span></p>
+    <h2>The line</h2>
 
-    <div class="eventlog">
-      <article class="event rv">
-        <div class="when">
-          <span class="range">2024-01 → 2027-01</span>
-          <span class="status-open">● STATUS: ACTIVE</span>
-        </div>
-        <div>
-          <h3>Security Operations Engineer Fellow</h3>
-          <p class="org">NYC Office of Technology &amp; Innovation (OTI)</p>
-          <ul>
-            <li>Configure and maintain DNS records (<b>A, CNAME, MX, TXT, SRV</b>) in Infoblox for multiple NYC government agencies</li>
-            <li>Design, implement, and optimize firewall rules across <b>Palo Alto (Panorama)</b> and <b>Checkpoint</b> — tighter security, minimal disruption</li>
-            <li>Respond to live outages, write <b>RCA reports</b>, and ship corrective actions so incidents don't repeat</li>
-            <li>Built <b>PowerShell + Ansible (YAML)</b> automation that pulls API health checks from Panorama and Ivanti Connect Secure — <b>~40 minutes saved per daily cycle</b></li>
-            <li>Analyze and validate log flow from network, firewall, and security platforms into <b>QRadar</b>, fixing ingestion and parsing gaps for full visibility</li>
-          </ul>
-        </div>
+    <div class="linemap">
+      <article class="station now rv">
+        <p class="when">Jan 2024 — Jan 2027 <span class="tag">Current</span></p>
+        <h3>Security Operations Engineer Fellow</h3>
+        <p class="org">NYC Office of Technology &amp; Innovation</p>
+        <ul>
+          <li>Design, implement and optimise firewall rules across <b>Palo Alto Panorama</b> and <b>Checkpoint</b> — tighter policy, no agency downtime.</li>
+          <li>Configure and maintain <b>Infoblox DNS</b> records (A, CNAME, MX, TXT, SRV) for multiple city agencies.</li>
+          <li>Respond to live outages, author <b>root cause analyses</b>, and close corrective actions so incidents don't repeat.</li>
+          <li>Built <b>PowerShell + Ansible</b> health-check automation against the Panorama and Ivanti APIs — <b>~40 minutes saved per daily cycle</b>.</li>
+          <li>Validate and repair log flow into <b>IBM QRadar</b>, closing ingestion and parsing gaps that were quietly costing visibility.</li>
+        </ul>
       </article>
 
-      <article class="event rv">
-        <div class="when">
-          <span class="range">2022-09 → 2023-12</span>
-          <span>○ CLOSED</span>
-        </div>
-        <div>
-          <h3>IT Support Specialist Intern</h3>
-          <p class="org">NYC Department of Education — DIIT</p>
-          <ul>
-            <li>Benchmark-tested device fleets (<b>Lenovo, Acer, Apple, Dell, Lexmark</b>) and reported defects to engineering</li>
-            <li>Documented every test process — progress, errors, and reproduction steps</li>
-            <li>Built hardware/software configuration docs that sped up future troubleshooting org-wide</li>
-          </ul>
-        </div>
+      <article class="station rv">
+        <p class="when">Sep 2022 — Dec 2023</p>
+        <h3>IT Support Specialist Intern</h3>
+        <p class="org">NYC Department of Education — DIIT</p>
+        <ul>
+          <li>Benchmark-tested device fleets (Lenovo, Acer, Apple, Dell, Lexmark) and reported defects to engineering with reproduction steps.</li>
+          <li>Wrote the hardware and software configuration documentation the wider org used for troubleshooting.</li>
+        </ul>
       </article>
 
-      <article class="event rv">
-        <div class="when">
-          <span class="range">2021-10 → 2022-06</span>
-          <span>○ CLOSED</span>
-        </div>
-        <div>
-          <h3>IT Support Specialist Intern</h3>
-          <p class="org">NYC Department of Education — Schools</p>
-          <ul>
-            <li>Troubleshot <b>150+ devices</b> and maintained a 200+ device inventory</li>
-            <li>Kept school technology operational for staff, end to end</li>
-          </ul>
-        </div>
+      <article class="station rv">
+        <p class="when">Oct 2021 — Jun 2022</p>
+        <h3>IT Support Specialist Intern</h3>
+        <p class="org">NYC Department of Education — Schools</p>
+        <ul>
+          <li>Troubleshot <b>150+ devices</b> and kept a 200+ device inventory accurate.</li>
+          <li>Kept school technology operational for teaching staff, end to end.</li>
+        </ul>
       </article>
     </div>
   </div>
 </section>
 
-<section id="certs">
+<section id="credentials">
   <div class="wrap">
-    <div class="sec-head rv">
-      <p class="sec-id">02 // Detections, by confidence</p>
-      <h2>Certifications</h2>
-      <p>Tiered the way an analyst tiers alerts — by how hard the signal is to fake. Proctored exams first.</p>
-    </div>
+    <p class="sec-mark"><span>03 — Credentials</span><span>independently verifiable</span></p>
+    <h2>Papers, checked</h2>
+    <p class="intro">Tiered the way an analyst tiers alerts — by how hard the signal is to fake. Click a badge to see the certificate; click Verify to check it on Credly without emailing me.</p>
 
-        <div class="tier rv">
-      <div class="tier-head">
-        <h3>Industry Certifications</h3>
-        <span class="tier-tag t1">Signal: High — Proctored Exams</span>
+    <div class="credtier">
+      <h3><span>Tier I — Proctored exams</span><em>hardest to fake</em></h3>
+
+      <div class="cred">
+        <button class="credmain" data-t="CompTIA Security Analytics Professional (CSAP)" data-i="CompTIA — stackable: Security+ and CySA+">
+          <span class="thumb"><img src="./media/comptia-csap-stackable-certification.png" alt="CompTIA CSAP badge" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="fb">CSAP</span></span>
+          <span class="name">CompTIA Security Analytics Professional<small>Stackable — Security+ and CySA+ · earned 2026</small></span>
+        </button>
+        <a class="vr" href="https://www.credly.com/badges/47f1bd77-1cce-4681-a334-c037b04a2fcc/public_url" target="_blank" rel="noopener">Verify ↗</a>
       </div>
-      <p class="tier-desc">verified · exam-based · vendor-issued</p>
-      <div class="cert-grid">
 
-        <div class="cert" role="button" tabindex="0" data-title="CompTIA CSAP — Security Analytics Professional" data-issuer="CompTIA (stackable: Security+ + CySA+)">
-          <div class="cert-img">
-            <img src="./media/comptia-csap-stackable-certification.png" alt="CompTIA CSAP badge" loading="lazy"
-                 onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-            <span class="fallback">[ CSAP BADGE ]</span>
-          </div>
-          <div class="cert-info">
-            <h4>CompTIA Security Analytics Professional (CSAP)</h4>
-            <p class="issuer">CompTIA — stackable</p>
-            <div class="cert-actions">
-              <span class="view">↗ view credential</span>
-              <a class="verify" href="https://www.credly.com/badges/47f1bd77-1cce-4681-a334-c037b04a2fcc/public_url" target="_blank" rel="noopener">✓ verify on credly</a>
-            </div>
-          </div>
-        </div>
+      <div class="cred">
+        <button class="credmain" data-t="CompTIA CySA+" data-i="CompTIA">
+          <span class="thumb"><img src="./media/comptia-cysa-ce-certification.png" alt="CompTIA CySA+ badge" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="fb">CYSA+</span></span>
+          <span class="name">CompTIA CySA+<small>Cybersecurity Analyst</small></span>
+        </button>
+        <a class="vr" href="https://www.credly.com/badges/2fe7daed-7a29-4888-9098-3ac1ad3399bc/public_url" target="_blank" rel="noopener">Verify ↗</a>
+      </div>
 
-        <div class="cert" role="button" tabindex="0" data-title="CompTIA CySA+" data-issuer="CompTIA">
-          <div class="cert-img">
-            <img src="./media/comptia-cysa-ce-certification.png" alt="CompTIA CySA+ badge" loading="lazy"
-                 onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-            <span class="fallback">[ CYSA+ BADGE ]</span>
-          </div>
-          <div class="cert-info">
-            <h4>CompTIA CySA+</h4>
-            <p class="issuer">CompTIA</p>
-            <div class="cert-actions">
-              <span class="view">↗ view credential</span>
-              <a class="verify" href="https://www.credly.com/badges/2fe7daed-7a29-4888-9098-3ac1ad3399bc/public_url" target="_blank" rel="noopener">✓ verify on credly</a>
-            </div>
-          </div>
-        </div>
+      <div class="cred">
+        <button class="credmain" data-t="CompTIA Security+" data-i="CompTIA">
+          <span class="thumb"><img src="./media/comptia-security-ce-certification.png" alt="CompTIA Security+ badge" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="fb">SEC+</span></span>
+          <span class="name">CompTIA Security+<small>Renewed 2026 — current, not expired</small></span>
+        </button>
+        <a class="vr" href="https://www.credly.com/badges/4f726f6c-4db0-41fe-88a5-9efab7d48ecc/public_url" target="_blank" rel="noopener">Verify ↗</a>
+      </div>
 
-        <div class="cert" role="button" tabindex="0" data-title="CompTIA Security+" data-issuer="CompTIA">
-          <div class="cert-img">
-            <img src="./media/comptia-security-ce-certification.png" alt="CompTIA Security+ badge" loading="lazy"
-                 onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-            <span class="fallback">[ SEC+ BADGE ]</span>
-          </div>
-          <div class="cert-info">
-            <h4>CompTIA Security+</h4>
-            <p class="issuer">CompTIA</p>
-            <div class="cert-actions">
-              <span class="view">↗ view credential</span>
-              <a class="verify" href="https://www.credly.com/badges/4f726f6c-4db0-41fe-88a5-9efab7d48ecc/public_url" target="_blank" rel="noopener">✓ verify on credly</a>
-            </div>
-          </div>
-        </div>
+      <div class="cred">
+        <button class="credmain" data-t="AWS Certified Solutions Architect — Associate" data-i="Amazon Web Services">
+          <span class="thumb"><img src="./media/aws-certified-solutions-architect-associate.png" alt="AWS Solutions Architect Associate badge" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="fb">AWS SAA</span></span>
+          <span class="name">AWS Solutions Architect — Associate<small>Self-taught, off-hours</small></span>
+        </button>
+        <a class="vr" href="https://www.credly.com/badges/60b9b70d-426c-461e-92c0-ed31cd081d82/public_url" target="_blank" rel="noopener">Verify ↗</a>
+      </div>
 
-        <div class="cert" role="button" tabindex="0" data-title="AWS Certified Solutions Architect — Associate" data-issuer="Amazon Web Services">
-          <div class="cert-img">
-            <img src="./media/aws-certified-solutions-architect-associate.png" alt="AWS Solutions Architect Associate badge" loading="lazy"
-                 onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-            <span class="fallback">[ AWS SAA BADGE ]</span>
-          </div>
-          <div class="cert-info">
-            <h4>AWS Solutions Architect — Associate</h4>
-            <p class="issuer">Amazon Web Services</p>
-            <div class="cert-actions">
-              <span class="view">↗ view credential</span>
-              <a class="verify" href="https://www.credly.com/badges/60b9b70d-426c-461e-92c0-ed31cd081d82/public_url" target="_blank" rel="noopener">✓ verify on credly</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="cert" role="button" tabindex="0" data-title="AWS Certified Cloud Practitioner" data-issuer="Amazon Web Services">
-          <div class="cert-img">
-            <img src="./media/aws-certified-cloud-practitioner.png" alt="AWS Cloud Practitioner badge" loading="lazy"
-                 onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-            <span class="fallback">[ AWS CCP BADGE ]</span>
-          </div>
-          <div class="cert-info">
-            <h4>AWS Cloud Practitioner</h4>
-            <p class="issuer">Amazon Web Services</p>
-            <div class="cert-actions">
-              <span class="view">↗ view credential</span>
-              <a class="verify" href="https://www.credly.com/badges/1f70c580-45c4-44d4-b485-07eab1444798/public_url" target="_blank" rel="noopener">✓ verify on credly</a>
-            </div>
-          </div>
-        </div>
+      <div class="cred">
+        <button class="credmain" data-t="AWS Certified Cloud Practitioner" data-i="Amazon Web Services">
+          <span class="thumb"><img src="./media/aws-certified-cloud-practitioner.png" alt="AWS Cloud Practitioner badge" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="fb">AWS CCP</span></span>
+          <span class="name">AWS Cloud Practitioner<small>Amazon Web Services</small></span>
+        </button>
+        <a class="vr" href="https://www.credly.com/badges/1f70c580-45c4-44d4-b485-07eab1444798/public_url" target="_blank" rel="noopener">Verify ↗</a>
       </div>
     </div>
 
-        <div class="tier rv">
-      <div class="tier-head">
-        <h3>Professional Training</h3>
-        <span class="tier-tag t2">Signal: Medium — Vendor Instructor-Led</span>
+    <div class="credtier">
+      <h3><span>Tier II — Vendor training</span><em>instructor-led · applied on live infrastructure</em></h3>
+
+      <div class="cred">
+        <button class="credmain" data-t="Palo Alto Firewall Essentials (EDU-210)" data-i="Palo Alto Networks">
+          <span class="thumb"><img src="./media/paloedu-210.png" alt="Palo Alto EDU-210 certificate" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="fb">EDU-210</span></span>
+          <span class="name">Firewall Essentials — EDU-210<small>Palo Alto Networks · employer-sponsored</small></span>
+        </button>
+        <span class="vr">View ↗</span>
       </div>
-      <p class="tier-desc">employer-sponsored · hands-on labs · applied daily on NYC infrastructure</p>
-      <div class="cert-grid">
 
-        <button class="cert" data-title="Palo Alto Firewall Essentials (EDU-210)" data-issuer="Palo Alto Networks">
-          <div class="cert-img">
-            <img src="./media/paloedu-210.png" alt="Palo Alto EDU-210 certificate" loading="lazy"
-                 onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-            <span class="fallback">[ EDU-210 ]</span>
-          </div>
-          <div class="cert-info">
-            <h4>Firewall Essentials (EDU-210)</h4>
-            <p class="issuer">Palo Alto Networks</p>
-            <span class="view">↗ view credential</span>
-          </div>
+      <div class="cred">
+        <button class="credmain" data-t="Palo Alto Firewall Troubleshooting (EDU-330)" data-i="Palo Alto Networks">
+          <span class="thumb"><img src="./media/paloedu-330.png" alt="Palo Alto EDU-330 certificate" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="fb">EDU-330</span></span>
+          <span class="name">Firewall Troubleshooting — EDU-330<small>Palo Alto Networks</small></span>
         </button>
+        <span class="vr">View ↗</span>
+      </div>
 
-        <button class="cert" data-title="Palo Alto Firewall Troubleshooting (EDU-330)" data-issuer="Palo Alto Networks">
-          <div class="cert-img">
-            <img src="./media/paloedu-330.png" alt="Palo Alto EDU-330 certificate" loading="lazy"
-                 onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-            <span class="fallback">[ EDU-330 ]</span>
-          </div>
-          <div class="cert-info">
-            <h4>Firewall Troubleshooting (EDU-330)</h4>
-            <p class="issuer">Palo Alto Networks</p>
-            <span class="view">↗ view credential</span>
-          </div>
+      <div class="cred">
+        <button class="credmain" data-t="Palo Alto Panorama: NGFW Management" data-i="Palo Alto Networks">
+          <span class="thumb"><img src="./media/paloedu-management.png" alt="Palo Alto Panorama certificate" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="fb">PANORAMA</span></span>
+          <span class="name">Panorama: NGFW Management<small>Palo Alto Networks</small></span>
         </button>
-
-        <button class="cert" data-title="Palo Alto Panorama: NGFW Management" data-issuer="Palo Alto Networks">
-          <div class="cert-img">
-            <img src="./media/paloedu-management.png" alt="Palo Alto Panorama certificate" loading="lazy"
-                 onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-            <span class="fallback">[ PANORAMA ]</span>
-          </div>
-          <div class="cert-info">
-            <h4>Panorama: NGFW Management</h4>
-            <p class="issuer">Palo Alto Networks</p>
-            <span class="view">↗ view credential</span>
-          </div>
-        </button>
+        <span class="vr">View ↗</span>
       </div>
     </div>
 
-        <div class="tier rv">
-      <div class="tier-head">
-        <h3>Courses &amp; Micro-Credentials</h3>
-        <span class="tier-tag t3">Signal: Info — Coursework</span>
+    <div class="credtier">
+      <h3><span>Tier III — Coursework</span><em>foundations and breadth</em></h3>
+
+      <div class="cred">
+        <button class="credmain" data-t="Google Cybersecurity Certificate" data-i="Coursera">
+          <span class="thumb"><img src="./media/google-cybersecurity-certificate.png" alt="Google Cybersecurity certificate" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="fb">GOOGLE</span></span>
+          <span class="name">Google Cybersecurity Certificate<small>Coursera</small></span>
+        </button>
+        <span class="vr">View ↗</span>
       </div>
-      <p class="tier-desc">foundations · breadth · community</p>
-      <div class="cert-grid">
 
-        <button class="cert" data-title="Google Cybersecurity Certificate" data-issuer="Coursera">
-          <div class="cert-img">
-            <img src="./media/google-cybersecurity-certificate.png" alt="Google Cybersecurity certificate" loading="lazy"
-                 onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-            <span class="fallback">[ GOOGLE CYBER ]</span>
-          </div>
-          <div class="cert-info">
-            <h4>Google Cybersecurity Certificate</h4>
-            <p class="issuer">Coursera</p>
-            <span class="view">↗ view credential</span>
-          </div>
+      <div class="cred">
+        <button class="credmain" data-t="Cyber Security Micro-Credential" data-i="BMCC · NY Jobs CEO Council">
+          <span class="thumb"><img src="./media/micro%20cyber-1.png" alt="BMCC Cyber Security micro-credential" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="fb">BMCC</span></span>
+          <span class="name">Cyber Security Micro-Credential<small>BMCC · NY Jobs CEO Council</small></span>
         </button>
+        <span class="vr">View ↗</span>
+      </div>
 
-        <button class="cert" data-title="Google IT Support" data-issuer="Coursera">
-          <div class="cert-img">
-            <img src="./media/google_It_Support.png" alt="Google IT Support certificate" loading="lazy"
-                 onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-            <span class="fallback">[ GOOGLE IT ]</span>
-          </div>
-          <div class="cert-info">
-            <h4>Google IT Support</h4>
-            <p class="issuer">Coursera</p>
-            <span class="view">↗ view credential</span>
-          </div>
+      <div class="cred">
+        <button class="credmain" data-t="Systems Administration Micro-Credential" data-i="CUNY School of Professional Studies">
+          <span class="thumb"><img src="./media/Certificate%20of%20Completion_Systems%20Administration_SPS_Aug22-FR-1.png" alt="Systems Administration micro-credential" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="fb">SYSADMIN</span></span>
+          <span class="name">Systems Administration<small>CUNY School of Professional Studies</small></span>
         </button>
+        <span class="vr">View ↗</span>
+      </div>
 
-        <button class="cert" data-title="Cyber Security Micro-Credential" data-issuer="BMCC | NY Jobs CEO Council">
-          <div class="cert-img">
-            <img src="./media/micro cyber-1.png" alt="BMCC Cyber Security micro-credential" loading="lazy"
-                 onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-            <span class="fallback">[ BMCC CYBER ]</span>
-          </div>
-          <div class="cert-info">
-            <h4>Cyber Security Micro-Credential</h4>
-            <p class="issuer">BMCC | NY Jobs CEO Council</p>
-            <span class="view">↗ view credential</span>
-          </div>
+      <div class="cred">
+        <button class="credmain" data-t="Codepath Cybersecurity Course" data-i="Codepath.org">
+          <span class="thumb"><img src="./media/codepath%20cybersecurity%20certificate-1.png" alt="Codepath Cybersecurity certificate" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="fb">CODEPATH</span></span>
+          <span class="name">Codepath Cybersecurity<small>Codepath.org</small></span>
         </button>
+        <span class="vr">View ↗</span>
+      </div>
 
-        <button class="cert" data-title="Systems Administration Micro-Credential" data-issuer="CUNY School of Professional Studies">
-          <div class="cert-img">
-            <img src="./media/Certificate of Completion_Systems Administration_SPS_Aug22-FR-1.png" alt="Systems Administration micro-credential" loading="lazy"
-                 onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-            <span class="fallback">[ SYSADMIN ]</span>
-          </div>
-          <div class="cert-info">
-            <h4>Systems Administration Micro-Credential</h4>
-            <p class="issuer">CUNY SPS</p>
-            <span class="view">↗ view credential</span>
-          </div>
+      <div class="cred">
+        <button class="credmain" data-t="TEALS 2023–24 Volunteer — Cybersecurity" data-i="Microsoft">
+          <span class="thumb"><img src="./media/teals-2023-24-volunteer-badge.png" alt="Microsoft TEALS volunteer badge" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="fb">TEALS</span></span>
+          <span class="name">TEALS Volunteer — Cybersecurity<small>Microsoft · taught high-school security</small></span>
         </button>
-
-        <button class="cert" data-title="Codepath Cybersecurity Course" data-issuer="Codepath.org">
-          <div class="cert-img">
-            <img src="./media/codepath cybersecurity certificate-1.png" alt="Codepath Cybersecurity certificate" loading="lazy"
-                 onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-            <span class="fallback">[ CODEPATH ]</span>
-          </div>
-          <div class="cert-info">
-            <h4>Codepath Cybersecurity Course</h4>
-            <p class="issuer">Codepath.org</p>
-            <span class="view">↗ view credential</span>
-          </div>
-        </button>
-
-        <button class="cert" data-title="AWS Cloud Security Foundations" data-issuer="AWS Academy">
-          <div class="cert-img">
-            <img src="./media/aws_cloud_security_foundation.png" alt="AWS Cloud Security Foundations badge" loading="lazy"
-                 onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-            <span class="fallback">[ AWS ACADEMY ]</span>
-          </div>
-          <div class="cert-info">
-            <h4>AWS Cloud Security Foundations</h4>
-            <p class="issuer">AWS Academy Graduate</p>
-            <span class="view">↗ view credential</span>
-          </div>
-        </button>
-
-        <button class="cert" data-title="TEALS 2023–24 Volunteer — Cybersecurity" data-issuer="Microsoft">
-          <div class="cert-img">
-            <img src="./media/teals-2023-24-volunteer-badge.png" alt="Microsoft TEALS volunteer badge" loading="lazy"
-                 onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-            <span class="fallback">[ TEALS ]</span>
-          </div>
-          <div class="cert-info">
-            <h4>TEALS Volunteer — Cybersecurity</h4>
-            <p class="issuer">Microsoft</p>
-            <span class="view">↗ view credential</span>
-          </div>
-        </button>
+        <span class="vr">View ↗</span>
       </div>
     </div>
   </div>
 </section>
 
-<section id="skills">
+<section id="capability">
   <div class="wrap">
-    <div class="sec-head rv">
-      <p class="sec-id">03 // Coverage map</p>
-      <h2>Skills</h2>
-      <p>Grouped like detection rule sets — each group is something I've run in production, not just read about.</p>
-    </div>
+    <p class="sec-mark"><span>04 — Capability</span><span>grouped by the work, not the vendor</span></p>
+    <h2>What I can be handed</h2>
+    <p class="intro">Production experience unless stated otherwise. Where the honest answer is "lab only", it says so.</p>
 
-    <div class="rules-grid">
-      <div class="rulegroup rv">
-        <p class="rg-head">rule_group: <span class="name">security_platforms</span> <span class="count">(12 active)</span></p>
-        <div class="chips">
-          <span class="chip">Palo Alto PAN-OS</span><span class="chip">Panorama</span>
-          <span class="chip">Checkpoint</span><span class="chip">IBM QRadar</span>
-          <span class="chip">Splunk</span><span class="chip">CrowdStrike Falcon</span>
-          <span class="chip">Ivanti Connect Secure</span><span class="chip">Bluecoat Proxy</span>
-          <span class="chip">Burp Suite</span><span class="chip">Wireshark</span>
-          <span class="chip">Infoblox</span><span class="chip">NXLog</span>
-        </div>
+    <dl class="captable">
+      <div class="caprow">
+        <span class="dotmark b-blue" aria-hidden="true"></span>
+        <dt>Firewall &amp; policy</dt>
+        <dd><b>Palo Alto PAN-OS, Panorama, Checkpoint.</b> Rule design, review, cleanup and change control on multi-agency networks.</dd>
       </div>
-
-      <div class="rulegroup rv">
-        <p class="rg-head">rule_group: <span class="name">cloud_infrastructure</span> <span class="count">(5 active)</span></p>
-        <div class="chips">
-          <span class="chip">AWS EC2 / VPC / S3</span><span class="chip">AWS CloudFront</span>
-          <span class="chip">AWS Load Balancers</span><span class="chip">Azure Front Door</span>
-          <span class="chip">Entra ID (IAM)</span>
-        </div>
+      <div class="caprow">
+        <span class="dotmark b-orange" aria-hidden="true"></span>
+        <dt>Detection &amp; logging</dt>
+        <dd><b>IBM QRadar</b> administration, ingestion and parsing repair · NXLog · CrowdStrike Falcon · Splunk <em>(coursework only)</em>.</dd>
       </div>
-
-      <div class="rulegroup rv">
-        <p class="rg-head">rule_group: <span class="name">network_security</span> <span class="count">(5 active)</span></p>
-        <div class="chips">
-          <span class="chip">Firewall Policy Mgmt</span><span class="chip">Site-to-Site / SSL VPN</span>
-          <span class="chip">Infoblox DNS</span><span class="chip">Proxy Configuration</span>
-          <span class="chip">Remote Access</span>
-        </div>
+      <div class="caprow">
+        <span class="dotmark b-green" aria-hidden="true"></span>
+        <dt>Network services</dt>
+        <dd><b>Infoblox DNS</b>, Bluecoat proxy, Ivanti Connect Secure SSL VPN, site-to-site tunnels.</dd>
       </div>
-
-      <div class="rulegroup rv">
-        <p class="rg-head">rule_group: <span class="name">security_concepts</span> <span class="count">(6 active)</span></p>
-        <div class="chips">
-          <span class="chip">SIEM</span><span class="chip">TLS</span>
-          <span class="chip">TCP/IP</span><span class="chip">SAML</span>
-          <span class="chip">DNS</span><span class="chip">API Security</span>
-        </div>
+      <div class="caprow">
+        <span class="dotmark b-yellow" aria-hidden="true"></span>
+        <dt>Automation</dt>
+        <dd><b>PowerShell</b>, <b>Ansible (YAML)</b>, REST API integration against security platform APIs, runbook documentation.</dd>
       </div>
-
-      <div class="rulegroup rv">
-        <p class="rg-head">rule_group: <span class="name">operating_systems</span> <span class="count">(3 active)</span></p>
-        <div class="chips">
-          <span class="chip">Windows</span><span class="chip">Linux</span>
-          <span class="chip">macOS</span>
-        </div>
+      <div class="caprow">
+        <span class="dotmark b-purple" aria-hidden="true"></span>
+        <dt>Incident &amp; analysis</dt>
+        <dd><b>Incident response</b>, RCA authorship, log analysis, Wireshark · Burp Suite <em>(lab and hackathons)</em>.</dd>
       </div>
-
-      <div class="rulegroup rv">
-        <p class="rg-head">rule_group: <span class="name">security_operations</span> <span class="count">(4 active)</span></p>
-        <div class="chips">
-          <span class="chip">Incident Response</span><span class="chip">SIEM Administration</span>
-          <span class="chip">Log Analysis</span><span class="chip">RCA Documentation</span>
-        </div>
+      <div class="caprow">
+        <span class="dotmark b-red" aria-hidden="true"></span>
+        <dt>Cloud</dt>
+        <dd>AWS EC2, VPC, S3, CloudFront, load balancers · Azure Front Door · Entra ID. Certified rather than run at scale.</dd>
       </div>
-
-      <div class="rulegroup rv">
-        <p class="rg-head">rule_group: <span class="name">automation</span> <span class="count">(3 active)</span></p>
-        <div class="chips">
-          <span class="chip">PowerShell</span><span class="chip">Ansible (YAML)</span>
-          <span class="chip">API Integration</span>
-        </div>
+      <div class="caprow">
+        <span class="dotmark" style="background:var(--ink)" aria-hidden="true"></span>
+        <dt>Platforms &amp; build</dt>
+        <dd>Windows, Linux, macOS · protocol-level troubleshooting (TCP/IP, TLS, DNS, SAML) · vanilla JS front-end for my own tools.</dd>
       </div>
+      <div class="caprow">
+        <span class="dotmark" style="background:var(--grey)" aria-hidden="true"></span>
+        <dt>Ongoing practice</dt>
+        <dd>Weekly <a href="https://tryhackme.com/p/j0b" target="_blank" rel="noopener">TryHackMe</a> reps — SOC, defensive security, threat hunting. Real boxes, real logs.</dd>
+      </div>
+    </dl>
 
-      <div class="rulegroup rv">
-        <p class="rg-head">rule_group: <span class="name">recognition</span> <span class="count">(2 logged)</span></p>
-        <div class="chips">
-          <span class="chip">1st — PROTECT Cybersecurity Hackathon</span>
-          <span class="chip">3rd — AWS Hackathon</span>
-        </div>
+    <div class="offrecord rv">
+      <h3>Appendix — off the record</h3>
+      <p class="hint">Redacted for the file. Click to declassify.</p>
+      <div class="qa">
+        <p><span class="q">Known weakness</span><button class="redact">Will rewrite any manual process the third time he sees it, whether or not it was on the sprint.</button></p>
+        <p><span class="q">Compensation expectations</span><button class="redact">Negotiable and honest — tell me the band and I'll tell you straight away if it works.</button></p>
+        <p><span class="q">What he actually wants next</span><button class="redact">A detection-engineering or SOC role where automation is encouraged, not merely tolerated.</button></p>
       </div>
     </div>
   </div>
 </section>
 
-<section id="projects">
+<section id="work">
   <div class="wrap">
-    <div class="sec-head rv">
-      <p class="sec-id">04 // Built, not just configured</p>
-      <h2>Projects</h2>
-      <p>Tools I've shipped on my own time — proof the automation instinct doesn't stop at work.</p>
-    </div>
+    <p class="sec-mark"><span>05 — Independent work</span><span>public repositories</span></p>
+    <h2>Built, not configured</h2>
 
-    <div class="proj-grid">
-      <div class="proj rv">
-        <p class="p-type">OSINT tooling</p>
-        <h3>OSINTVault</h3>
-        <p>A lightweight, browser-based OSINT workspace that runs fully offline with no backend — collects tools, intel, and investigation notes in one place. Built for analysts who can't ship case data to someone else's cloud.</p>
-        <p class="p-stack">stack: html · css · vanilla js · zero dependencies — <a href="https://github.com/w3bcooki3/threatnet" target="_blank" rel="noopener">github/w3bcooki3/threatnet</a></p>
-      </div>
-
-      <div class="proj rv">
-        <p class="p-type">Civic security platform</p>
-        <h3>PROTECT</h3>
-        <p>Led development of a cybercrime reporting platform focused on making it easy for everyday users to report threats and stay safer online — security as social change, not just infrastructure.</p>
-        <p class="p-award">● 1st place — Cybersecurity Hackathon, John Jay College (2023)</p>
-        <p class="p-stack">role: team lead · full build — <a href="https://github.com/w3bcooki3/report-cybercrime" target="_blank" rel="noopener">github/w3bcooki3/report-cybercrime</a></p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="education">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <p class="sec-id">05 // Foundation</p>
-      <h2>Education</h2>
-    </div>
-
-    <div class="edu-grid">
-      <div class="edu rv">
-        <p class="e-when">2021-09 → 2023-12 · Manhattan, NY</p>
-        <h3>B.S. Computer Science &amp; Information Security</h3>
-        <p class="e-school">John Jay College of Criminal Justice</p>
-        <p><b>Coursework:</b> Operating Systems · Network Security &amp; Forensics · Cybercrime · Cryptography &amp; Cryptanalysis · Computer Networking</p>
-      </div>
-
-      <div class="edu rv">
-        <p class="e-when">2019-09 → 2021-06 · Bayside, NY</p>
-        <h3>A.S. Computer Science &amp; Information Security</h3>
-        <p class="e-school">Queensborough Community College</p>
-        <p><b>Coursework:</b> Linux Fundamentals · Network Security · Cloud Computing</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="practice">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <p class="sec-id">06 // Live fire</p>
-      <h2>Hands-on Practice</h2>
-    </div>
-
-    <div class="thm-panel rv">
+    <article class="projrow rv">
+      <span class="projmark b-blue" aria-hidden="true">01</span>
       <div>
-        <h3>TryHackMe — active</h3>
-        <p>
-          Weekly reps in penetration testing, privilege escalation, threat detection,
-          and defensive monitoring. Real boxes, real logs — the same muscle memory
-          I bring to a live incident.
-        </p>
-        <div class="focus-tags">
-          <span class="f1">SOC</span>
-          <span class="f2">Defensive Security</span>
-          <span class="f3">Threat Hunting</span>
-        </div>
-        <a class="btn btn-ghost" href="https://tryhackme.com/p/j0b" target="_blank" rel="noopener">↗ Full profile</a>
+        <p class="tp">OSINT tooling</p>
+        <h3>OSINTVault</h3>
+        <p>A browser-based OSINT workspace that runs fully offline with no backend — tools, intel and investigation notes in one place. Built for analysts who can't ship case data to somebody else's cloud.</p>
+        <p class="st">HTML · CSS · vanilla JS · zero dependencies — <a href="https://github.com/w3bcooki3/threatnet" target="_blank" rel="noopener">github.com/w3bcooki3/threatnet</a></p>
       </div>
-      <div class="thm-embed">
-        <iframe src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=228100"
-                title="TryHackMe public profile badge" loading="lazy"></iframe>
+    </article>
+
+    <article class="projrow rv">
+      <span class="projmark b-orange" aria-hidden="true">02</span>
+      <div>
+        <p class="tp">Civic security platform</p>
+        <h3>PROTECT</h3>
+        <p>A cybercrime reporting platform built so ordinary New Yorkers can report a threat without knowing the vocabulary. I led the team and the build.</p>
+        <p class="aw">1st place — Cybersecurity Hackathon, John Jay College</p>
+        <p class="st">Team lead · full build — <a href="https://github.com/w3bcooki3/report-cybercrime" target="_blank" rel="noopener">github.com/w3bcooki3/report-cybercrime</a></p>
+      </div>
+    </article>
+
+    <div class="edugrid">
+      <div class="edu rv">
+        <p class="when">Sep 2021 — Dec 2023 · Manhattan, NY</p>
+        <h3>B.S. Computer Science &amp; Information Security</h3>
+        <p class="school">John Jay College of Criminal Justice</p>
+        <p>Operating systems · network security &amp; forensics · cybercrime · cryptography &amp; cryptanalysis · computer networking</p>
+      </div>
+      <div class="edu rv">
+        <p class="when">Sep 2019 — Jun 2021 · Bayside, NY</p>
+        <h3>A.S. Computer Science &amp; Information Security</h3>
+        <p class="school">Queensborough Community College</p>
+        <p>Linux fundamentals · network security · cloud computing · 3rd place, AWS hackathon</p>
       </div>
     </div>
   </div>
 </section>
 
-<section id="contact">
+<section id="contact" class="contact">
   <div class="wrap">
-    <div class="escalation rv">
-      <p class="sec-id">07 // Escalation path</p>
-      <h2>Hiring a security team?<br><span class="hl">Escalate to me directly.</span></h2>
-      <p>
-        I answer fast, I learn faster, and I've already been trusted with
-        city-scale infrastructure. Send the JD, or just say hi.
-      </p>
-      <div class="esc-paths">
-        <a class="btn btn-amber" href="mailto:hicanwetalk@proton.me">✉ hicanwetalk@proton.me</a>
-        <a class="btn btn-ghost" href="https://www.linkedin.com/in/fnu-rahul" target="_blank" rel="noopener">in/ LinkedIn</a>
-        <a class="btn btn-ghost" href="https://github.com/w3bcooki3" target="_blank" rel="noopener">gh/ GitHub</a>
-        <a class="btn btn-ghost" href="./docs/FRahul_Resume.docx" download>↓ Resume</a>
-      </div>
+    <p class="sec-mark"><span>06 — Escalation path</span><span>same-day reply</span></p>
+    <h2>Next stop:<br>your SOC</h2>
+    <p class="intro">
+      Send the job description, ask for references, or just say hello. I've already been
+      trusted with city-scale infrastructure — I'd like to hear what you're defending.
+    </p>
+    <div class="acts">
+      <a class="btn btn-solid" href="mailto:hicanwetalk@proton.me">hicanwetalk@proton.me</a>
+      <a class="btn btn-line" href="https://www.linkedin.com/in/fnu-rahul" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn btn-line" href="https://github.com/w3bcooki3" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn btn-line" href="https://tryhackme.com/p/j0b" target="_blank" rel="noopener">TryHackMe</a>
+      <a class="btn btn-line" href="./docs/Resume_Rahul.pdf" download>Resume</a>
     </div>
   </div>
 </section>
 </main>
 
-<footer>
+<div class="endbar">
   <div class="wrap">
-    <span>— end of report — rahul@secops — NYC</span>
-    <span>uptime: <span id="uptime">0s</span> · built by hand, defended by habit</span>
+    <span>End of file — Rahul · Security Operations · New York City</span>
+    <span>Built by hand. <b>Defended by habit.</b></span>
   </div>
-</footer>
+</div>
 
-<div class="modal" id="certModal" role="dialog" aria-modal="true" aria-label="Certificate viewer">
-  <button class="modal-close" id="modalClose">ESC / close</button>
-  <div class="modal-inner">
-    <img id="modalImg" src="" alt="Certificate full view">
-    <div class="modal-meta">
-      <h3 id="modalTitle"></h3>
-      <p id="modalIssuer"></p>
-    </div>
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Credential viewer">
+  <button class="x" id="mClose">Close · Esc</button>
+  <div>
+    <img id="mImg" src="" alt="Credential, full size">
+    <p class="cap"><strong id="mTitle"></strong><span id="mIssuer"></span></p>
   </div>
 </div>
 
 <script>
-const clockEl = document.getElementById('utcClock');
-const uptimeEl = document.getElementById('uptime');
-const t0 = Date.now();
-function tick() {
-  const d = new Date();
-  clockEl.textContent = d.toISOString().substring(11, 19) + ' UTC';
-  const s = Math.floor((Date.now() - t0) / 1000);
-  uptimeEl.textContent = s < 60 ? s + 's' : Math.floor(s / 60) + 'm ' + (s % 60) + 's';
-}
-tick(); setInterval(tick, 1000);
+(function(){
+  var clock=document.getElementById('clock');
+  function tick(){clock.textContent=new Date().toISOString().substr(11,8)+' UTC';}
+  tick();setInterval(tick,1000);
 
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-document.querySelectorAll('.rv').forEach(el => io.observe(el));
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
 
-const body = document.getElementById('termBody');
-const input = document.getElementById('termInput');
-const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-let history = [], histIdx = -1;
-
-function line(html, cls) {
-  const div = document.createElement('div');
-  div.className = 'tl' + (cls ? ' ' + cls : '');
-  div.innerHTML = html;
-  body.appendChild(div);
-  body.scrollTop = body.scrollHeight;
-  return div;
-}
-
-function typeLine(html, delay) {
-  return new Promise(res => {
-    setTimeout(() => { line(html); res(); }, reduceMotion ? 0 : delay);
+  document.querySelectorAll('.redact').forEach(function(b){
+    b.addEventListener('click',function(){b.classList.toggle('open');});
   });
-}
 
-async function boot() {
-  await typeLine('<span class="c-dim">initializing analyst profile…</span>', 200);
-  await typeLine('<span class="c-ok">[ OK ]</span> <span class="c-mut">identity</span>        rahul — security operations engineer', 380);
-  await typeLine('<span class="c-ok">[ OK ]</span> <span class="c-mut">clearance</span>       NYC government infrastructure', 300);
-  await typeLine('<span class="c-ok">[ OK ]</span> <span class="c-mut">certs loaded</span>    Security+ · CySA+ · <span class="c-amber">CSAP</span> · AWS SAA · AWS CCP + 3 Palo Alto trainings', 300);
-  await typeLine('<span class="c-ok">[ OK ]</span> <span class="c-mut">automation</span>      powershell, ansible — 40min/day reclaimed', 300);
-  await typeLine('<span class="c-warn">[ !! ]</span> <span class="c-mut">alert</span>           open headcount detected. assessment verdict: <span class="c-amber">HIRE</span>.', 420);
-  await typeLine('&nbsp;', 200);
-  await typeLine('<span class="c-dim">type</span> <span class="c-amber">help</span> <span class="c-dim">to investigate this candidate.</span>', 100);
-}
+  var modal=document.getElementById('modal'),mImg=document.getElementById('mImg'),
+      mTitle=document.getElementById('mTitle'),mIssuer=document.getElementById('mIssuer'),last=null;
 
-const CMDS = {
-  help: () => [
-    '<span class="c-amber">available commands:</span>',
-    '  <span class="c-info">whoami</span>       — who is this guy',
-    '  <span class="c-info">assessment</span>   — executive summary &amp; verdict',
-    '  <span class="c-info">certs</span>        — list certifications by tier',
-    '  <span class="c-info">skills</span>       — active rule groups',
-    '  <span class="c-info">experience</span>   — event log of roles',
-    '  <span class="c-info">projects</span>     — things I built',
-    '  <span class="c-info">education</span>    — degrees &amp; coursework',
-    '  <span class="c-info">wins</span>         — hackathons &amp; awards',
-    '  <span class="c-info">contact</span>      — escalation paths',
-    '  <span class="c-info">resume</span>       — download resume',
-    '  <span class="c-info">hire</span>         — the correct next step',
-    '  <span class="c-info">clear</span>        — clear terminal',
-  ],
-  whoami: () => [
-    'rahul — security operations engineer, NYC.',
-    '<span class="c-mut">runs firewalls (palo alto, checkpoint), SIEM (qradar), DNS/proxy/VPN.</span>',
-    '<span class="c-mut">automates the boring parts. learns whatever the job needs, fast.</span>',
-  ],
-  certs: () => [
-    '<span class="c-amber">tier 1 — proctored exams:</span>',
-    '  CompTIA <span class="c-amber">CSAP</span> (Security+ + CySA+) · CySA+ · Security+',
-    '  AWS Solutions Architect Assoc. · AWS Cloud Practitioner',
-    '<span class="c-info">tier 2 — vendor training:</span>',
-    '  Palo Alto EDU-210 · EDU-330 · Panorama NGFW Mgmt',
-    '<span class="c-mut">tier 3 — coursework:</span>',
-    '  Google Cybersecurity · Google IT · BMCC Cyber · CUNY SysAdmin',
-    '  Codepath Cyber · AWS Cloud Security Foundations · MS TEALS',
-    '<span class="c-dim">scroll to ./certifications for the receipts.</span>',
-  ],
-  skills: () => [
-    '<span class="c-ok">security_platforms</span>   palo alto, panorama, checkpoint, qradar, splunk, crowdstrike',
-    '<span class="c-ok">cloud</span>                aws (ec2/vpc/s3/cloudfront/elb), azure front door, entra id',
-    '<span class="c-ok">network_security</span>     firewall policy, vpn, infoblox dns, proxy',
-    '<span class="c-ok">automation</span>           powershell, ansible, api integration',
-  ],
-  experience: () => [
-    '<span class="c-ok">2024-01 → 27-01</span> SecOps Engineer Fellow — NYC Office of Tech &amp; Innovation',
-    '<span class="c-mut">2022-09 → 23-12</span> IT Support Intern — NYC DOE (DIIT)',
-    '<span class="c-mut">2021-10 → 22-06</span> IT Support Intern — NYC DOE (Schools)',
-  ],
-  projects: () => [
-    '<span class="c-amber">OSINTVault</span>  — offline browser-based OSINT workspace, zero backend',
-    '<span class="c-amber">PROTECT</span>     — cybercrime reporting platform · <span class="c-ok">1st place, hackathon</span>',
-    '<span class="c-dim">→ see ./projects for details</span>',
-  ],
-  education: () => [
-    '<span class="c-ok">B.S.</span> Computer Science &amp; Information Security — John Jay College (2023)',
-    '<span class="c-mut">A.S.</span> Computer Science &amp; Information Security — Queensborough CC (2021)',
-  ],
-  wins: () => [
-    '<span class="c-amber">1st place</span> — PROTECT cybersecurity hackathon',
-    '<span class="c-amber">3rd place</span> — AWS hackathon',
-    '<span class="c-mut">+ active on tryhackme (SOC / defensive / threat hunting)</span>',
-  ],
-  contact: () => [
-    'email    → <a href="mailto:hicanwetalk@proton.me">hicanwetalk@proton.me</a>',
-    'linkedin → <a href="https://www.linkedin.com/in/fnu-rahul" target="_blank" rel="noopener">in/fnu-rahul</a>',
-    'github   → <a href="https://github.com/w3bcooki3" target="_blank" rel="noopener">w3bcooki3</a>',
-  ],
-  resume: () => {
-    window.location.href = './docs/FRahul_Resume.docx';
-    return ['<span class="c-ok">[ OK ]</span> downloading resume…'];
-  },
-  clear: () => { body.innerHTML = ''; return []; },
-  assessment: () => {
-    setTimeout(() => location.hash = '#assessment', 600);
-    return [
-      '<span class="c-ok">5 findings — all CONFIRMED.</span>',
-      '<span class="c-amber">RECOMMENDATION: HIRE.</span>',
-      '<span class="c-dim">→ jumping to full report…</span>',
-    ];
-  },
-  hire: () => {
-    setTimeout(() => location.hash = '#contact', 700);
-    return [
-      '<span class="c-ok">[ OK ]</span> excellent judgment detected.',
-      '<span class="c-amber">→ opening escalation path…</span>',
-    ];
-  },
-  ls: () => ['assessment/  experience/  certifications/  skills/  projects/  education/  practice/  contact/'],
-  sudo: (args) => {
-    if (args.join(' ').toLowerCase().includes('hire')) {
-      return [
-        '<span class="c-ok">[ OK ]</span> privilege granted. excellent decision.',
-        '<span class="c-amber">→ opening escalation path…</span>',
-        (setTimeout(() => location.hash = '#contact', 700), '<span class="c-dim">see #contact</span>'),
-      ];
-    }
-    return ['<span class="c-warn">rahul is not in the sudoers file. this incident will be reported. (kidding — try: sudo hire rahul)</span>'];
-  },
-  nmap: () => [
-    'PORT     STATE  SERVICE',
-    '22/tcp   <span class="c-ok">open</span>   work-ethic',
-    '443/tcp  <span class="c-ok">open</span>   secure-by-default',
-    '3389/tcp <span class="c-warn">closed</span> excuses',
-  ],
-};
-
-function run(raw) {
-  const clean = raw.trim();
-  if (!clean) return;
-  line('<span class="p">$</span> <span class="cmd">' + clean.replace(/</g,'&lt;') + '</span>');
-  history.push(clean); histIdx = history.length;
-  const [cmd, ...args] = clean.toLowerCase().split(/\s+/);
-  const fn = CMDS[cmd];
-  if (fn) { (fn(args) || []).forEach(l => line(l)); }
-  else {
-    line('<span class="c-warn">command not found:</span> ' + cmd.replace(/</g,'&lt;') + ' <span class="c-dim">— try</span> <span class="c-amber">help</span>');
-  }
-  body.scrollTop = body.scrollHeight;
-}
-
-input.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') { run(input.value); input.value = ''; }
-  else if (e.key === 'ArrowUp') {
-    if (histIdx > 0) { histIdx--; input.value = history[histIdx]; }
-    e.preventDefault();
-  } else if (e.key === 'ArrowDown') {
-    if (histIdx < history.length - 1) { histIdx++; input.value = history[histIdx]; }
-    else { histIdx = history.length; input.value = ''; }
-    e.preventDefault();
-  }
-});
-
-boot();
-
-const modal = document.getElementById('certModal');
-const mImg = document.getElementById('modalImg');
-const mTitle = document.getElementById('modalTitle');
-const mIssuer = document.getElementById('modalIssuer');
-let lastFocused = null;
-
-document.querySelectorAll('.cert').forEach(card => {
-  const open = () => {
-    const img = card.querySelector('img');
-    if (!img || img.style.display === 'none') return;
-    lastFocused = card;
-    mImg.src = img.src;
-    mTitle.textContent = card.dataset.title;
-    mIssuer.textContent = card.dataset.issuer;
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-    document.getElementById('modalClose').focus();
-  };
-  card.addEventListener('click', (e) => {
-    if (e.target.closest('a')) return;
-    open();
+  document.querySelectorAll('.credmain').forEach(function(c){
+    c.addEventListener('click',function(){
+      var img=c.querySelector('img');
+      if(!img||img.style.display==='none')return;
+      last=c;mImg.src=img.src;mTitle.textContent=c.dataset.t;mIssuer.textContent=c.dataset.i;
+      modal.classList.add('on');document.body.style.overflow='hidden';
+      document.getElementById('mClose').focus();
+    });
   });
-  card.addEventListener('keydown', (e) => {
-    if (e.target.closest('a')) return;
-    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); }
-  });
-});
 
-function closeModal() {
-  modal.classList.remove('active');
-  document.body.style.overflow = '';
-  if (lastFocused) lastFocused.focus();
-}
-document.getElementById('modalClose').addEventListener('click', closeModal);
-modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('active')) closeModal(); });
+  function closeM(){modal.classList.remove('on');document.body.style.overflow='';if(last)last.focus();}
+  document.getElementById('mClose').addEventListener('click',closeM);
+  modal.addEventListener('click',function(e){if(e.target===modal)closeM();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&modal.classList.contains('on'))closeM();});
+})();
 </script>
 </body>
 </html>
