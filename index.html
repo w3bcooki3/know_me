@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Rahul — Security Operations Engineer, New York City</title>
 <meta name="description" content="Rahul — Security Operations Engineer keeping New York City government infrastructure running. Firewalls, SIEM, DNS, proxy, VPN. CompTIA CSAP, AWS certified. Every claim has evidence attached.">
 <meta name="theme-color" content="#0D0D0D">
@@ -38,24 +38,27 @@
   --data:'IBM Plex Mono',monospace;
 
   --maxw:1080px;
-  --pad:clamp(20px,4vw,40px);
+  --pad:clamp(16px,4vw,40px);
+  --bar:56px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:68px}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--bar) + 12px);overflow-x:hidden;-webkit-text-size-adjust:100%;text-size-adjust:100%}
 body{
   background:var(--paper);color:var(--ink);
   font-family:var(--body);font-size:17px;line-height:1.62;
   -webkit-font-smoothing:antialiased;
   overflow-x:clip; /* clip, not hidden — hidden can break position:sticky */
+  overflow-wrap:break-word;
 }
+img{max-width:100%;height:auto}
 ::selection{background:var(--yellow);color:var(--ink)}
 a{color:inherit}
 :focus-visible{outline:3px solid var(--blue);outline-offset:3px}
-.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 max(var(--pad),env(safe-area-inset-left)) 0 max(var(--pad),env(safe-area-inset-right))}
 
 /* ============ SIGNAGE BAR ============ */
 .signbar{position:sticky;top:0;z-index:70;background:var(--ink);color:var(--white)}
-.signbar .wrap{display:flex;align-items:center;gap:18px;height:56px}
+.signbar .wrap{display:flex;align-items:center;gap:18px;height:var(--bar)}
 .signbar .mark{
   font-family:var(--display);font-weight:900;font-size:15px;
   letter-spacing:.14em;text-transform:uppercase;text-decoration:none;white-space:nowrap;
@@ -72,49 +75,75 @@ a{color:inherit}
   font-family:var(--data);font-size:12px;letter-spacing:.09em;text-transform:uppercase;white-space:nowrap;
 }
 .signbar nav + .status{margin-left:20px}
-.pulse{width:9px;height:9px;border-radius:50%;background:var(--green);
+.pulse{width:9px;height:9px;border-radius:50%;background:var(--green);flex:none;
   box-shadow:0 0 0 0 rgba(0,147,60,.7);animation:pulse 2.6s infinite}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(0,147,60,.6)}70%{box-shadow:0 0 0 9px rgba(0,147,60,0)}100%{box-shadow:0 0 0 0 rgba(0,147,60,0)}}
 
+/* mobile menu button (hidden on desktop) */
+.menubtn{
+  display:none;background:transparent;border:2px solid #4A4A46;color:var(--white);
+  font-family:var(--data);font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+  padding:0 12px;height:38px;min-width:44px;cursor:pointer;align-items:center;gap:8px;flex:none;
+}
+.menubtn .bars{display:inline-grid;gap:3px}
+.menubtn .bars i{display:block;width:16px;height:2px;background:currentColor;transition:transform .2s ease,opacity .2s ease}
+.menubtn[aria-expanded="true"] .bars i:nth-child(1){transform:translateY(5px) rotate(45deg)}
+.menubtn[aria-expanded="true"] .bars i:nth-child(2){opacity:0}
+.menubtn[aria-expanded="true"] .bars i:nth-child(3){transform:translateY(-5px) rotate(-45deg)}
+.mobilenav{
+  display:none;position:fixed;left:0;right:0;top:var(--bar);z-index:69;
+  background:var(--ink);border-top:1px solid #2A2A26;
+  padding:8px var(--pad) calc(18px + env(safe-area-inset-bottom));
+  max-height:calc(100vh - var(--bar));overflow-y:auto;
+}
+.mobilenav.on{display:block}
+.mobilenav a{
+  display:block;font-family:var(--data);font-size:14px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--white);text-decoration:none;padding:15px 0;border-bottom:1px solid #2A2A26;
+}
+.mobilenav a:last-child{border-bottom:none}
+.mobilenav a span{color:var(--yellow);margin-right:10px}
+
 /* ============ HERO ============ */
-.hero{padding:clamp(46px,7vw,82px) 0 0}
+.hero{padding:clamp(36px,7vw,82px) 0 0}
 .kicker{
   font-family:var(--data);font-size:12.5px;letter-spacing:.15em;text-transform:uppercase;
   color:var(--grey);border-bottom:2px solid var(--ink);padding-bottom:10px;margin-bottom:28px;
-  display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  display:flex;justify-content:space-between;gap:6px 14px;flex-wrap:wrap;
 }
 .kicker .avail{color:var(--green);font-weight:600}
 h1{
   font-family:var(--display);font-weight:900;
-  font-size:clamp(58px,13.5vw,146px);line-height:.85;
+  font-size:clamp(54px,13.5vw,146px);line-height:.85;
   letter-spacing:-.045em;text-transform:uppercase;overflow-wrap:break-word;
 }
 h1 .stop{color:var(--yellow)}
 .role{
   font-family:var(--display);font-weight:800;
-  font-size:clamp(19px,3.4vw,36px);line-height:1.05;letter-spacing:-.02em;
+  font-size:clamp(20px,3.4vw,36px);line-height:1.08;letter-spacing:-.02em;
   color:var(--blue);margin-top:16px;
 }
 .standfirst{
-  max-width:600px;margin-top:20px;font-size:clamp(17px,2vw,20px);color:var(--grey2);
+  max-width:600px;margin-top:20px;font-size:clamp(16.5px,2vw,20px);color:var(--grey2);
 }
 .standfirst b{font-weight:700;color:var(--ink);box-shadow:inset 0 -.5em 0 var(--yellow)}
 
 .acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
 .btn{
   font-family:var(--data);font-size:13px;font-weight:600;letter-spacing:.06em;
-  text-transform:uppercase;text-decoration:none;padding:14px 24px;
-  border:2px solid var(--ink);display:inline-flex;align-items:center;gap:10px;cursor:pointer;
+  text-transform:uppercase;text-decoration:none;padding:14px 24px;min-height:48px;
+  border:2px solid var(--ink);display:inline-flex;align-items:center;justify-content:center;gap:10px;cursor:pointer;
   transition:transform .13s ease,background .13s ease,color .13s ease,border-color .13s ease;
 }
 .btn-solid{background:var(--ink);color:var(--white)}
 .btn-solid:hover{background:var(--blue);border-color:var(--blue);transform:translate(-2px,-2px)}
 .btn-line{background:transparent;color:var(--ink)}
 .btn-line:hover{background:var(--ink);color:var(--white);transform:translate(-2px,-2px)}
+.btn .lc{text-transform:none;letter-spacing:.02em}
 
 /* ---- file fields ---- */
 .fields{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));
   margin-top:38px;border-top:2px solid var(--ink);
 }
 .field{padding:14px 20px 14px 0;border-bottom:1px solid var(--rule)}
@@ -129,10 +158,10 @@ h1 .stop{color:var(--yellow)}
 .board{margin-top:clamp(40px,6vw,64px);background:var(--white);border:2px solid var(--ink)}
 .board-head{
   background:var(--ink);color:var(--white);
-  display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;
+  display:flex;justify-content:space-between;align-items:center;gap:6px 14px;flex-wrap:wrap;
   padding:13px 20px;
 }
-.board-head h2{font-family:var(--display);font-weight:800;font-size:15px;letter-spacing:.16em;text-transform:uppercase}
+.board-head h2{font-family:var(--display);font-weight:800;font-size:15px;letter-spacing:.16em;text-transform:uppercase;line-height:1.3}
 .board-head .clock{font-family:var(--data);font-size:12.5px;color:#B9B9B5;letter-spacing:.06em}
 .svc{
   display:grid;grid-template-columns:56px 1fr 150px;align-items:center;gap:18px;
@@ -169,11 +198,11 @@ h1 .stop{color:var(--yellow)}
 }
 
 /* ============ SECTIONS ============ */
-section{padding:clamp(58px,8vw,92px) 0}
+section{padding:clamp(52px,8vw,92px) 0}
 .sec-mark{
   font-family:var(--data);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;
   color:var(--grey);border-bottom:1px solid var(--rule);padding-bottom:8px;margin-bottom:20px;
-  display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  display:flex;justify-content:space-between;gap:4px 12px;flex-wrap:wrap;
 }
 h2{
   font-family:var(--display);font-weight:900;
@@ -224,10 +253,10 @@ details.finding[open] .plus::after{content:'–'}
 .station.now::before{border-color:var(--green);background:var(--green);box-shadow:0 0 0 5px rgba(0,147,60,.2)}
 .station .when{font-family:var(--data);font-size:12.5px;letter-spacing:.05em;color:var(--grey);margin-bottom:4px}
 .station .when .tag{
-  background:var(--green);color:var(--white);padding:2px 8px;margin-left:8px;
+  display:inline-block;background:var(--green);color:var(--white);padding:2px 8px;margin-left:8px;
   font-weight:600;letter-spacing:.1em;font-size:11px;
 }
-.station h3{font-family:var(--display);font-weight:800;font-size:clamp(21px,3vw,27px);letter-spacing:-.02em}
+.station h3{font-family:var(--display);font-weight:800;font-size:clamp(21px,3vw,27px);letter-spacing:-.02em;line-height:1.2}
 .station .org{font-family:var(--data);font-size:13.5px;color:var(--blue);font-weight:600;margin:2px 0 14px}
 .station ul{list-style:none;display:grid;gap:9px;max-width:68ch}
 .station li{position:relative;padding-left:26px;color:var(--grey2);font-size:16px}
@@ -240,12 +269,10 @@ details.finding[open] .plus::after{content:'–'}
 .credtier > h3{
   font-family:var(--data);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
   border-bottom:3px solid var(--ink);padding-bottom:8px;
-  display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline;
+  display:flex;justify-content:space-between;gap:4px 12px;flex-wrap:wrap;align-items:baseline;
 }
 .credtier > h3 em{font-style:normal;color:var(--grey);letter-spacing:.09em}
 
-/* Row is a plain container. The thumbnail/name is a button (opens the badge image);
-   the verify link is a real anchor (goes to Credly). No nested interactives. */
 .cred{
   display:grid;grid-template-columns:1fr auto;align-items:center;
   background:var(--white);border-bottom:1px solid var(--rule);
@@ -255,12 +282,12 @@ details.finding[open] .plus::after{content:'–'}
 .credmain{
   display:grid;grid-template-columns:70px 1fr;gap:20px;align-items:center;
   width:100%;text-align:left;background:none;border:none;
-  padding:14px 0 14px 14px;font:inherit;color:inherit;cursor:pointer;
+  padding:14px 0 14px 14px;font:inherit;color:inherit;cursor:pointer;min-width:0;
 }
 .credmain .thumb{height:50px;display:grid;place-items:center}
 .credmain .thumb img{max-height:50px;max-width:66px;object-fit:contain}
 .credmain .thumb .fb{display:none;font-family:var(--data);font-size:9.5px;color:var(--grey)}
-.credmain .name{font-size:16.5px;font-weight:700;line-height:1.3}
+.credmain .name{font-size:16.5px;font-weight:700;line-height:1.3;min-width:0}
 .credmain .name small{
   display:block;font-family:var(--data);font-size:12px;font-weight:400;
   color:var(--grey);margin-top:3px;letter-spacing:.02em;
@@ -288,6 +315,7 @@ a.vr:hover{text-decoration:underline}
 .caprow dd{font-size:16px;color:var(--grey2)}
 .caprow dd b{color:var(--ink);font-weight:700}
 .caprow dd em{font-style:normal;color:var(--grey)}
+.caprow dd a{color:var(--blue);font-weight:600}
 
 /* ---- off record ---- */
 .offrecord{border:2px solid var(--ink);background:var(--white);padding:28px;margin-top:38px}
@@ -300,7 +328,7 @@ a.vr:hover{text-decoration:underline}
 }
 .redact{
   background:var(--ink);color:transparent;cursor:pointer;border:none;
-  padding:2px 7px;font:inherit;font-size:16px;text-align:left;line-height:1.55;
+  padding:2px 7px;font:inherit;font-size:16px;text-align:left;line-height:1.55;max-width:100%;
   transition:background .18s ease,color .18s ease;
 }
 .redact:hover,.redact.open{background:transparent;color:var(--ink);box-shadow:inset 0 -.5em 0 var(--yellow)}
@@ -315,7 +343,7 @@ a.vr:hover{text-decoration:underline}
 .projrow h3{font-family:var(--display);font-weight:900;font-size:clamp(24px,3.4vw,32px);letter-spacing:-.03em;margin:4px 0 8px;text-transform:uppercase}
 .projrow p{color:var(--grey2);max-width:66ch;font-size:16px}
 .projrow .aw{display:inline-block;margin-top:11px;font-family:var(--data);font-size:12.5px;font-weight:600;background:var(--yellow);padding:4px 10px}
-.projrow .st{font-family:var(--data);font-size:12px;color:var(--grey);margin-top:13px}
+.projrow .st{font-family:var(--data);font-size:12px;color:var(--grey);margin-top:13px;overflow-wrap:anywhere}
 .projrow .st a{color:var(--blue);font-weight:600}
 .projmark{
   width:34px;height:34px;border-radius:50%;display:grid;place-items:center;
@@ -331,6 +359,30 @@ a.vr:hover{text-decoration:underline}
 .edu .school{font-family:var(--data);font-size:13px;color:var(--blue);font-weight:600;margin:3px 0 11px}
 .edu p{font-size:15px;color:var(--grey2)}
 
+/* ---- commitments (learn-first + references) ---- */
+.pledges{display:grid;grid-template-columns:1fr 1fr;margin-top:32px;border:2px solid var(--ink);background:var(--white)}
+.pledge{padding:28px 26px;border-right:1px solid var(--rule);display:flex;flex-direction:column}
+.pledge:last-child{border-right:none}
+.pledge .ptag{
+  align-self:flex-start;font-family:var(--data);font-size:11px;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;padding:4px 10px;margin-bottom:16px;
+}
+.pledge.learn .ptag{background:var(--yellow);color:var(--ink)}
+.pledge.refs .ptag{background:var(--green);color:var(--white)}
+.pledge h3{
+  font-family:var(--display);font-weight:900;font-size:clamp(22px,3vw,30px);
+  line-height:1.05;letter-spacing:-.025em;text-transform:uppercase;
+}
+.pledge p{color:var(--grey2);font-size:16px;margin-top:12px}
+.pledge p b{color:var(--ink);font-weight:700}
+.pledge ul{list-style:none;margin-top:14px;display:grid;gap:8px}
+.pledge li{position:relative;padding-left:24px;font-size:15.5px;color:var(--grey2)}
+.pledge li::before{content:'';position:absolute;left:0;top:11px;width:12px;height:2px;background:var(--ink)}
+.pledge .pfoot{
+  margin-top:auto;padding-top:18px;font-family:var(--data);font-size:12px;color:var(--grey);line-height:1.6;
+}
+.pledge .pfoot a{color:var(--blue);font-weight:600}
+
 /* ---- contact ---- */
 .contact{background:var(--ink);color:var(--white)}
 .contact h2{color:var(--white)}
@@ -344,27 +396,50 @@ a.vr:hover{text-decoration:underline}
 .endbar{
   background:var(--ink);color:#7A7A76;border-top:1px solid #2A2A26;
   font-family:var(--data);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;
-  padding:20px 0;
+  padding:20px 0 calc(20px + env(safe-area-inset-bottom));
 }
-.endbar .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.endbar .wrap{display:flex;justify-content:space-between;gap:8px 14px;flex-wrap:wrap}
 .endbar b{color:var(--yellow);font-weight:500}
 
+/* ---- back to top ---- */
+.totop{
+  position:fixed;right:max(16px,env(safe-area-inset-right));bottom:calc(16px + env(safe-area-inset-bottom));z-index:60;
+  width:46px;height:46px;border:2px solid var(--ink);background:var(--yellow);color:var(--ink);
+  font-family:var(--data);font-weight:600;font-size:18px;cursor:pointer;
+  display:grid;place-items:center;text-decoration:none;
+  opacity:0;pointer-events:none;transform:translateY(10px);transition:opacity .2s ease,transform .2s ease;
+}
+.totop.on{opacity:1;pointer-events:auto;transform:none}
+
 /* ---- modal ---- */
-.modal{display:none;position:fixed;inset:0;z-index:200;background:rgba(13,13,13,.95);align-items:center;justify-content:center;padding:26px}
+.modal{display:none;position:fixed;inset:0;z-index:200;background:rgba(13,13,13,.95);align-items:center;justify-content:center;padding:70px 16px 26px}
 .modal.on{display:flex}
-.modal img{max-width:min(860px,92vw);max-height:74vh;object-fit:contain;background:var(--white);padding:14px;border:2px solid var(--white)}
+.modal > div{max-width:100%}
+.modal img{display:block;margin:0 auto;max-width:min(860px,100%);max-height:72vh;object-fit:contain;background:var(--white);padding:10px;border:2px solid var(--white)}
 .modal .cap{text-align:center;margin-top:16px;font-family:var(--data);font-size:13px;color:var(--white)}
 .modal .cap span{display:block;color:var(--yellow);margin-top:4px}
 .modal .x{
-  position:absolute;top:22px;right:24px;background:transparent;color:var(--white);
+  position:absolute;top:16px;right:16px;background:transparent;color:var(--white);
   border:2px solid var(--white);font-family:var(--data);font-size:12px;letter-spacing:.1em;
-  text-transform:uppercase;padding:9px 16px;cursor:pointer;
+  text-transform:uppercase;padding:0 16px;height:44px;cursor:pointer;
 }
 .modal .x:hover{background:var(--white);color:var(--ink)}
 
 .rv{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s cubic-bezier(.22,1,.36,1)}
 .rv.in{opacity:1;transform:none}
+.no-io .rv{opacity:1;transform:none}
 
+/* ============ RESPONSIVE ============ */
+@media(max-width:1180px){
+  .signbar nav{gap:14px}
+  .signbar nav a{font-size:11.5px}
+}
+@media(max-width:1100px){
+  .signbar nav{display:none}
+  .menubtn{display:inline-flex}
+  .signbar .status{margin-left:auto}
+  .signbar nav + .status{margin-left:auto}
+}
 @media(max-width:860px){
   .metrics{grid-template-columns:1fr 1fr}
   .metrics div:nth-child(-n+2){border-bottom:1px solid var(--rule)}
@@ -373,27 +448,74 @@ a.vr:hover{text-decoration:underline}
   .edu{border-right:none}
   .svc{grid-template-columns:46px 1fr;gap:14px}
   .svc .state{grid-column:2;text-align:left}
+  .pledges{grid-template-columns:1fr}
+  .pledge{border-right:none;border-bottom:1px solid var(--rule)}
+  .pledge:last-child{border-bottom:none}
 }
 @media(max-width:680px){
-  .signbar nav{display:none}
-  .linemap{padding-left:42px}
-  .linemap::before{left:11px;width:6px}
+  body{font-size:16px}
+  .linemap{padding-left:40px}
+  .linemap::before{left:10px;width:6px}
   .station::before{left:-40px;width:20px;height:20px;border-width:5px}
-  .evidence{padding-left:22px}
-  .caprow{grid-template-columns:26px 1fr;gap:14px}
+  .station{padding-bottom:36px}
+  details.finding summary{grid-template-columns:26px 1fr 22px;gap:12px;padding:18px 16px}
+  .evidence{padding:0 16px 20px 16px}
+  .caprow{grid-template-columns:26px 1fr;gap:4px 14px}
   .caprow dt{grid-column:2;padding-top:0}
   .caprow dd{grid-column:2}
-  .dotmark{width:16px;height:16px}
+  .dotmark{width:16px;height:16px;grid-row:1 / span 2}
   .cred{grid-template-columns:1fr}
-  .credmain{grid-template-columns:56px 1fr;gap:14px;padding:14px 14px 8px}
-  .vr{padding:0 14px 14px 14px}
+  .cred:hover{transform:none}
+  .credmain{grid-template-columns:56px 1fr;gap:14px;padding:14px 14px 6px}
+  .vr{padding:0 14px 14px 84px}
   .projrow{grid-template-columns:1fr;gap:0}
   .projmark{display:none}
+  .offrecord{padding:20px 16px}
+  .pledge{padding:22px 18px}
+  .board-head{padding:12px 16px}
+  .svc{padding:16px}
+  .bullet{width:42px;height:42px;font-size:12.5px}
+  .svc{grid-template-columns:42px 1fr}
+  .edu{padding:20px 16px}
+  .acts .btn{flex:1 1 auto}
+  .field{padding-right:0}
+}
+@media(max-width:480px){
+  .signbar .status .stxt{display:none}
+  .kicker{font-size:11px;letter-spacing:.12em}
+  .metrics div{padding:18px 14px}
+  .metrics .l{font-size:10px;letter-spacing:.08em}
+  .acts{flex-direction:column}
+  .acts .btn{width:100%}
+  .sec-mark{font-size:10.5px;letter-spacing:.14em}
+  .credtier > h3{font-size:10.5px}
+  .contact .acts{flex-direction:row}
+  .contact .acts .btn{flex:1 1 calc(50% - 6px);padding:14px 12px}
+  .contact .acts .btn-solid{flex-basis:100%}
+}
+@media(max-width:360px){
+  .signbar .mark{font-size:13px;letter-spacing:.1em}
+  .signbar .mark .sub{display:none}
+  .metrics{grid-template-columns:1fr}
+  .metrics div{border-right:none!important;border-bottom:1px solid var(--rule)}
+  .metrics div:last-child{border-bottom:none}
+}
+@media(hover:none){
+  .cred:hover{background:var(--white);transform:none}
+  .btn-solid:hover,.btn-line:hover{transform:none}
 }
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.001s!important;transition-duration:.001s!important}
   .rv{opacity:1;transform:none}
+}
+@media print{
+  .signbar,.mobilenav,.totop,.modal,.acts{display:none!important}
+  .rv{opacity:1;transform:none}
+  details.finding .evidence{display:block}
+  .redact{color:var(--ink);background:none}
+  .contact,.endbar{background:#fff;color:#000}
+  .contact h2,.contact .intro{color:#000}
 }
 </style>
 </head>
@@ -401,18 +523,31 @@ a.vr:hover{text-decoration:underline}
 
 <header class="signbar">
   <div class="wrap">
-    <a class="mark" href="#top">Rahul<span class="dot">.</span> — SecOps</a>
+    <a class="mark" href="#top">Rahul<span class="dot">.</span><span class="sub"> — SecOps</span></a>
     <nav aria-label="Sections">
       <a href="#assessment">Assessment</a>
       <a href="#experience">Experience</a>
       <a href="#credentials">Credentials</a>
       <a href="#capability">Capability</a>
       <a href="#work">Work</a>
+      <a href="#promise">Promise</a>
       <a href="#contact">Contact</a>
     </nav>
-    <span class="status"><span class="pulse" aria-hidden="true"></span>Open to new roles</span>
+    <span class="status"><span class="pulse" aria-hidden="true"></span><span class="stxt">Open to new roles</span></span>
+    <button class="menubtn" id="menuBtn" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
+      <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>Menu
+    </button>
   </div>
 </header>
+<nav class="mobilenav" id="mobileNav" aria-label="Sections (mobile)">
+  <a href="#assessment"><span>01</span>Assessment</a>
+  <a href="#experience"><span>02</span>Experience</a>
+  <a href="#credentials"><span>03</span>Credentials</a>
+  <a href="#capability"><span>04</span>Capability</a>
+  <a href="#work"><span>05</span>Work</a>
+  <a href="#promise"><span>06</span>Promise</a>
+  <a href="#contact"><span>07</span>Contact</a>
+</nav>
 
 <main id="top">
 
@@ -420,7 +555,7 @@ a.vr:hover{text-decoration:underline}
   <div class="wrap">
     <p class="kicker">
       <span>Security operations · New York City government</span>
-      <span class="avail">Open to new roles</span>
+      <span class="avail">Open to new roles · any location</span>
     </p>
 
     <h1>Rahul<span class="stop">.</span></h1>
@@ -429,7 +564,8 @@ a.vr:hover{text-decoration:underline}
     <p class="standfirst">
       I keep New York City government infrastructure running — firewalls, SIEM, DNS,
       proxy and remote access across multiple agencies. When the work repeats, I automate it:
-      <b>40 minutes returned to my team, every day</b>, and it compounds with every check I add.
+      <b>40 minutes returned to my team, every day</b>. New tools don't scare me —
+      I learn what the job needs before day one.
     </p>
 
     <div class="acts">
@@ -439,9 +575,9 @@ a.vr:hover{text-decoration:underline}
 
     <dl class="fields">
       <div class="field"><dt>Current posting</dt><dd>NYC Office of Technology &amp; Innovation</dd></div>
-      <div class="field"><dt>Location</dt><dd>New York City</dd></div>
+      <div class="field"><dt>Location</dt><dd>New York City · <span class="go">open to relocation</span></dd></div>
       <div class="field"><dt>Domains</dt><dd>Firewall · SIEM · DNS · Proxy · VPN</dd></div>
-      <div class="field"><dt>Credentials</dt><dd>5 proctored · <span class="go">all verifiable</span></dd></div>
+      <div class="field"><dt>References</dt><dd>Current &amp; past supervisors · <span class="go">just ask</span></dd></div>
     </dl>
 
     <!-- SIGNATURE: coverage board -->
@@ -459,13 +595,13 @@ a.vr:hover{text-decoration:underline}
       <div class="svc">
         <span class="bullet b-orange" aria-hidden="true">SIEM</span>
         <div><h3>Detection &amp; log pipeline</h3>
-          <p>IBM QRadar ingestion and parsing — finding the sources that stopped reporting before anyone else notices.</p></div>
+          <p>IBM QRadar log sources, NXLog and parsing — finding the sources that stopped reporting before anyone else notices.</p></div>
         <span class="state">Daily</span>
       </div>
       <div class="svc">
         <span class="bullet b-green" aria-hidden="true">DNS</span>
         <div><h3>DNS &amp; name services</h3>
-          <p>Infoblox records (A, CNAME, MX, TXT, SRV) for multiple NYC agencies, plus proxy configuration.</p></div>
+          <p>Infoblox records (A, CNAME, MX, TXT, SRV — including SPF, DKIM and DMARC) for multiple NYC agencies, plus proxy configuration.</p></div>
         <span class="state">Daily</span>
       </div>
       <div class="svc">
@@ -477,7 +613,7 @@ a.vr:hover{text-decoration:underline}
       <div class="svc">
         <span class="bullet b-yellow" aria-hidden="true">AUTO</span>
         <div><h3>Automation</h3>
-          <p>PowerShell and Ansible health checks against the Panorama and Ivanti APIs, documented and handed to the team.</p></div>
+          <p>PowerShell and Ansible health checks that pull status from Panorama and Ivanti, documented and handed to the team.</p></div>
         <span class="state">Daily</span>
       </div>
     </div>
@@ -485,7 +621,7 @@ a.vr:hover{text-decoration:underline}
     <div class="metrics rv">
       <div><span class="n">40<small>min</small></span><span class="l">Returned to the team daily</span></div>
       <div><span class="n">5</span><span class="l">Proctored certifications</span></div>
-      <div><span class="n">2.5<small>yr</small></span><span class="l">Defending city systems</span></div>
+      <div><span class="n"><span id="yrs">2.8</span><small>yr</small></span><span class="l">Defending city systems</span></div>
       <div><span class="n">1st</span><span class="l">John Jay cyber hackathon</span></div>
     </div>
   </div>
@@ -493,48 +629,57 @@ a.vr:hover{text-decoration:underline}
 
 <section id="assessment">
   <div class="wrap">
-    <p class="sec-mark"><span>01 — Assessment</span><span>5 claims · evidence attached</span></p>
+    <p class="sec-mark"><span>01 — Assessment</span><span>6 claims · evidence attached</span></p>
     <h2>What the file says</h2>
-    <p class="intro">Every claim below opens to show the evidence behind it. Nothing here is asserted without something you can verify or interrogate in an interview.</p>
+    <p class="intro">Every claim below opens to show the evidence behind it. Nothing here is asserted without something you can verify or ask me about in an interview.</p>
 
     <div class="findings">
       <details class="finding rv">
         <summary><span class="fnum">01</span><span class="claim">Turns repeated work into automation that outlives him.</span><span class="plus" aria-hidden="true"></span></summary>
         <div class="evidence">
-          <p>Daily platform health checks used to be a manual click-through across two systems. I rewrote them as PowerShell and Ansible tasks hitting the Panorama and Ivanti Connect Secure REST APIs, handled auth and partial-failure states, and documented the runbook so anyone on the team can run or extend it.</p>
-          <p>That's roughly <b>3.5 hours a week</b> returned permanently — and it compounds, because the next check added costs minutes instead of an hour.</p>
-          <p class="src">Evidence — <b>~40 minutes saved per daily cycle</b>. NYC OTI, 2024 to present. Ask me to walk through the playbook structure and how I handled API auth and failure states.</p>
+          <p>Our daily platform health checks used to be a manual click-through across two systems. I'd never worked with APIs before, so I read the Palo Alto and Ivanti documentation, introduced Ansible to the team, and built 3–4 PowerShell and Ansible checks that pull the status for us. Then I wrote the runbook so anyone on the team can run it.</p>
+          <p>That's roughly <b>3.5 hours a week</b> returned to the team — and every new check I add costs minutes instead of an hour.</p>
+          <p class="src">Evidence — <b>~40 minutes saved per daily cycle</b>. NYC OTI, 2024 to present. Ask me to walk through how I built it and what I learned along the way.</p>
         </div>
       </details>
 
       <details class="finding rv">
         <summary><span class="fnum">02</span><span class="claim">Learns unfamiliar platforms in production, in weeks not quarters.</span><span class="plus" aria-hidden="true"></span></summary>
         <div class="evidence">
-          <p>QRadar, Palo Alto Panorama and Ansible were all new to me in January 2024. Within two months I was making production changes on all three — under change control, with senior review until I no longer needed it. AWS I taught myself off-hours and confirmed with the Solutions Architect exam rather than claiming it on a resume. Ansible I picked up specifically because I wanted to ship the health-check automation and needed a tool that would let me.</p>
+          <p>QRadar, Palo Alto Panorama and Ansible were all new to me in January 2024. Within two months I was making production changes on all three — under change control, with senior review until I no longer needed it. AWS I taught myself off-hours and confirmed with the Solutions Architect exam. Ansible I picked up specifically because I wanted to ship the health-check automation.</p>
           <p>I'd rather be measured on that than promise it — <b>hand me your stack and check in at 45 days</b>.</p>
           <p class="src">Evidence — three unfamiliar platforms to daily operator inside one role · <b>AWS SAA and CCP</b>, self-taught, Credly-verified · three Palo Alto instructor-led courses applied on live infrastructure.</p>
         </div>
       </details>
 
       <details class="finding rv">
-        <summary><span class="fnum">03</span><span class="claim">Trusted with infrastructure a city depends on.</span><span class="plus" aria-hidden="true"></span></summary>
+        <summary><span class="fnum">03</span><span class="claim">Learns your stack before the first day, not after.</span><span class="plus" aria-hidden="true"></span></summary>
         <div class="evidence">
-          <p>Firewall policy, DNS records, proxy configuration and remote access for multiple New York City agencies — an environment where a bad rule change is a public-facing outage, not a rollback in staging.</p>
-          <p class="src">Evidence — <b>NYC Office of Technology &amp; Innovation</b>, January 2024 to present. References available on request.</p>
+          <p>If your team runs something I haven't used in production — Elastic, Sentinel, Proofpoint, Kubernetes, whatever it is — I'll spend the time between offer and start date getting hands-on with it: vendor training, labs, docs, a home setup if that's what it takes.</p>
+          <p>I'm not going to pretend I already know everything. What I can promise is that <b>you won't be teaching me from zero on day one</b>.</p>
+          <p class="src">Evidence — see claim 02: QRadar, Panorama and Ansible to production-ready in about two months. Weekly <b>TryHackMe</b> practice on top of the day job.</p>
         </div>
       </details>
 
       <details class="finding rv">
-        <summary><span class="fnum">04</span><span class="claim">Writes the incident down so it doesn't happen twice.</span><span class="plus" aria-hidden="true"></span></summary>
+        <summary><span class="fnum">04</span><span class="claim">Trusted with infrastructure a city depends on.</span><span class="plus" aria-hidden="true"></span></summary>
+        <div class="evidence">
+          <p>Firewall policy, DNS records, proxy configuration and remote access for multiple New York City agencies — an environment where a bad rule change is a public-facing outage, not a rollback in staging.</p>
+          <p class="src">Evidence — <b>NYC Office of Technology &amp; Innovation</b>, January 2024 to present. Talk to my current and past supervisors — <a href="#promise"><b>see references</b></a>.</p>
+        </div>
+      </details>
+
+      <details class="finding rv">
+        <summary><span class="fnum">05</span><span class="claim">Writes the incident down so it doesn't happen twice.</span><span class="plus" aria-hidden="true"></span></summary>
         <div class="evidence">
           <p>I respond to live outages, write the root cause analysis, and drive the corrective action to closure — the part most people skip once the alert goes green.</p>
-          <p>I also repaired QRadar ingestion and parsing gaps that were silently costing detection coverage. A rule is worthless if its log source stopped shipping three weeks ago, and nobody files a ticket for that because nothing visibly breaks.</p>
+          <p>I also helped fix QRadar ingestion and parsing gaps that were silently costing detection coverage. A rule is worthless if its log source stopped shipping three weeks ago, and nobody files a ticket for that because nothing visibly breaks.</p>
           <p class="src">Evidence — <b>RCA authorship at NYC OTI</b>. Happy to talk through a sanitised example end to end.</p>
         </div>
       </details>
 
       <details class="finding rv">
-        <summary><span class="fnum">05</span><span class="claim">Builds security tools nobody asked him to build.</span><span class="plus" aria-hidden="true"></span></summary>
+        <summary><span class="fnum">06</span><span class="claim">Builds security tools nobody asked him to build.</span><span class="plus" aria-hidden="true"></span></summary>
         <div class="evidence">
           <p>OSINTVault is a fully offline, backend-free OSINT workspace for analysts who can't send case data to somebody else's cloud. PROTECT is a cybercrime reporting platform I led and shipped, designed so ordinary New Yorkers can report a threat without knowing the vocabulary.</p>
           <p class="src">Evidence — <a href="https://github.com/w3bcooki3" target="_blank" rel="noopener"><b>github.com/w3bcooki3</b></a> · 1st place, John Jay College cybersecurity hackathon · 3rd place, AWS hackathon at Queensborough.</p>
@@ -546,20 +691,21 @@ a.vr:hover{text-decoration:underline}
 
 <section id="experience">
   <div class="wrap">
-    <p class="sec-mark"><span>02 — Chronology</span><span>3 stops · current terminus at the top</span></p>
+    <p class="sec-mark"><span>02 — Chronology</span><span>3 stops · current at the top</span></p>
     <h2>The line</h2>
 
     <div class="linemap">
       <article class="station now rv">
-        <p class="when">Jan 2024 — Jan 2027 <span class="tag">Current</span></p>
+        <p class="when">Jan 2024 — Present <span class="tag">Current</span></p>
         <h3>Security Operations Engineer Fellow</h3>
         <p class="org">NYC Office of Technology &amp; Innovation</p>
         <ul>
           <li>Design, implement and optimise firewall rules across <b>Palo Alto Panorama</b> and <b>Checkpoint</b> — tighter policy, no agency downtime.</li>
-          <li>Configure and maintain <b>Infoblox DNS</b> records (A, CNAME, MX, TXT, SRV) for multiple city agencies.</li>
+          <li>Configure and maintain <b>Infoblox DNS</b> records (A, CNAME, MX, TXT, SRV) for multiple city agencies, including email authentication (SPF, DKIM, DMARC).</li>
           <li>Respond to live outages, author <b>root cause analyses</b>, and close corrective actions so incidents don't repeat.</li>
-          <li>Built <b>PowerShell + Ansible</b> health-check automation against the Panorama and Ivanti APIs — <b>~40 minutes saved per daily cycle</b>.</li>
-          <li>Validate and repair log flow into <b>IBM QRadar</b>, closing ingestion and parsing gaps that were quietly costing visibility.</li>
+          <li>Built <b>PowerShell + Ansible</b> health-check automation for Panorama and Ivanti — <b>~40 minutes saved per daily cycle</b>.</li>
+          <li>Onboard log sources, deploy NXLog and fix parsing so logs land correctly in <b>IBM QRadar</b>, closing gaps that were quietly costing visibility.</li>
+          <li>Work with <b>AWS</b> load balancers, NAT gateways and routes, plus <b>Azure Front Door</b>, for city applications.</li>
         </ul>
       </article>
 
@@ -590,7 +736,7 @@ a.vr:hover{text-decoration:underline}
   <div class="wrap">
     <p class="sec-mark"><span>03 — Credentials</span><span>independently verifiable</span></p>
     <h2>Papers, checked</h2>
-    <p class="intro">Tiered the way an analyst tiers alerts — by how hard the signal is to fake. Click a badge to see the certificate; click Verify to check it on Credly without emailing me.</p>
+    <p class="intro">Tiered the way an analyst tiers alerts — by how hard the signal is to fake. Tap a badge to see the certificate; tap Verify to check it on Credly without emailing me.</p>
 
     <div class="credtier">
       <h3><span>Tier I — Proctored exams</span><em>hardest to fake</em></h3>
@@ -714,7 +860,7 @@ a.vr:hover{text-decoration:underline}
   <div class="wrap">
     <p class="sec-mark"><span>04 — Capability</span><span>grouped by the work, not the vendor</span></p>
     <h2>What I can be handed</h2>
-    <p class="intro">Production experience unless stated otherwise. Where the honest answer is "lab only", it says so.</p>
+    <p class="intro">Production experience unless stated otherwise. Where the honest answer is "lab only" or "basic", it says so.</p>
 
     <dl class="captable">
       <div class="caprow">
@@ -725,47 +871,47 @@ a.vr:hover{text-decoration:underline}
       <div class="caprow">
         <span class="dotmark b-orange" aria-hidden="true"></span>
         <dt>Detection &amp; logging</dt>
-        <dd><b>IBM QRadar</b> administration, ingestion and parsing repair · NXLog · CrowdStrike Falcon · Splunk <em>(coursework only)</em>.</dd>
+        <dd><b>IBM QRadar</b> log source onboarding, parsing, AQL and reports · <b>NXLog</b> · CrowdStrike Falcon <em>(host lookups)</em> · Splunk, Sentinel, Elastic <em>(labs and coursework)</em>.</dd>
       </div>
       <div class="caprow">
         <span class="dotmark b-green" aria-hidden="true"></span>
         <dt>Network services</dt>
-        <dd><b>Infoblox DNS</b>, Bluecoat proxy, Ivanti Connect Secure SSL VPN, site-to-site tunnels.</dd>
+        <dd><b>Infoblox DNS</b> (incl. SPF, DKIM, DMARC), Bluecoat proxy, Ivanti Connect Secure SSL VPN, site-to-site tunnels.</dd>
       </div>
       <div class="caprow">
         <span class="dotmark b-yellow" aria-hidden="true"></span>
         <dt>Automation</dt>
-        <dd><b>PowerShell</b>, <b>Ansible (YAML)</b>, REST API integration against security platform APIs, runbook documentation.</dd>
+        <dd><b>PowerShell</b>, <b>Ansible (YAML)</b>, runbook documentation · REST APIs <em>(basic — learned from vendor docs for health checks)</em>.</dd>
       </div>
       <div class="caprow">
         <span class="dotmark b-purple" aria-hidden="true"></span>
         <dt>Incident &amp; analysis</dt>
-        <dd><b>Incident response</b>, RCA authorship, log analysis, Wireshark · Burp Suite <em>(lab and hackathons)</em>.</dd>
+        <dd><b>Incident response</b>, RCA authorship, log analysis, phishing triage, Wireshark · Burp Suite <em>(lab and hackathons)</em>.</dd>
       </div>
       <div class="caprow">
         <span class="dotmark b-red" aria-hidden="true"></span>
         <dt>Cloud</dt>
-        <dd>AWS EC2, VPC, S3, CloudFront, load balancers · Azure Front Door · Entra ID. Certified rather than run at scale.</dd>
+        <dd><b>AWS</b> load balancers, NAT gateways and routes · <b>Azure Front Door</b> · Entra ID — on the job. EC2, S3, CloudFront <em>(certified and hackathon projects)</em>.</dd>
       </div>
       <div class="caprow">
         <span class="dotmark" style="background:var(--ink)" aria-hidden="true"></span>
         <dt>Platforms &amp; build</dt>
-        <dd>Windows, Linux, macOS · protocol-level troubleshooting (TCP/IP, TLS, DNS, SAML) · vanilla JS front-end for my own tools.</dd>
+        <dd>Windows, Linux, macOS · protocol-level troubleshooting (TCP/IP, TLS, DNS, SAML) · vanilla JS front-end for my own tools · Git/GitHub · Docker <em>(labs)</em>.</dd>
       </div>
       <div class="caprow">
         <span class="dotmark" style="background:var(--grey)" aria-hidden="true"></span>
         <dt>Ongoing practice</dt>
-        <dd>Weekly <a href="https://tryhackme.com/p/j0b" target="_blank" rel="noopener">TryHackMe</a> reps — SOC, defensive security, threat hunting. Real boxes, real logs.</dd>
+        <dd>Weekly <a href="https://tryhackme.com/p/j0b" target="_blank" rel="noopener">TryHackMe</a> reps — SOC and defensive security labs. Real boxes, real logs.</dd>
       </div>
     </dl>
 
     <div class="offrecord rv">
       <h3>Appendix — off the record</h3>
-      <p class="hint">Redacted for the file. Click to declassify.</p>
+      <p class="hint">Redacted for the file. Tap to declassify.</p>
       <div class="qa">
         <p><span class="q">Known weakness</span><button class="redact">Will rewrite any manual process the third time he sees it, whether or not it was on the sprint.</button></p>
         <p><span class="q">Compensation expectations</span><button class="redact">Negotiable and honest — tell me the band and I'll tell you straight away if it works.</button></p>
-        <p><span class="q">What he actually wants next</span><button class="redact">A detection-engineering or SOC role where automation is encouraged, not merely tolerated.</button></p>
+        <p><span class="q">What he actually wants next</span><button class="redact">A SOC, SIEM or security engineering role where automation is encouraged, not merely tolerated.</button></p>
       </div>
     </div>
   </div>
@@ -814,16 +960,48 @@ a.vr:hover{text-decoration:underline}
   </div>
 </section>
 
+<section id="promise">
+  <div class="wrap">
+    <p class="sec-mark"><span>06 — Promise</span><span>two things you can hold me to</span></p>
+    <h2>Before you decide</h2>
+    <p class="intro">Hiring someone is a bet. Here's how I make it an easier one.</p>
+
+    <div class="pledges rv">
+      <div class="pledge learn">
+        <span class="ptag">Learn first</span>
+        <h3>I'll learn your stack before day one</h3>
+        <p>If the role needs a tool I haven't run in production, I'll get hands-on with it between the offer and my start date — so <b>you're not teaching me from zero</b>.</p>
+        <ul>
+          <li>Vendor training and official docs</li>
+          <li>Hands-on labs or a home setup</li>
+          <li>Questions ready for my first week, not my first month</li>
+        </ul>
+        <p class="pfoot">Track record: QRadar, Panorama and Ansible — new to me in Jan 2024, production-ready in about two months.</p>
+      </div>
+      <div class="pledge refs">
+        <span class="ptag">Don't take my word</span>
+        <h3>Ask the people I've worked for</h3>
+        <p>Before you make a decision, <b>talk to my current and previous supervisors and managers</b>. They'll tell you how I actually work — the effort, the follow-through, and how I handle it when things break.</p>
+        <ul>
+          <li>NYC Office of Technology &amp; Innovation — current supervisors and team</li>
+          <li>NYC Department of Education — past supervisors</li>
+        </ul>
+        <p class="pfoot">Email <a href="mailto:hicanwetalk@proton.me?subject=Reference%20request">hicanwetalk@proton.me</a> and I'll connect you with references the same day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="contact" class="contact">
   <div class="wrap">
-    <p class="sec-mark"><span>06 — Escalation path</span><span>same-day reply</span></p>
+    <p class="sec-mark"><span>07 — Escalation path</span><span>same-day reply</span></p>
     <h2>Next stop:<br>your SOC</h2>
     <p class="intro">
-      Send the job description, ask for references, or just say hello. I've already been
-      trusted with city-scale infrastructure — I'd like to hear what you're defending.
+      Send the job description, ask for references, or just say hello. Open to relocation,
+      ready to learn whatever your team runs — I'd like to hear what you're defending.
     </p>
     <div class="acts">
-      <a class="btn btn-solid" href="mailto:hicanwetalk@proton.me">hicanwetalk@proton.me</a>
+      <a class="btn btn-solid" href="mailto:hicanwetalk@proton.me"><span class="lc">hicanwetalk@proton.me</span></a>
       <a class="btn btn-line" href="https://www.linkedin.com/in/fnu-rahul" target="_blank" rel="noopener">LinkedIn</a>
       <a class="btn btn-line" href="https://github.com/w3bcooki3" target="_blank" rel="noopener">GitHub</a>
       <a class="btn btn-line" href="https://tryhackme.com/p/j0b" target="_blank" rel="noopener">TryHackMe</a>
@@ -840,6 +1018,8 @@ a.vr:hover{text-decoration:underline}
   </div>
 </div>
 
+<a class="totop" id="toTop" href="#top" aria-label="Back to top">↑</a>
+
 <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Credential viewer">
   <button class="x" id="mClose">Close · Esc</button>
   <div>
@@ -850,19 +1030,48 @@ a.vr:hover{text-decoration:underline}
 
 <script>
 (function(){
+  /* live UTC clock */
   var clock=document.getElementById('clock');
   function tick(){clock.textContent=new Date().toISOString().substr(11,8)+' UTC';}
   tick();setInterval(tick,1000);
 
-  var io=new IntersectionObserver(function(es){
-    es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
-  },{threshold:.1,rootMargin:'0px 0px -40px 0px'});
-  document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
+  /* years of experience, auto-updates from Jan 2024 */
+  var yrs=document.getElementById('yrs');
+  if(yrs){
+    var start=new Date(Date.UTC(2024,0,1)),now=new Date();
+    var y=(now-start)/(365.25*24*3600*1000);
+    yrs.textContent=(Math.floor(y*10)/10).toFixed(1);
+  }
 
+  /* reveal on scroll (falls back to visible if unsupported) */
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+    },{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+    document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
+  }else{document.documentElement.classList.add('no-io');}
+
+  /* redactions */
   document.querySelectorAll('.redact').forEach(function(b){
     b.addEventListener('click',function(){b.classList.toggle('open');});
   });
 
+  /* mobile menu */
+  var mb=document.getElementById('menuBtn'),mn=document.getElementById('mobileNav');
+  function setMenu(open){
+    mb.setAttribute('aria-expanded',open?'true':'false');
+    mb.setAttribute('aria-label',open?'Close menu':'Open menu');
+    mn.classList.toggle('on',open);
+  }
+  mb.addEventListener('click',function(){setMenu(mb.getAttribute('aria-expanded')!=='true');});
+  mn.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  window.addEventListener('resize',function(){if(window.innerWidth>1100)setMenu(false);});
+
+  /* back to top */
+  var tt=document.getElementById('toTop');
+  window.addEventListener('scroll',function(){tt.classList.toggle('on',window.scrollY>900);},{passive:true});
+
+  /* credential modal */
   var modal=document.getElementById('modal'),mImg=document.getElementById('mImg'),
       mTitle=document.getElementById('mTitle'),mIssuer=document.getElementById('mIssuer'),last=null;
 
@@ -879,7 +1088,11 @@ a.vr:hover{text-decoration:underline}
   function closeM(){modal.classList.remove('on');document.body.style.overflow='';if(last)last.focus();}
   document.getElementById('mClose').addEventListener('click',closeM);
   modal.addEventListener('click',function(e){if(e.target===modal)closeM();});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&modal.classList.contains('on'))closeM();});
+  document.addEventListener('keydown',function(e){
+    if(e.key!=='Escape')return;
+    if(modal.classList.contains('on'))closeM();
+    else if(mb.getAttribute('aria-expanded')==='true'){setMenu(false);mb.focus();}
+  });
 })();
 </script>
 </body>
