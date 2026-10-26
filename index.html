@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Rahul — Security Operations Engineer, New York City</title>
-<meta name="description" content="Rahul — Security Operations Engineer keeping New York City government infrastructure running. Firewalls, SIEM, DNS, proxy, VPN. CompTIA CSAP, AWS certified. Every claim has evidence attached.">
+<meta name="description" content="Rahul — Security Operations Engineer keeping New York City government infrastructure running. Firewalls, SIEM, DNS, proxy, VPN and Zero Trust access. CompTIA CSAP, AWS certified. Every claim has evidence attached.">
 <meta name="theme-color" content="#0D0D0D">
 
 <!-- Link previews (LinkedIn, Slack, iMessage). Add a 1200x630 image at ./media/og-card.png -->
 <meta property="og:type" content="profile">
 <meta property="og:title" content="Rahul — Security Operations Engineer, New York City">
-<meta property="og:description" content="Firewalls, SIEM, DNS, proxy and VPN across NYC government infrastructure. Every claim on this page has evidence attached.">
+<meta property="og:description" content="Firewalls, SIEM, DNS, proxy, VPN and Zero Trust access across NYC government infrastructure. Every claim on this page has evidence attached.">
 <meta property="og:image" content="./media/og-card.png">
 <meta name="twitter:card" content="summary_large_image">
 
@@ -287,6 +287,7 @@ details.finding[open] .plus::after{content:'–'}
 .credmain .thumb{height:50px;display:grid;place-items:center}
 .credmain .thumb img{max-height:50px;max-width:66px;object-fit:contain}
 .credmain .thumb .fb{display:none;font-family:var(--data);font-size:9.5px;color:var(--grey)}
+.credmain .thumb .fb.show{display:block;font-weight:600;color:var(--ink);text-align:center;line-height:1.2}
 .credmain .name{font-size:16.5px;font-weight:700;line-height:1.3;min-width:0}
 .credmain .name small{
   display:block;font-family:var(--data);font-size:12px;font-weight:400;
@@ -300,6 +301,16 @@ details.finding[open] .plus::after{content:'–'}
 }
 a.vr:hover{text-decoration:underline}
 .cred:hover .vr{color:var(--ink)}
+/* in-progress credential */
+.cred.wip{background:repeating-linear-gradient(-45deg,var(--white),var(--white) 10px,#FAFAF7 10px,#FAFAF7 20px)}
+.cred.wip .credmain{cursor:default}
+.cred.wip .vr{color:var(--orange)}
+.cred.wip:hover{background:var(--yellow)}
+.credpledge{
+  margin-top:14px;font-size:15.5px;color:var(--grey2);max-width:70ch;
+  border-left:4px solid var(--yellow);padding:4px 0 4px 14px;
+}
+.credpledge b{color:var(--ink)}
 
 /* ---- capability table ---- */
 .captable{margin-top:32px;border-top:3px solid var(--ink)}
@@ -342,7 +353,9 @@ a.vr:hover{text-decoration:underline}
 .projrow .tp{font-family:var(--data);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--grey)}
 .projrow h3{font-family:var(--display);font-weight:900;font-size:clamp(24px,3.4vw,32px);letter-spacing:-.03em;margin:4px 0 8px;text-transform:uppercase}
 .projrow p{color:var(--grey2);max-width:66ch;font-size:16px}
+.projrow p + p{margin-top:8px}
 .projrow .aw{display:inline-block;margin-top:11px;font-family:var(--data);font-size:12.5px;font-weight:600;background:var(--yellow);padding:4px 10px}
+.projrow .aw.build{background:transparent;border:2px dashed var(--orange);color:var(--ink)}
 .projrow .st{font-family:var(--data);font-size:12px;color:var(--grey);margin-top:13px;overflow-wrap:anywhere}
 .projrow .st a{color:var(--blue);font-weight:600}
 .projmark{
@@ -563,7 +576,7 @@ a.vr:hover{text-decoration:underline}
 
     <p class="standfirst">
       I keep New York City government infrastructure running — firewalls, SIEM, DNS,
-      proxy and remote access across multiple agencies. When the work repeats, I automate it:
+      proxy, remote access and Zero Trust admin access across multiple agencies. When the work repeats, I automate it:
       <b>40 minutes returned to my team, every day</b>. New tools don't scare me —
       I learn what the job needs before day one.
     </p>
@@ -576,7 +589,7 @@ a.vr:hover{text-decoration:underline}
     <dl class="fields">
       <div class="field"><dt>Current posting</dt><dd>NYC Office of Technology &amp; Innovation</dd></div>
       <div class="field"><dt>Location</dt><dd>New York City · <span class="go">open to relocation</span></dd></div>
-      <div class="field"><dt>Domains</dt><dd>Firewall · SIEM · DNS · Proxy · VPN</dd></div>
+      <div class="field"><dt>Domains</dt><dd>Firewall · SIEM · DNS · Proxy · VPN · Zero Trust</dd></div>
       <div class="field"><dt>References</dt><dd>Current &amp; past supervisors · <span class="go">just ask</span></dd></div>
     </dl>
 
@@ -605,9 +618,9 @@ a.vr:hover{text-decoration:underline}
         <span class="state">Daily</span>
       </div>
       <div class="svc">
-        <span class="bullet b-purple" aria-hidden="true">VPN</span>
-        <div><h3>Remote access</h3>
-          <p>Ivanti Connect Secure SSL VPN and site-to-site tunnels — the thing everyone notices only when it breaks.</p></div>
+        <span class="bullet b-purple" aria-hidden="true">ZTA</span>
+        <div><h3>Remote &amp; Zero Trust access</h3>
+          <p>Ivanti Connect Secure for SSL VPN and Zero Trust access, giving administrators policy-based access to only the resources they need, plus site-to-site tunnels.</p></div>
         <span class="state">Daily</span>
       </div>
       <div class="svc">
@@ -648,7 +661,7 @@ a.vr:hover{text-decoration:underline}
         <div class="evidence">
           <p>QRadar, Palo Alto Panorama and Ansible were all new to me in January 2024. I learned them on the job — from vendor documentation, labs and senior review — until I was making production changes on all three under change control. AWS I taught myself off-hours and confirmed with the Solutions Architect exam. Ansible and scripting I picked up specifically because I wanted to ship the health-check automation.</p>
           <p>I don't stop at "good enough". <b>Whatever your stack is, I'll put in the work until I know it properly.</b></p>
-          <p class="src">Evidence — three unfamiliar platforms to daily production use, self-taught on the job · <b>AWS SAA and CCP</b>, self-taught, Credly-verified · three Palo Alto instructor-led courses applied on live infrastructure.</p>
+          <p class="src">Evidence — three unfamiliar platforms to daily production use, self-taught on the job · <b>AWS SAA and CCP</b>, self-taught, Credly-verified · three Palo Alto instructor-led courses applied on live infrastructure · <b>AWS Security Specialty in progress</b>, target December 2026.</p>
         </div>
       </details>
 
@@ -656,6 +669,7 @@ a.vr:hover{text-decoration:underline}
         <summary><span class="fnum">03</span><span class="claim">Learns your stack before the first day, not after.</span><span class="plus" aria-hidden="true"></span></summary>
         <div class="evidence">
           <p>If your team runs something I haven't used in production — Elastic, Sentinel, Proofpoint, Kubernetes, whatever it is — I'll spend the time between offer and start date getting hands-on with it: vendor training, labs, docs, a home setup if that's what it takes.</p>
+          <p>Same goes for certifications. <b>If the role needs a cert I don't have yet, I'll earn it before I join or within my first few weeks</b>, depending on the offer and timeline.</p>
           <p>I'm not going to pretend I already know everything. What I can promise is that <b>you won't be teaching me from zero on day one</b>.</p>
           <p class="src">Evidence — see claim 02: QRadar, Panorama, Ansible and scripting, all self-taught on the job. Weekly <b>TryHackMe</b> practice on top of the day job, including a <b>top-115 finish in Hackfinity Battle 2025</b>.</p>
         </div>
@@ -664,7 +678,7 @@ a.vr:hover{text-decoration:underline}
       <details class="finding rv">
         <summary><span class="fnum">04</span><span class="claim">Trusted with infrastructure a city depends on.</span><span class="plus" aria-hidden="true"></span></summary>
         <div class="evidence">
-          <p>Firewall policy, DNS records, proxy configuration and remote access for multiple New York City agencies — an environment where a bad rule change is a public-facing outage, not a rollback in staging.</p>
+          <p>Firewall policy, DNS records, proxy configuration, remote access and Zero Trust administrator access for multiple New York City agencies — an environment where a bad rule change is a public-facing outage, not a rollback in staging.</p>
           <p class="src">Evidence — <b>NYC Office of Technology &amp; Innovation</b>, January 2024 to present. Talk to my current and past supervisors — <a href="#promise"><b>see references</b></a>.</p>
         </div>
       </details>
@@ -672,16 +686,16 @@ a.vr:hover{text-decoration:underline}
       <details class="finding rv">
         <summary><span class="fnum">05</span><span class="claim">Writes the incident down so it doesn't happen twice.</span><span class="plus" aria-hidden="true"></span></summary>
         <div class="evidence">
-          <p>I respond to live outages, write the root cause analysis, and drive the corrective action to closure — the part most people skip once the alert goes green.</p>
+          <p>I respond to live outages, dig in until I find the root cause, and feed my findings into the documented RCA that seniors write and submit. Then I help drive the corrective action to closure — the part most people skip once the alert goes green.</p>
           <p>I also helped fix QRadar ingestion and parsing gaps that were silently costing detection coverage. A rule is worthless if its log source stopped shipping three weeks ago, and nobody files a ticket for that because nothing visibly breaks.</p>
-          <p class="src">Evidence — <b>RCA authorship at NYC OTI</b>. Happy to talk through a sanitised example end to end.</p>
+          <p class="src">Evidence — <b>root cause investigation at NYC OTI</b>, with findings documented in the team's formal RCAs. Happy to talk through a sanitised example end to end.</p>
         </div>
       </details>
 
       <details class="finding rv">
         <summary><span class="fnum">06</span><span class="claim">Builds security tools nobody asked him to build — and competes for fun.</span><span class="plus" aria-hidden="true"></span></summary>
         <div class="evidence">
-          <p>OSINTVault is a fully offline, backend-free OSINT workspace for analysts who can't send case data to somebody else's cloud. PROTECT is a cybercrime reporting platform I led and shipped, designed so ordinary New Yorkers can report a threat without knowing the vocabulary.</p>
+          <p>OSINTrix is a private OSINT investigation workspace that runs entirely in the browser: evidence capture, log parsing, link graphs, a PCAP reader and Sigma/YARA testing, with nothing ever leaving the analyst's machine. Ghost Chat is end-to-end encrypted, post-quantum browser chat with no accounts and nothing stored. WinForensicX, a read-only Windows triage toolkit mapped to MITRE ATT&amp;CK, is in build. PROTECT is a cybercrime reporting platform I led and shipped, designed so ordinary New Yorkers can report a threat without knowing the vocabulary.</p>
           <p class="src">Evidence — <a href="https://github.com/w3bcooki3" target="_blank" rel="noopener"><b>github.com/w3bcooki3</b></a> · 1st place, John Jay College cybersecurity hackathon · 3rd place, AWS hackathon at Queensborough · <b>rank 115, TryHackMe Hackfinity Battle 2025</b>.</p>
         </div>
       </details>
@@ -701,8 +715,9 @@ a.vr:hover{text-decoration:underline}
         <p class="org">NYC Office of Technology &amp; Innovation</p>
         <ul>
           <li>Design, implement and optimise firewall rules across <b>Palo Alto Panorama</b> and <b>Checkpoint</b> — tighter policy, no agency downtime.</li>
+          <li>Administer <b>Ivanti Connect Secure</b> for SSL VPN and <b>Zero Trust access</b>, giving administrators secure, policy-based access to only the internal resources they need.</li>
           <li>Configure and maintain <b>Infoblox DNS</b> records (A, CNAME, MX, TXT, SRV) for multiple city agencies, including email authentication (SPF, DKIM, DMARC).</li>
-          <li>Respond to live outages, author <b>root cause analyses</b>, and close corrective actions so incidents don't repeat.</li>
+          <li>Respond to live outages, find the <b>root cause</b>, and provide findings for the documented RCA, then close corrective actions so incidents don't repeat.</li>
           <li>Built <b>PowerShell + Ansible</b> health-check automation for Panorama and Ivanti — <b>~40 minutes saved per daily cycle</b>.</li>
           <li>Onboard log sources, deploy NXLog and fix parsing so logs land correctly in <b>IBM QRadar</b>, closing gaps that were quietly costing visibility.</li>
           <li>Work with <b>AWS</b> load balancers, NAT gateways and routes, plus <b>Azure Front Door</b>, for city applications.</li>
@@ -780,6 +795,20 @@ a.vr:hover{text-decoration:underline}
         </button>
         <a class="vr" href="https://www.credly.com/badges/1f70c580-45c4-44d4-b485-07eab1444798/public_url" target="_blank" rel="noopener">Verify ↗</a>
       </div>
+    </div>
+
+    <div class="credtier">
+      <h3><span>In progress — next on the list</span><em>not yet earned · listed so you know what's coming</em></h3>
+
+      <div class="cred wip">
+        <div class="credmain" role="group" aria-label="AWS Certified Security Specialty, in progress">
+          <span class="thumb"><span class="fb show">AWS<br>SCS</span></span>
+          <span class="name">AWS Certified Security — Specialty<small>Preparing now (SCS-C03) · target December 2026</small></span>
+        </div>
+        <span class="vr">In progress</span>
+      </div>
+
+      <p class="credpledge"><b>Need a different cert for the role?</b> Tell me which one. Depending on the offer and start date, I'll earn it before I join or within my first few weeks.</p>
     </div>
 
     <div class="credtier">
@@ -884,7 +913,12 @@ a.vr:hover{text-decoration:underline}
       <div class="caprow">
         <span class="dotmark b-green" aria-hidden="true"></span>
         <dt>Network services</dt>
-        <dd><b>Infoblox DNS</b> (incl. SPF, DKIM, DMARC), Bluecoat proxy, Ivanti Connect Secure SSL VPN, site-to-site tunnels.</dd>
+        <dd><b>Infoblox DNS</b> (incl. SPF, DKIM, DMARC), Bluecoat proxy, site-to-site tunnels.</dd>
+      </div>
+      <div class="caprow">
+        <span class="dotmark b-purple" aria-hidden="true"></span>
+        <dt>Remote &amp; Zero Trust access</dt>
+        <dd><b>Ivanti Connect Secure</b> for SSL VPN and <b>Zero Trust access</b>: policy-based administrator access to specific internal resources, user access troubleshooting, upgrades and security patching.</dd>
       </div>
       <div class="caprow">
         <span class="dotmark b-yellow" aria-hidden="true"></span>
@@ -894,17 +928,17 @@ a.vr:hover{text-decoration:underline}
       <div class="caprow">
         <span class="dotmark b-purple" aria-hidden="true"></span>
         <dt>Incident &amp; analysis</dt>
-        <dd><b>Incident response</b>, RCA authorship, log analysis, phishing triage, Wireshark · Burp Suite <em>(lab and hackathons)</em>.</dd>
+        <dd><b>Incident response</b>, root cause investigation, log analysis, phishing triage, Wireshark · Burp Suite <em>(lab and hackathons)</em>.</dd>
       </div>
       <div class="caprow">
         <span class="dotmark b-red" aria-hidden="true"></span>
         <dt>Cloud</dt>
-        <dd><b>AWS</b> load balancers, NAT gateways and routes · <b>Azure Front Door</b> · Entra ID — on the job. EC2, S3, CloudFront <em>(certified and hackathon projects)</em>.</dd>
+        <dd><b>AWS</b> load balancers, NAT gateways and routes · <b>Azure Front Door</b> · Entra ID — on the job. EC2, S3, CloudFront <em>(certified and hackathon projects)</em> · AWS Security Specialty <em>(in progress, target December 2026)</em>.</dd>
       </div>
       <div class="caprow">
         <span class="dotmark" style="background:var(--ink)" aria-hidden="true"></span>
         <dt>Platforms &amp; build</dt>
-        <dd>Windows, Linux, macOS · protocol-level troubleshooting (TCP/IP, TLS, DNS, SAML) · vanilla JS front-end for my own tools · Git/GitHub · Docker <em>(labs)</em>.</dd>
+        <dd>Windows, Linux, macOS · protocol-level troubleshooting (TCP/IP, TLS, DNS, SAML) · vanilla JS front-end for my own tools · PowerShell tooling · Git/GitHub · Docker <em>(labs)</em>.</dd>
       </div>
       <div class="caprow">
         <span class="dotmark" style="background:var(--grey)" aria-hidden="true"></span>
@@ -933,15 +967,38 @@ a.vr:hover{text-decoration:underline}
     <article class="projrow rv">
       <span class="projmark b-blue" aria-hidden="true">01</span>
       <div>
-        <p class="tp">OSINT tooling</p>
-        <h3>OSINTVault</h3>
-        <p>A browser-based OSINT workspace that runs fully offline with no backend — tools, intel and investigation notes in one place. Built for analysts who can't ship case data to somebody else's cloud.</p>
-        <p class="st">HTML · CSS · vanilla JS · zero dependencies — <a href="https://github.com/w3bcooki3/threatnet" target="_blank" rel="noopener">github.com/w3bcooki3/threatnet</a></p>
+        <p class="tp">OSINT &amp; investigation workspace</p>
+        <h3>OSINTrix</h3>
+        <p>A private OSINT investigation workspace that runs entirely in the browser. No server, no account, no tracking: cases never leave the analyst's machine. It pulls indicators out of pasted evidence automatically, parses logs (CEF, LEEF, Windows event XML, Zeek, Cisco ASA, syslog and more), builds a link graph from the evidence, and includes a PCAP reader, SQLite and browser-history viewer, file inspector and Sigma/YARA rule testing.</p>
+        <p>Optional AES-256-GCM encryption for the whole workspace, a tamper-evident audit log and signed chain-of-custody reports. Covered by Playwright end-to-end tests that run on every push.</p>
+        <p class="st">HTML · CSS · vanilla JS · IndexedDB · Cytoscape · Leaflet — <a href="https://w3bcooki3.github.io/osintrix/" target="_blank" rel="noopener">launch the app</a> · <a href="https://github.com/w3bcooki3/osintrix" target="_blank" rel="noopener">github.com/w3bcooki3/osintrix</a></p>
       </div>
     </article>
 
     <article class="projrow rv">
-      <span class="projmark b-orange" aria-hidden="true">02</span>
+      <span class="projmark b-purple" aria-hidden="true">02</span>
+      <div>
+        <p class="tp">Private messaging</p>
+        <h3>Ghost Chat</h3>
+        <p>End-to-end encrypted chat between browsers for two to six people. No account, no app to install, nothing stored: close the tab and it's gone. Hybrid post-quantum key exchange (ECDH P-384 plus ML-KEM-1024), a fresh AES-256 key for every message, safety numbers to catch a man in the middle, file sharing and a one-tap panic wipe.</p>
+        <p>Honest status: internally reviewed and covered by automated browser tests, but not independently audited.</p>
+        <p class="st">WebRTC · Web Crypto · open source (MIT) — <a href="https://w3bcooki3.github.io/ghostchat/" target="_blank" rel="noopener">open Ghost Chat</a> · <a href="https://github.com/w3bcooki3/ghostchat" target="_blank" rel="noopener">github.com/w3bcooki3/ghostchat</a></p>
+      </div>
+    </article>
+
+    <article class="projrow rv">
+      <span class="projmark b-orange" aria-hidden="true">03</span>
+      <div>
+        <p class="tp">DFIR triage · Windows</p>
+        <h3>WinForensicX</h3>
+        <p>A read-only incident-triage toolkit for Windows. One command collects the state of a host, checks it against detection rules mapped to MITRE ATT&amp;CK (living-off-the-land abuse, persistence, C2 and beaconing, ransomware, exposed secrets, AI-era threats), scores the risk, and writes a self-contained HTML report with a SHA-256 manifest for chain of custody. It never dumps or decrypts credentials.</p>
+        <p class="aw build">In build · not yet field-tested</p>
+        <p class="st">PowerShell · JSON rule packs · Pester tests — <a href="https://github.com/w3bcooki3/WinForensicX" target="_blank" rel="noopener">github.com/w3bcooki3/WinForensicX</a></p>
+      </div>
+    </article>
+
+    <article class="projrow rv">
+      <span class="projmark b-green" aria-hidden="true">04</span>
       <div>
         <p class="tp">Civic security platform</p>
         <h3>PROTECT</h3>
@@ -952,7 +1009,7 @@ a.vr:hover{text-decoration:underline}
     </article>
 
     <article class="projrow rv">
-      <span class="projmark b-green" aria-hidden="true">03</span>
+      <span class="projmark b-red" aria-hidden="true">05</span>
       <div>
         <p class="tp">Capture the flag · TryHackMe</p>
         <h3>Hackfinity Battle 2025</h3>
@@ -989,13 +1046,14 @@ a.vr:hover{text-decoration:underline}
       <div class="pledge learn">
         <span class="ptag">Learn first</span>
         <h3>I'll learn your stack before day one</h3>
-        <p>If the role needs a tool I haven't run in production, I'll get hands-on with it between the offer and my start date — so <b>you're not teaching me from zero</b>.</p>
+        <p>If the role needs a tool I haven't run in production, I'll get hands-on with it between the offer and my start date — so <b>you're not teaching me from zero</b>. If it needs a certification I don't hold yet, <b>I'll earn it before I join or within my first few weeks</b>, depending on the offer.</p>
         <ul>
           <li>Vendor training and official docs</li>
           <li>Hands-on labs or a home setup</li>
+          <li>Any certification the role calls for</li>
           <li>Questions ready for my first week, not my first month</li>
         </ul>
-        <p class="pfoot">Track record: QRadar, Panorama, Ansible and scripting self-taught on the job; Security+, CySA+ and AWS certifications earned on my own time.</p>
+        <p class="pfoot">Track record: QRadar, Panorama, Ansible and scripting self-taught on the job; Security+, CySA+ and AWS certifications earned on my own time. Next up: AWS Security Specialty, target December 2026.</p>
       </div>
       <div class="pledge refs">
         <span class="ptag">Don't take my word</span>
@@ -1090,11 +1148,11 @@ a.vr:hover{text-decoration:underline}
   var tt=document.getElementById('toTop');
   window.addEventListener('scroll',function(){tt.classList.toggle('on',window.scrollY>900);},{passive:true});
 
-  /* credential modal */
+  /* credential modal (only real badges, not in-progress rows) */
   var modal=document.getElementById('modal'),mImg=document.getElementById('mImg'),
       mTitle=document.getElementById('mTitle'),mIssuer=document.getElementById('mIssuer'),last=null;
 
-  document.querySelectorAll('.credmain').forEach(function(c){
+  document.querySelectorAll('button.credmain').forEach(function(c){
     c.addEventListener('click',function(){
       var img=c.querySelector('img');
       if(!img||img.style.display==='none')return;
