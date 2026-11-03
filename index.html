@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Rahul — Security Operations Engineer, New York City</title>
-<meta name="description" content="Rahul — Security Operations Engineer keeping New York City government infrastructure running. Firewalls, SIEM, DNS, proxy, VPN and Zero Trust access. CompTIA CSAP, AWS certified. Every claim has evidence attached.">
+<meta name="description" content="Rahul — Security Operations Engineer keeping New York City government infrastructure running. Firewalls, DDoS protection, SIEM, DNS, proxy, VPN and Zero Trust access. Founder of Planura and Whats Trending. CompTIA CSAP, AWS certified. Every claim has evidence attached.">
 <meta name="theme-color" content="#0D0D0D">
 
 <!-- Link previews (LinkedIn, Slack, iMessage). Add a 1200x630 image at ./media/og-card.png -->
@@ -602,7 +602,7 @@ a.vr:hover{text-decoration:underline}
       <div class="svc">
         <span class="bullet b-blue" aria-hidden="true">FW</span>
         <div><h3>Firewall &amp; policy</h3>
-          <p>Palo Alto (Panorama) and Checkpoint rule design, review and optimisation across agency networks.</p></div>
+          <p>Palo Alto (Panorama) and Checkpoint rule design, review and optimisation across agency networks, plus NETSCOUT Arbor DDoS protection.</p></div>
         <span class="state">Daily</span>
       </div>
       <div class="svc">
@@ -626,7 +626,7 @@ a.vr:hover{text-decoration:underline}
       <div class="svc">
         <span class="bullet b-yellow" aria-hidden="true">AUTO</span>
         <div><h3>Automation</h3>
-          <p>PowerShell and Ansible health checks that pull status from Panorama and Ivanti, documented and handed to the team.</p></div>
+          <p>PowerShell and Ansible health checks that pull status via REST API and email the team scheduled HTML reports anyone can read from anywhere.</p></div>
         <span class="state">Daily</span>
       </div>
     </div>
@@ -650,9 +650,9 @@ a.vr:hover{text-decoration:underline}
       <details class="finding rv">
         <summary><span class="fnum">01</span><span class="claim">Turns repeated work into automation that outlives him.</span><span class="plus" aria-hidden="true"></span></summary>
         <div class="evidence">
-          <p>Our daily platform health checks used to be a manual click-through across two systems. I'd never worked with APIs before, so I read the Palo Alto and Ivanti documentation, taught myself Ansible, and built 3–4 PowerShell and Ansible checks that pull the status for us. Then I wrote the runbook so anyone on the team can run it.</p>
+          <p>Our daily platform health checks used to be a manual click-through across two systems. I'd never worked with APIs before, so I read the Palo Alto and Ivanti documentation, taught myself Ansible, and built 3–4 PowerShell and Ansible checks that pull the status for us. They now run on a schedule and email the team an HTML report, so any engineer can read the platform health from anywhere without logging in to the internal network. Then I wrote the runbook so anyone on the team can maintain it.</p>
           <p>That's roughly <b>3.5 hours a week</b> returned to the team — and every new check I add costs minutes instead of an hour.</p>
-          <p class="src">Evidence — <b>~40 minutes saved per daily cycle</b>. NYC OTI, 2024 to present. Ask me to walk through how I built it and what I learned along the way.</p>
+          <p class="src">Evidence — <b>~40 minutes saved per daily cycle, 170+ hours a year</b>. NYC OTI, 2024 to present. Ask me to walk through how I built it and what I learned along the way.</p>
         </div>
       </details>
 
@@ -693,9 +693,9 @@ a.vr:hover{text-decoration:underline}
       </details>
 
       <details class="finding rv">
-        <summary><span class="fnum">06</span><span class="claim">Builds security tools nobody asked him to build — and competes for fun.</span><span class="plus" aria-hidden="true"></span></summary>
+        <summary><span class="fnum">06</span><span class="claim">Brings the ideas, builds the tools — and competes for fun.</span><span class="plus" aria-hidden="true"></span></summary>
         <div class="evidence">
-          <p>OSINTrix is a private OSINT investigation workspace that runs entirely in the browser: evidence capture, log parsing, link graphs, a PCAP reader and Sigma/YARA testing, with nothing ever leaving the analyst's machine. Ghost Chat is end-to-end encrypted, post-quantum browser chat with no accounts and nothing stored. WinForensicX, a read-only Windows triage toolkit mapped to MITRE ATT&amp;CK, is in build. PROTECT is a cybercrime reporting platform I led and shipped, designed so ordinary New Yorkers can report a threat without knowing the vocabulary.</p>
+          <p>OSINTrix is a private OSINT investigation workspace that runs entirely in the browser: evidence capture, log parsing, link graphs, a PCAP reader and Sigma/YARA testing, with nothing ever leaving the analyst's machine. Ghost Chat is end-to-end encrypted, post-quantum browser chat with no accounts and nothing stored. WinForensicX, a read-only Windows triage toolkit mapped to MITRE ATT&amp;CK, is in build. PROTECT is a cybercrime reporting platform I led and shipped, designed so ordinary New Yorkers can report a threat without knowing the vocabulary, and I'm now rebuilding it for all ages. On top of that I'm founding two startups: <b>Planura</b>, an NYC outing planner, and <b>Whats Trending</b>, which puts trends from everywhere in one place.</p>
           <p class="src">Evidence — <a href="https://github.com/w3bcooki3" target="_blank" rel="noopener"><b>github.com/w3bcooki3</b></a> · 1st place, John Jay College cybersecurity hackathon · 3rd place, AWS hackathon at Queensborough · <b>rank 115, TryHackMe Hackfinity Battle 2025</b>.</p>
         </div>
       </details>
@@ -711,14 +711,15 @@ a.vr:hover{text-decoration:underline}
     <div class="linemap">
       <article class="station now rv">
         <p class="when">Jan 2024 — Present <span class="tag">Current</span></p>
-        <h3>Security Operations Engineer Fellow</h3>
+        <h3>Security Operations Engineer</h3>
         <p class="org">NYC Office of Technology &amp; Innovation</p>
         <ul>
           <li>Design, implement and optimise firewall rules across <b>Palo Alto Panorama</b> and <b>Checkpoint</b> — tighter policy, no agency downtime.</li>
           <li>Administer <b>Ivanti Connect Secure</b> for SSL VPN and <b>Zero Trust access</b>, giving administrators secure, policy-based access to only the internal resources they need.</li>
           <li>Configure and maintain <b>Infoblox DNS</b> records (A, CNAME, MX, TXT, SRV) for multiple city agencies, including email authentication (SPF, DKIM, DMARC).</li>
           <li>Respond to live outages, find the <b>root cause</b>, and provide findings for the documented RCA, then close corrective actions so incidents don't repeat.</li>
-          <li>Built <b>PowerShell + Ansible</b> health-check automation for Panorama and Ivanti — <b>~40 minutes saved per daily cycle</b>.</li>
+          <li>Automated daily platform health checks that previously needed manual logins: <b>PowerShell + Ansible</b> pull status via REST API and email the team scheduled HTML reports — <b>40+ minutes saved a day, 170+ hours a year</b>.</li>
+          <li>Work with <b>NETSCOUT Arbor</b> DDoS protection alongside firewall and proxy controls at the network edge.</li>
           <li>Onboard log sources, deploy NXLog and fix parsing so logs land correctly in <b>IBM QRadar</b>, closing gaps that were quietly costing visibility.</li>
           <li>Work with <b>AWS</b> load balancers, NAT gateways and routes, plus <b>Azure Front Door</b>, for city applications.</li>
         </ul>
@@ -903,7 +904,7 @@ a.vr:hover{text-decoration:underline}
       <div class="caprow">
         <span class="dotmark b-blue" aria-hidden="true"></span>
         <dt>Firewall &amp; policy</dt>
-        <dd><b>Palo Alto PAN-OS, Panorama, Checkpoint.</b> Rule design, review, cleanup and change control on multi-agency networks.</dd>
+        <dd><b>Palo Alto PAN-OS, Panorama, Checkpoint.</b> Rule design, review, cleanup and change control on multi-agency networks · <b>NETSCOUT Arbor</b> DDoS protection.</dd>
       </div>
       <div class="caprow">
         <span class="dotmark b-orange" aria-hidden="true"></span>
@@ -938,7 +939,7 @@ a.vr:hover{text-decoration:underline}
       <div class="caprow">
         <span class="dotmark" style="background:var(--ink)" aria-hidden="true"></span>
         <dt>Platforms &amp; build</dt>
-        <dd>Windows, Linux, macOS · protocol-level troubleshooting (TCP/IP, TLS, DNS, SAML) · vanilla JS front-end for my own tools · PowerShell tooling · Git/GitHub · Docker <em>(labs)</em>.</dd>
+        <dd>Windows, Linux, macOS · protocol-level troubleshooting (TCP/IP, TLS, DNS, SAML) · vanilla JS front-end for my own tools <em>(AI-assisted)</em> · PowerShell tooling · <b>n8n</b> workflows · Git/GitHub Actions · Docker <em>(labs)</em> · building with <b>Claude</b> as a coding partner.</dd>
       </div>
       <div class="caprow">
         <span class="dotmark" style="background:var(--grey)" aria-hidden="true"></span>
@@ -953,7 +954,7 @@ a.vr:hover{text-decoration:underline}
       <div class="qa">
         <p><span class="q">Known weakness</span><button class="redact">Will rewrite any manual process the third time he sees it, whether or not it was on the sprint.</button></p>
         <p><span class="q">Compensation expectations</span><button class="redact">Negotiable and honest — tell me the band and I'll tell you straight away if it works.</button></p>
-        <p><span class="q">What he actually wants next</span><button class="redact">A SOC, SIEM or security engineering role where automation is encouraged, not merely tolerated.</button></p>
+        <p><span class="q">What he actually wants next</span><button class="redact">A SOC, SIEM, security engineering or AI security role where automation and new ideas are encouraged, not merely tolerated.</button></p>
       </div>
     </div>
   </div>
@@ -961,11 +962,33 @@ a.vr:hover{text-decoration:underline}
 
 <section id="work">
   <div class="wrap">
-    <p class="sec-mark"><span>05 — Independent work</span><span>projects &amp; competitions</span></p>
+    <p class="sec-mark"><span>05 — Independent work</span><span>startups, projects &amp; competitions</span></p>
     <h2>Built, not configured</h2>
+    <p class="intro">I bring the ideas, brainstorm the design and own the security decisions and testing. I build with Claude as a coding partner, which lets one person ship what used to need a team.</p>
 
     <article class="projrow rv">
-      <span class="projmark b-blue" aria-hidden="true">01</span>
+      <span class="projmark b-yellow" aria-hidden="true">01</span>
+      <div>
+        <p class="tp">Startup · founder</p>
+        <h3>Planura</h3>
+        <p>An outing planner for New York City. Tell it what you're in the mood for — a birthday, a date, a Friday night or a weekend hangout with friends — and it lines up a plan of places in order, mapped and timed, with booking links, in about 30 seconds. My idea, product design and build.</p>
+        <p class="aw build">In development</p>
+        <p class="st">Web app — <a href="https://vybedev.up.railway.app/" target="_blank" rel="noopener">try the preview</a></p>
+      </div>
+    </article>
+
+    <article class="projrow rv">
+      <span class="projmark b-red" aria-hidden="true">02</span>
+      <div>
+        <p class="tp">Startup · founder</p>
+        <h3>Whats Trending</h3>
+        <p>An app that collects trends from across the internet and puts them in one place, so creators and everyday users can see what's happening right now without checking ten different platforms.</p>
+        <p class="aw build">In development</p>
+      </div>
+    </article>
+
+    <article class="projrow rv">
+      <span class="projmark b-blue" aria-hidden="true">03</span>
       <div>
         <p class="tp">OSINT &amp; investigation workspace</p>
         <h3>OSINTrix</h3>
@@ -976,7 +999,7 @@ a.vr:hover{text-decoration:underline}
     </article>
 
     <article class="projrow rv">
-      <span class="projmark b-purple" aria-hidden="true">02</span>
+      <span class="projmark b-purple" aria-hidden="true">04</span>
       <div>
         <p class="tp">Private messaging</p>
         <h3>Ghost Chat</h3>
@@ -987,7 +1010,7 @@ a.vr:hover{text-decoration:underline}
     </article>
 
     <article class="projrow rv">
-      <span class="projmark b-orange" aria-hidden="true">03</span>
+      <span class="projmark b-orange" aria-hidden="true">05</span>
       <div>
         <p class="tp">DFIR triage · Windows</p>
         <h3>WinForensicX</h3>
@@ -998,18 +1021,28 @@ a.vr:hover{text-decoration:underline}
     </article>
 
     <article class="projrow rv">
-      <span class="projmark b-green" aria-hidden="true">04</span>
+      <span class="projmark b-green" aria-hidden="true">06</span>
       <div>
         <p class="tp">Civic security platform</p>
         <h3>PROTECT</h3>
-        <p>A cybercrime reporting platform built so ordinary New Yorkers can report a threat without knowing the vocabulary. I led the team and the build.</p>
-        <p class="aw">1st place — Cybersecurity Hackathon, John Jay College</p>
+        <p>A cybercrime reporting platform built so ordinary New Yorkers can report a threat without knowing the vocabulary. I led the team and the build. Now rebuilding it to help people of all ages report cybercrime and learn how to stay safe online.</p>
+        <p class="aw">1st place — Cybersecurity Hackathon, John Jay College (2023) · rebuild in progress</p>
         <p class="st">Team lead · full build — <a href="https://github.com/w3bcooki3/report-cybercrime" target="_blank" rel="noopener">github.com/w3bcooki3/report-cybercrime</a></p>
       </div>
     </article>
 
     <article class="projrow rv">
-      <span class="projmark b-red" aria-hidden="true">05</span>
+      <span class="projmark b-blue" aria-hidden="true">07</span>
+      <div>
+        <p class="tp">Threat intelligence automation · n8n</p>
+        <h3>OSINTrix Threat Intel Pipeline</h3>
+        <p>An n8n workflow that runs every three hours across nine security feeds (BleepingComputer, The Hacker News, SecurityWeek, CISA advisories and KEV, NCSC UK, Palo Alto PSIRT, The DFIR Report, abuse.ch Feodo). It normalises the items, extracts IOCs and CVEs, enriches them with EPSS scores and lookups, scores the risk, alerts only on what's new, and outputs STIX 2.1 for OSINTrix.</p>
+        <p class="aw">Running end to end · 165 items, 16 IOCs, 32 enrichment lookups in one run</p>
+      </div>
+    </article>
+
+    <article class="projrow rv">
+      <span class="projmark b-red" aria-hidden="true">08</span>
       <div>
         <p class="tp">Capture the flag · TryHackMe</p>
         <h3>Hackfinity Battle 2025</h3>
