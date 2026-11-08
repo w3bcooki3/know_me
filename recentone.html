@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Rahul — Security Operations Engineer, New York City</title>
+<meta name="description" content="Rahul — Security Operations Engineer keeping New York City government infrastructure running. Firewalls, DDoS protection, SIEM, DNS, proxy, VPN and Zero Trust access. Founder of Planura and Whats Trending. CompTIA CSAP, AWS certified. Every claim has evidence attached.">
+<meta name="theme-color" content="#0D0D0D">
+
+<!-- Link previews (LinkedIn, Slack, iMessage). Add a 1200x630 image at ./media/og-card.png -->
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Rahul — Security Operations Engineer, New York City">
+<meta property="og:description" content="Firewalls, SIEM, DNS, proxy, VPN and Zero Trust access across NYC government infrastructure. Every claim on this page has evidence attached.">
+<meta property="og:image" content="./media/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0D0D0D;
+  --paper:#F2F2F0;
+  --white:#FFFFFF;
+  --rule:#D6D6D2;
+  --grey:#5C5C58;
+  --grey2:#333331;
+
+  --blue:#0039A6;
+  --yellow:#FCCC0A;
+  --green:#00933C;
+  --red:#EE352E;
+  --orange:#FF6319;
+  --purple:#B933AD;
+
+  --display:'Archivo',sans-serif;
+  --body:'Public Sans',sans-serif;
+  --data:'IBM Plex Mono',monospace;
+
+  --maxw:1080px;
+  --pad:clamp(16px,4vw,40px);
+  --bar:56px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--bar) + 12px);overflow-x:hidden;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{
+  background:var(--paper);color:var(--ink);
+  font-family:var(--body);font-size:17px;line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:clip; /* clip, not hidden — hidden can break position:sticky */
+  overflow-wrap:break-word;
+}
+img{max-width:100%;height:auto}
+::selection{background:var(--yellow);color:var(--ink)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 max(var(--pad),env(safe-area-inset-left)) 0 max(var(--pad),env(safe-area-inset-right))}
+
+/* ============ SIGNAGE BAR ============ */
+.signbar{position:sticky;top:0;z-index:70;background:var(--ink);color:var(--white)}
+.signbar .wrap{display:flex;align-items:center;gap:18px;height:var(--bar)}
+.signbar .mark{
+  font-family:var(--display);font-weight:900;font-size:15px;
+  letter-spacing:.14em;text-transform:uppercase;text-decoration:none;white-space:nowrap;
+}
+.signbar .mark .dot{color:var(--yellow)}
+.signbar nav{display:flex;gap:20px;margin-left:auto}
+.signbar nav a{
+  font-family:var(--data);font-size:12.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:#B9B9B5;text-decoration:none;padding:4px 0;border-bottom:2px solid transparent;
+}
+.signbar nav a:hover{color:var(--white);border-bottom-color:var(--yellow)}
+.signbar .status{
+  display:flex;align-items:center;gap:9px;margin-left:auto;
+  font-family:var(--data);font-size:12px;letter-spacing:.09em;text-transform:uppercase;white-space:nowrap;
+}
+.signbar nav + .status{margin-left:20px}
+.pulse{width:9px;height:9px;border-radius:50%;background:var(--green);flex:none;
+  box-shadow:0 0 0 0 rgba(0,147,60,.7);animation:pulse 2.6s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(0,147,60,.6)}70%{box-shadow:0 0 0 9px rgba(0,147,60,0)}100%{box-shadow:0 0 0 0 rgba(0,147,60,0)}}
+
+/* mobile menu button (hidden on desktop) */
+.menubtn{
+  display:none;background:transparent;border:2px solid #4A4A46;color:var(--white);
+  font-family:var(--data);font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+  padding:0 12px;height:38px;min-width:44px;cursor:pointer;align-items:center;gap:8px;flex:none;
+}
+.menubtn .bars{display:inline-grid;gap:3px}
+.menubtn .bars i{display:block;width:16px;height:2px;background:currentColor;transition:transform .2s ease,opacity .2s ease}
+.menubtn[aria-expanded="true"] .bars i:nth-child(1){transform:translateY(5px) rotate(45deg)}
+.menubtn[aria-expanded="true"] .bars i:nth-child(2){opacity:0}
+.menubtn[aria-expanded="true"] .bars i:nth-child(3){transform:translateY(-5px) rotate(-45deg)}
+.mobilenav{
+  display:none;position:fixed;left:0;right:0;top:var(--bar);z-index:69;
+  background:var(--ink);border-top:1px solid #2A2A26;
+  padding:8px var(--pad) calc(18px + env(safe-area-inset-bottom));
+  max-height:calc(100vh - var(--bar));overflow-y:auto;
+}
+.mobilenav.on{display:block}
+.mobilenav a{
+  display:block;font-family:var(--data);font-size:14px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--white);text-decoration:none;padding:15px 0;border-bottom:1px solid #2A2A26;
+}
+.mobilenav a:last-child{border-bottom:none}
+.mobilenav a span{color:var(--yellow);margin-right:10px}
+
+/* ============ HERO ============ */
+.hero{padding:clamp(36px,7vw,82px) 0 0}
+.kicker{
+  font-family:var(--data);font-size:12.5px;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--grey);border-bottom:2px solid var(--ink);padding-bottom:10px;margin-bottom:28px;
+  display:flex;justify-content:space-between;gap:6px 14px;flex-wrap:wrap;
+}
+.kicker .avail{color:var(--green);font-weight:600}
+h1{
+  font-family:var(--display);font-weight:900;
+  font-size:clamp(54px,13.5vw,146px);line-height:.85;
+  letter-spacing:-.045em;text-transform:uppercase;overflow-wrap:break-word;
+}
+h1 .stop{color:var(--yellow)}
+.role{
+  font-family:var(--display);font-weight:800;
+  font-size:clamp(20px,3.4vw,36px);line-height:1.08;letter-spacing:-.02em;
+  color:var(--blue);margin-top:16px;
+}
+.standfirst{
+  max-width:600px;margin-top:20px;font-size:clamp(16.5px,2vw,20px);color:var(--grey2);
+}
+.standfirst b{font-weight:700;color:var(--ink);box-shadow:inset 0 -.5em 0 var(--yellow)}
+
+.acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{
+  font-family:var(--data);font-size:13px;font-weight:600;letter-spacing:.06em;
+  text-transform:uppercase;text-decoration:none;padding:14px 24px;min-height:48px;
+  border:2px solid var(--ink);display:inline-flex;align-items:center;justify-content:center;gap:10px;cursor:pointer;
+  transition:transform .13s ease,background .13s ease,color .13s ease,border-color .13s ease;
+}
+.btn-solid{background:var(--ink);color:var(--white)}
+.btn-solid:hover{background:var(--blue);border-color:var(--blue);transform:translate(-2px,-2px)}
+.btn-line{background:transparent;color:var(--ink)}
+.btn-line:hover{background:var(--ink);color:var(--white);transform:translate(-2px,-2px)}
+.btn .lc{text-transform:none;letter-spacing:.02em}
+
+/* ---- file fields ---- */
+.fields{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));
+  margin-top:38px;border-top:2px solid var(--ink);
+}
+.field{padding:14px 20px 14px 0;border-bottom:1px solid var(--rule)}
+.field dt{
+  font-family:var(--data);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--grey);margin-bottom:3px;
+}
+.field dd{font-size:15.5px;font-weight:600;line-height:1.45}
+.field dd .go{color:var(--green)}
+
+/* ============ SERVICE BOARD ============ */
+.board{margin-top:clamp(40px,6vw,64px);background:var(--white);border:2px solid var(--ink)}
+.board-head{
+  background:var(--ink);color:var(--white);
+  display:flex;justify-content:space-between;align-items:center;gap:6px 14px;flex-wrap:wrap;
+  padding:13px 20px;
+}
+.board-head h2{font-family:var(--display);font-weight:800;font-size:15px;letter-spacing:.16em;text-transform:uppercase;line-height:1.3}
+.board-head .clock{font-family:var(--data);font-size:12.5px;color:#B9B9B5;letter-spacing:.06em}
+.svc{
+  display:grid;grid-template-columns:56px 1fr 150px;align-items:center;gap:18px;
+  padding:17px 20px;border-top:1px solid var(--rule);
+}
+.svc:first-of-type{border-top:none}
+.bullet{
+  width:46px;height:46px;border-radius:50%;display:grid;place-items:center;
+  font-family:var(--display);font-weight:900;font-size:14px;color:var(--white);
+}
+.b-blue{background:var(--blue)}.b-orange{background:var(--orange)}
+.b-green{background:var(--green)}.b-purple{background:var(--purple)}
+.b-red{background:var(--red)}.b-yellow{background:var(--yellow);color:var(--ink)}
+.svc h3{font-family:var(--display);font-weight:800;font-size:18px;letter-spacing:-.01em}
+.svc p{font-size:14.5px;color:var(--grey);line-height:1.5}
+.svc .state{
+  font-family:var(--data);font-size:11.5px;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--green);text-align:right;white-space:nowrap;
+}
+.svc .state::before{content:'● '}
+
+/* ---- metrics ---- */
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);border:2px solid var(--ink);border-top:none;background:var(--white)}
+.metrics div{padding:22px 20px;border-right:1px solid var(--rule)}
+.metrics div:last-child{border-right:none}
+.metrics .n{
+  font-family:var(--display);font-weight:900;font-size:clamp(28px,4.6vw,42px);
+  line-height:1;letter-spacing:-.03em;display:block;
+}
+.metrics .n small{font-size:.45em;color:var(--grey);margin-left:2px}
+.metrics .l{
+  font-family:var(--data);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--grey);margin-top:8px;display:block;line-height:1.45;
+}
+
+/* ============ SECTIONS ============ */
+section{padding:clamp(52px,8vw,92px) 0}
+.sec-mark{
+  font-family:var(--data);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--grey);border-bottom:1px solid var(--rule);padding-bottom:8px;margin-bottom:20px;
+  display:flex;justify-content:space-between;gap:4px 12px;flex-wrap:wrap;
+}
+h2{
+  font-family:var(--display);font-weight:900;
+  font-size:clamp(32px,6vw,62px);line-height:.94;letter-spacing:-.035em;text-transform:uppercase;
+}
+.intro{color:var(--grey2);max-width:58ch;margin-top:12px;font-size:16.5px}
+
+/* ---- findings ---- */
+.findings{margin-top:32px;border-top:3px solid var(--ink)}
+details.finding{border-bottom:1px solid var(--rule);background:var(--white)}
+details.finding summary{
+  list-style:none;cursor:pointer;padding:20px 22px;
+  display:grid;grid-template-columns:34px 1fr 30px;gap:18px;align-items:baseline;
+}
+details.finding summary::-webkit-details-marker{display:none}
+details.finding summary:hover .claim{box-shadow:inset 0 -.5em 0 var(--yellow)}
+.fnum{font-family:var(--data);font-size:12px;color:var(--grey);padding-top:5px;letter-spacing:.06em}
+.claim{
+  font-family:var(--display);font-weight:800;
+  font-size:clamp(18px,2.6vw,25px);line-height:1.22;letter-spacing:-.02em;
+  transition:box-shadow .15s ease;
+}
+.plus{
+  font-family:var(--data);font-size:19px;color:var(--blue);text-align:right;
+  line-height:1;padding-top:6px;
+}
+details.finding .plus::after{content:'+'}
+details.finding[open] .plus::after{content:'–'}
+.evidence{padding:0 22px 22px 74px;max-width:70ch}
+.evidence p{color:var(--grey2);font-size:16px}
+.evidence p + p{margin-top:9px}
+.evidence b{font-weight:700;color:var(--ink)}
+.evidence .src{
+  font-family:var(--data);font-size:12px;color:var(--grey);letter-spacing:.02em;
+  margin-top:14px;padding-top:11px;border-top:2px solid var(--ink);line-height:1.7;
+}
+.evidence .src b{color:var(--ink)}
+
+/* ---- line map ---- */
+.linemap{position:relative;padding-left:62px;margin-top:34px}
+.linemap::before{content:'';position:absolute;left:21px;top:12px;bottom:12px;width:8px;background:var(--blue)}
+.station{position:relative;padding-bottom:44px}
+.station:last-child{padding-bottom:0}
+.station::before{
+  content:'';position:absolute;left:-48px;top:7px;width:24px;height:24px;border-radius:50%;
+  background:var(--white);border:6px solid var(--ink);
+}
+.station.now::before{border-color:var(--green);background:var(--green);box-shadow:0 0 0 5px rgba(0,147,60,.2)}
+.station .when{font-family:var(--data);font-size:12.5px;letter-spacing:.05em;color:var(--grey);margin-bottom:4px}
+.station .when .tag{
+  display:inline-block;background:var(--green);color:var(--white);padding:2px 8px;margin-left:8px;
+  font-weight:600;letter-spacing:.1em;font-size:11px;
+}
+.station h3{font-family:var(--display);font-weight:800;font-size:clamp(21px,3vw,27px);letter-spacing:-.02em;line-height:1.2}
+.station .org{font-family:var(--data);font-size:13.5px;color:var(--blue);font-weight:600;margin:2px 0 14px}
+.station ul{list-style:none;display:grid;gap:9px;max-width:68ch}
+.station li{position:relative;padding-left:26px;color:var(--grey2);font-size:16px}
+.station li::before{content:'';position:absolute;left:0;top:12px;width:14px;height:2px;background:var(--ink)}
+.station li b{font-weight:700;color:var(--ink)}
+
+/* ---- credential rows ---- */
+.credtier{margin-top:34px}
+.credtier:first-of-type{margin-top:32px}
+.credtier > h3{
+  font-family:var(--data);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+  border-bottom:3px solid var(--ink);padding-bottom:8px;
+  display:flex;justify-content:space-between;gap:4px 12px;flex-wrap:wrap;align-items:baseline;
+}
+.credtier > h3 em{font-style:normal;color:var(--grey);letter-spacing:.09em}
+
+.cred{
+  display:grid;grid-template-columns:1fr auto;align-items:center;
+  background:var(--white);border-bottom:1px solid var(--rule);
+  transition:background .13s ease,transform .13s ease;
+}
+.cred:hover{background:var(--yellow);transform:translateX(4px)}
+.credmain{
+  display:grid;grid-template-columns:70px 1fr;gap:20px;align-items:center;
+  width:100%;text-align:left;background:none;border:none;
+  padding:14px 0 14px 14px;font:inherit;color:inherit;cursor:pointer;min-width:0;
+}
+.credmain .thumb{height:50px;display:grid;place-items:center}
+.credmain .thumb img{max-height:50px;max-width:66px;object-fit:contain}
+.credmain .thumb .fb{display:none;font-family:var(--data);font-size:9.5px;color:var(--grey)}
+.credmain .thumb .fb.show{display:block;font-weight:600;color:var(--ink);text-align:center;line-height:1.2}
+.credmain .name{font-size:16.5px;font-weight:700;line-height:1.3;min-width:0}
+.credmain .name small{
+  display:block;font-family:var(--data);font-size:12px;font-weight:400;
+  color:var(--grey);margin-top:3px;letter-spacing:.02em;
+}
+.cred:hover .name small{color:var(--grey2)}
+.vr{
+  font-family:var(--data);font-size:11.5px;font-weight:600;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--blue);white-space:nowrap;text-decoration:none;
+  padding:14px 18px;display:block;
+}
+a.vr:hover{text-decoration:underline}
+.cred:hover .vr{color:var(--ink)}
+/* in-progress credential */
+.cred.wip{background:repeating-linear-gradient(-45deg,var(--white),var(--white) 10px,#FAFAF7 10px,#FAFAF7 20px)}
+.cred.wip .credmain{cursor:default}
+.cred.wip .vr{color:var(--orange)}
+.cred.wip:hover{background:var(--yellow)}
+.credpledge{
+  margin-top:14px;font-size:15.5px;color:var(--grey2);max-width:70ch;
+  border-left:4px solid var(--yellow);padding:4px 0 4px 14px;
+}
+.credpledge b{color:var(--ink)}
+
+/* ---- capability table ---- */
+.captable{margin-top:32px;border-top:3px solid var(--ink)}
+.caprow{
+  display:grid;grid-template-columns:38px 176px 1fr;gap:20px;align-items:start;
+  padding:17px 0;border-bottom:1px solid var(--rule);
+}
+.dotmark{width:22px;height:22px;border-radius:50%;margin-top:3px}
+.caprow dt{
+  font-family:var(--data);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--grey);padding-top:3px;
+}
+.caprow dd{font-size:16px;color:var(--grey2)}
+.caprow dd b{color:var(--ink);font-weight:700}
+.caprow dd em{font-style:normal;color:var(--grey)}
+.caprow dd a{color:var(--blue);font-weight:600}
+
+/* ---- off record ---- */
+.offrecord{border:2px solid var(--ink);background:var(--white);padding:28px;margin-top:38px}
+.offrecord h3{font-family:var(--data);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:5px}
+.offrecord .hint{font-family:var(--data);font-size:12px;color:var(--grey);margin-bottom:18px}
+.qa{display:grid;gap:15px}
+.qa .q{
+  font-family:var(--data);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--grey);display:block;margin-bottom:3px;
+}
+.redact{
+  background:var(--ink);color:transparent;cursor:pointer;border:none;
+  padding:2px 7px;font:inherit;font-size:16px;text-align:left;line-height:1.55;max-width:100%;
+  transition:background .18s ease,color .18s ease;
+}
+.redact:hover,.redact.open{background:transparent;color:var(--ink);box-shadow:inset 0 -.5em 0 var(--yellow)}
+
+/* ---- projects ---- */
+.projrow{
+  border-bottom:1px solid var(--rule);padding:26px 0;
+  display:grid;grid-template-columns:38px 1fr;gap:20px;
+}
+.projrow:first-of-type{border-top:3px solid var(--ink);margin-top:32px}
+.projrow .tp{font-family:var(--data);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--grey)}
+.projrow h3{font-family:var(--display);font-weight:900;font-size:clamp(24px,3.4vw,32px);letter-spacing:-.03em;margin:4px 0 8px;text-transform:uppercase}
+.projrow p{color:var(--grey2);max-width:66ch;font-size:16px}
+.projrow p + p{margin-top:8px}
+.projrow .aw{display:inline-block;margin-top:11px;font-family:var(--data);font-size:12.5px;font-weight:600;background:var(--yellow);padding:4px 10px}
+.projrow .aw.build{background:transparent;border:2px dashed var(--orange);color:var(--ink)}
+.projrow .st{font-family:var(--data);font-size:12px;color:var(--grey);margin-top:13px;overflow-wrap:anywhere}
+.projrow .st a{color:var(--blue);font-weight:600}
+.projmark{
+  width:34px;height:34px;border-radius:50%;display:grid;place-items:center;
+  font-family:var(--display);font-weight:900;font-size:11px;color:var(--white);
+}
+
+/* ---- education ---- */
+.edugrid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:3px solid var(--ink);margin-top:32px}
+.edu{background:var(--white);border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);padding:24px}
+.edu:last-child{border-right:none}
+.edu .when{font-family:var(--data);font-size:12px;color:var(--grey);margin-bottom:9px}
+.edu h3{font-family:var(--display);font-weight:800;font-size:19px;letter-spacing:-.015em}
+.edu .school{font-family:var(--data);font-size:13px;color:var(--blue);font-weight:600;margin:3px 0 11px}
+.edu p{font-size:15px;color:var(--grey2)}
+
+/* ---- commitments (learn-first + references) ---- */
+.pledges{display:grid;grid-template-columns:1fr 1fr;margin-top:32px;border:2px solid var(--ink);background:var(--white)}
+.pledge{padding:28px 26px;border-right:1px solid var(--rule);display:flex;flex-direction:column}
+.pledge:last-child{border-right:none}
+.pledge .ptag{
+  align-self:flex-start;font-family:var(--data);font-size:11px;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;padding:4px 10px;margin-bottom:16px;
+}
+.pledge.learn .ptag{background:var(--yellow);color:var(--ink)}
+.pledge.refs .ptag{background:var(--green);color:var(--white)}
+.pledge h3{
+  font-family:var(--display);font-weight:900;font-size:clamp(22px,3vw,30px);
+  line-height:1.05;letter-spacing:-.025em;text-transform:uppercase;
+}
+.pledge p{color:var(--grey2);font-size:16px;margin-top:12px}
+.pledge p b{color:var(--ink);font-weight:700}
+.pledge ul{list-style:none;margin-top:14px;display:grid;gap:8px}
+.pledge li{position:relative;padding-left:24px;font-size:15.5px;color:var(--grey2)}
+.pledge li::before{content:'';position:absolute;left:0;top:11px;width:12px;height:2px;background:var(--ink)}
+.pledge .pfoot{
+  margin-top:auto;padding-top:18px;font-family:var(--data);font-size:12px;color:var(--grey);line-height:1.6;
+}
+.pledge .pfoot a{color:var(--blue);font-weight:600}
+
+/* ---- contact ---- */
+.contact{background:var(--ink);color:var(--white)}
+.contact h2{color:var(--white)}
+.contact .sec-mark{color:#9A9A96;border-color:#2E2E2A}
+.contact .intro{color:#D0D0CC;max-width:54ch;margin-bottom:32px}
+.contact .btn-solid{background:var(--yellow);color:var(--ink);border-color:var(--yellow)}
+.contact .btn-solid:hover{background:var(--white);border-color:var(--white)}
+.contact .btn-line{border-color:#4A4A46;color:var(--white)}
+.contact .btn-line:hover{background:var(--white);color:var(--ink);border-color:var(--white)}
+
+.endbar{
+  background:var(--ink);color:#7A7A76;border-top:1px solid #2A2A26;
+  font-family:var(--data);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;
+  padding:20px 0 calc(20px + env(safe-area-inset-bottom));
+}
+.endbar .wrap{display:flex;justify-content:space-between;gap:8px 14px;flex-wrap:wrap}
+.endbar b{color:var(--yellow);font-weight:500}
+
+/* ---- back to top ---- */
+.totop{
+  position:fixed;right:max(16px,env(safe-area-inset-right));bottom:calc(16px + env(safe-area-inset-bottom));z-index:60;
+  width:46px;height:46px;border:2px solid var(--ink);background:var(--yellow);color:var(--ink);
+  font-family:var(--data);font-weight:600;font-size:18px;cursor:pointer;
+  display:grid;place-items:center;text-decoration:none;
+  opacity:0;pointer-events:none;transform:translateY(10px);transition:opacity .2s ease,transform .2s ease;
+}
+.totop.on{opacity:1;pointer-events:auto;transform:none}
+
+/* ---- modal ---- */
+.modal{display:none;position:fixed;inset:0;z-index:200;background:rgba(13,13,13,.95);align-items:center;justify-content:center;padding:70px 16px 26px}
+.modal.on{display:flex}
+.modal > div{max-width:100%}
+.modal img{display:block;margin:0 auto;max-width:min(860px,100%);max-height:72vh;object-fit:contain;background:var(--white);padding:10px;border:2px solid var(--white)}
+.modal .cap{text-align:center;margin-top:16px;font-family:var(--data);font-size:13px;color:var(--white)}
+.modal .cap span{display:block;color:var(--yellow);margin-top:4px}
+.modal .x{
+  position:absolute;top:16px;right:16px;background:transparent;color:var(--white);
+  border:2px solid var(--white);font-family:var(--data);font-size:12px;letter-spacing:.1em;
+  text-transform:uppercase;padding:0 16px;height:44px;cursor:pointer;
+}
+.modal .x:hover{background:var(--white);color:var(--ink)}
+
+.rv{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s cubic-bezier(.22,1,.36,1)}
+.rv.in{opacity:1;transform:none}
+.no-io .rv{opacity:1;transform:none}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:1180px){
+  .signbar nav{gap:14px}
+  .signbar nav a{font-size:11.5px}
+}
+@media(max-width:1100px){
+  .signbar nav{display:none}
+  .menubtn{display:inline-flex}
+  .signbar .status{margin-left:auto}
+  .signbar nav + .status{margin-left:auto}
+}
+@media(max-width:860px){
+  .metrics{grid-template-columns:1fr 1fr}
+  .metrics div:nth-child(-n+2){border-bottom:1px solid var(--rule)}
+  .metrics div:nth-child(2n){border-right:none}
+  .edugrid{grid-template-columns:1fr}
+  .edu{border-right:none}
+  .svc{grid-template-columns:46px 1fr;gap:14px}
+  .svc .state{grid-column:2;text-align:left}
+  .pledges{grid-template-columns:1fr}
+  .pledge{border-right:none;border-bottom:1px solid var(--rule)}
+  .pledge:last-child{border-bottom:none}
+}
+@media(max-width:680px){
+  body{font-size:16px}
+  .linemap{padding-left:40px}
+  .linemap::before{left:10px;width:6px}
+  .station::before{left:-40px;width:20px;height:20px;border-width:5px}
+  .station{padding-bottom:36px}
+  details.finding summary{grid-template-columns:26px 1fr 22px;gap:12px;padding:18px 16px}
+  .evidence{padding:0 16px 20px 16px}
+  .caprow{grid-template-columns:26px 1fr;gap:4px 14px}
+  .caprow dt{grid-column:2;padding-top:0}
+  .caprow dd{grid-column:2}
+  .dotmark{width:16px;height:16px;grid-row:1 / span 2}
+  .cred{grid-template-columns:1fr}
+  .cred:hover{transform:none}
+  .credmain{grid-template-columns:56px 1fr;gap:14px;padding:14px 14px 6px}
+  .vr{padding:0 14px 14px 84px}
+  .projrow{grid-template-columns:1fr;gap:0}
+  .projmark{display:none}
+  .offrecord{padding:20px 16px}
+  .pledge{padding:22px 18px}
+  .board-head{padding:12px 16px}
+  .svc{padding:16px}
+  .bullet{width:42px;height:42px;font-size:12.5px}
+  .svc{grid-template-columns:42px 1fr}
+  .edu{padding:20px 16px}
+  .acts .btn{flex:1 1 auto}
+  .field{padding-right:0}
+}
+@media(max-width:480px){
+  .signbar .status .stxt{display:none}
+  .kicker{font-size:11px;letter-spacing:.12em}
+  .metrics div{padding:18px 14px}
+  .metrics .l{font-size:10px;letter-spacing:.08em}
+  .acts{flex-direction:column}
+  .acts .btn{width:100%}
+  .sec-mark{font-size:10.5px;letter-spacing:.14em}
+  .credtier > h3{font-size:10.5px}
+  .contact .acts{flex-direction:row}
+  .contact .acts .btn{flex:1 1 calc(50% - 6px);padding:14px 12px}
+  .contact .acts .btn-solid{flex-basis:100%}
+}
+@media(max-width:360px){
+  .signbar .mark{font-size:13px;letter-spacing:.1em}
+  .signbar .mark .sub{display:none}
+  .metrics{grid-template-columns:1fr}
+  .metrics div{border-right:none!important;border-bottom:1px solid var(--rule)}
+  .metrics div:last-child{border-bottom:none}
+}
+@media(hover:none){
+  .cred:hover{background:var(--white);transform:none}
+  .btn-solid:hover,.btn-line:hover{transform:none}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001s!important;transition-duration:.001s!important}
+  .rv{opacity:1;transform:none}
+}
+@media print{
+  .signbar,.mobilenav,.totop,.modal,.acts{display:none!important}
+  .rv{opacity:1;transform:none}
+  details.finding .evidence{display:block}
+  .redact{color:var(--ink);background:none}
+  .contact,.endbar{background:#fff;color:#000}
+  .contact h2,.contact .intro{color:#000}
+}
+</style>
+</head>
+<body>
+
+<header class="signbar">
+  <div class="wrap">
+    <a class="mark" href="#top">Rahul<span class="dot">.</span><span class="sub"> — SecOps</span></a>
+    <nav aria-label="Sections">
+      <a href="#assessment">Assessment</a>
+      <a href="#experience">Experience</a>
+      <a href="#credentials">Credentials</a>
+      <a href="#capability">Capability</a>
+      <a href="#work">Work</a>
+      <a href="#promise">Promise</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <span class="status"><span class="pulse" aria-hidden="true"></span><span class="stxt">Open to new roles</span></span>
+    <button class="menubtn" id="menuBtn" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
+      <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>Menu
+    </button>
+  </div>
+</header>
+<nav class="mobilenav" id="mobileNav" aria-label="Sections (mobile)">
+  <a href="#assessment"><span>01</span>Assessment</a>
+  <a href="#experience"><span>02</span>Experience</a>
+  <a href="#credentials"><span>03</span>Credentials</a>
+  <a href="#capability"><span>04</span>Capability</a>
+  <a href="#work"><span>05</span>Work</a>
+  <a href="#promise"><span>06</span>Promise</a>
+  <a href="#contact"><span>07</span>Contact</a>
+</nav>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap">
+    <p class="kicker">
+      <span>Security operations · New York City government</span>
+      <span class="avail">Open to new roles · any location</span>
+    </p>
+
+    <h1>Rahul<span class="stop">.</span></h1>
+    <p class="role">Security Operations Engineer</p>
+
+    <p class="standfirst">
+      I keep New York City government infrastructure running — firewalls, SIEM, DNS,
+      proxy, remote access and Zero Trust admin access across multiple agencies. When the work repeats, I automate it:
+      <b>40 minutes returned to my team, every day</b>. New tools don't scare me —
+      I learn what the job needs before day one.
+    </p>
+
+    <div class="acts">
+      <a class="btn btn-solid" href="mailto:hicanwetalk@proton.me">Start a conversation</a>
+      <a class="btn btn-line" href="./docs/Resume_Rahul.pdf" download>Download Resume</a>
+    </div>
+
+    <dl class="fields">
+      <div class="field"><dt>Current posting</dt><dd>NYC Office of Technology &amp; Innovation</dd></div>
+      <div class="field"><dt>Location</dt><dd>New York City · <span class="go">open to relocation</span></dd></div>
+      <div class="field"><dt>Domains</dt><dd>Firewall · SIEM · DNS · Proxy · VPN · Zero Trust</dd></div>
+      <div class="field"><dt>References</dt><dd>Current &amp; past supervisors · <span class="go">just ask</span></dd></div>
+    </dl>
+
+    <!-- SIGNATURE: coverage board -->
+    <div class="board rv">
+      <div class="board-head">
+        <h2>Coverage — what I run</h2>
+        <span class="clock" id="clock">--:--:-- UTC</span>
+      </div>
+      <div class="svc">
+        <span class="bullet b-blue" aria-hidden="true">FW</span>
+        <div><h3>Firewall &amp; policy</h3>
+          <p>Palo Alto (Panorama) and Checkpoint rule design, review and optimisation across agency networks, plus NETSCOUT Arbor DDoS protection.</p></div>
+        <span class="state">Daily</span>
+      </div>
+      <div class="svc">
+        <span class="bullet b-orange" aria-hidden="true">SIEM</span>
+        <div><h3>Detection &amp; log pipeline</h3>
+          <p>IBM QRadar log sources, NXLog and parsing — finding the sources that stopped reporting before anyone else notices.</p></div>
+        <span class="state">Daily</span>
+      </div>
+      <div class="svc">
+        <span class="bullet b-green" aria-hidden="true">DNS</span>
+        <div><h3>DNS &amp; name services</h3>
+          <p>Infoblox records (A, CNAME, MX, TXT, SRV — including SPF, DKIM and DMARC) for multiple NYC agencies, plus proxy configuration.</p></div>
+        <span class="state">Daily</span>
+      </div>
+      <div class="svc">
+        <span class="bullet b-purple" aria-hidden="true">ZTA</span>
+        <div><h3>Remote &amp; Zero Trust access</h3>
+          <p>Ivanti Connect Secure for SSL VPN and Zero Trust access, giving administrators policy-based access to only the resources they need, plus site-to-site tunnels.</p></div>
+        <span class="state">Daily</span>
+      </div>
+      <div class="svc">
+        <span class="bullet b-yellow" aria-hidden="true">AUTO</span>
+        <div><h3>Automation</h3>
+          <p>PowerShell and Ansible health checks that pull status via REST API and email the team scheduled HTML reports anyone can read from anywhere.</p></div>
+        <span class="state">Daily</span>
+      </div>
+    </div>
+
+    <div class="metrics rv">
+      <div><span class="n">40<small>min</small></span><span class="l">Returned to the team daily</span></div>
+      <div><span class="n">5</span><span class="l">Proctored certifications</span></div>
+      <div><span class="n"><span id="yrs">2.8</span><small>yr</small></span><span class="l">Defending city systems</span></div>
+      <div><span class="n">1st</span><span class="l">John Jay cyber hackathon</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="assessment">
+  <div class="wrap">
+    <p class="sec-mark"><span>01 — Assessment</span><span>6 claims · evidence attached</span></p>
+    <h2>What the file says</h2>
+    <p class="intro">Every claim below opens to show the evidence behind it. Nothing here is asserted without something you can verify or ask me about in an interview.</p>
+
+    <div class="findings">
+      <details class="finding rv">
+        <summary><span class="fnum">01</span><span class="claim">Turns repeated work into automation that outlives him.</span><span class="plus" aria-hidden="true"></span></summary>
+        <div class="evidence">
+          <p>Our daily platform health checks used to be a manual click-through across two systems. I'd never worked with APIs before, so I read the Palo Alto and Ivanti documentation, taught myself Ansible, and built 3–4 PowerShell and Ansible checks that pull the status for us. They now run on a schedule and email the team an HTML report, so any engineer can read the platform health from anywhere without logging in to the internal network. Then I wrote the runbook so anyone on the team can maintain it.</p>
+          <p>That's roughly <b>3.5 hours a week</b> returned to the team — and every new check I add costs minutes instead of an hour.</p>
+          <p class="src">Evidence — <b>~40 minutes saved per daily cycle, 170+ hours a year</b>. NYC OTI, 2024 to present. Ask me to walk through how I built it and what I learned along the way.</p>
+        </div>
+      </details>
+
+      <details class="finding rv">
+        <summary><span class="fnum">02</span><span class="claim">Teaches himself whatever the job needs, then masters it.</span><span class="plus" aria-hidden="true"></span></summary>
+        <div class="evidence">
+          <p>QRadar, Palo Alto Panorama and Ansible were all new to me in January 2024. I learned them on the job — from vendor documentation, labs and senior review — until I was making production changes on all three under change control. AWS I taught myself off-hours and confirmed with the Solutions Architect exam. Ansible and scripting I picked up specifically because I wanted to ship the health-check automation.</p>
+          <p>I don't stop at "good enough". <b>Whatever your stack is, I'll put in the work until I know it properly.</b></p>
+          <p class="src">Evidence — three unfamiliar platforms to daily production use, self-taught on the job · <b>AWS SAA and CCP</b>, self-taught, Credly-verified · three Palo Alto instructor-led courses applied on live infrastructure · <b>AWS Security Specialty in progress</b>, target December 2026.</p>
+        </div>
+      </details>
+
+      <details class="finding rv">
+        <summary><span class="fnum">03</span><span class="claim">Learns your stack before the first day, not after.</span><span class="plus" aria-hidden="true"></span></summary>
+        <div class="evidence">
+          <p>If your team runs something I haven't used in production — Elastic, Sentinel, Proofpoint, Kubernetes, whatever it is — I'll spend the time between offer and start date getting hands-on with it: vendor training, labs, docs, a home setup if that's what it takes.</p>
+          <p>Same goes for certifications. <b>If the role needs a cert I don't have yet, I'll earn it before I join or within my first few weeks</b>, depending on the offer and timeline.</p>
+          <p>I'm not going to pretend I already know everything. What I can promise is that <b>you won't be teaching me from zero on day one</b>.</p>
+          <p class="src">Evidence — see claim 02: QRadar, Panorama, Ansible and scripting, all self-taught on the job. Weekly <b>TryHackMe</b> practice on top of the day job, including a <b>top-115 finish in Hackfinity Battle 2025</b>.</p>
+        </div>
+      </details>
+
+      <details class="finding rv">
+        <summary><span class="fnum">04</span><span class="claim">Trusted with infrastructure a city depends on.</span><span class="plus" aria-hidden="true"></span></summary>
+        <div class="evidence">
+          <p>Firewall policy, DNS records, proxy configuration, remote access and Zero Trust administrator access for multiple New York City agencies — an environment where a bad rule change is a public-facing outage, not a rollback in staging.</p>
+          <p class="src">Evidence — <b>NYC Office of Technology &amp; Innovation</b>, January 2024 to present. Talk to my current and past supervisors — <a href="#promise"><b>see references</b></a>.</p>
+        </div>
+      </details>
+
+      <details class="finding rv">
+        <summary><span class="fnum">05</span><span class="claim">Writes the incident down so it doesn't happen twice.</span><span class="plus" aria-hidden="true"></span></summary>
+        <div class="evidence">
+          <p>I respond to live outages, dig in until I find the root cause, and feed my findings into the documented RCA that seniors write and submit. Then I help drive the corrective action to closure — the part most people skip once the alert goes green.</p>
+          <p>I also helped fix QRadar ingestion and parsing gaps that were silently costing detection coverage. A rule is worthless if its log source stopped shipping three weeks ago, and nobody files a ticket for that because nothing visibly breaks.</p>
+          <p class="src">Evidence — <b>root cause investigation at NYC OTI</b>, with findings documented in the team's formal RCAs. Happy to talk through a sanitised example end to end.</p>
+        </div>
+      </details>
+
+      <details class="finding rv">
+        <summary><span class="fnum">06</span><span class="claim">Brings the ideas, builds the tools — and competes for fun.</span><span class="plus" aria-hidden="true"></span></summary>
+        <div class="evidence">
+          <p>OSINTrix is a private OSINT investigation workspace that runs entirely in the browser: evidence capture, log parsing, link graphs, a PCAP reader and Sigma/YARA testing, with nothing ever leaving the analyst's machine. Ghost Chat is end-to-end encrypted, post-quantum browser chat with no accounts and nothing stored. WinForensicX, a read-only Windows triage toolkit mapped to MITRE ATT&amp;CK, is in build. PROTECT is a cybercrime reporting platform I led and shipped, designed so ordinary New Yorkers can report a threat without knowing the vocabulary, and I'm now rebuilding it for all ages. On top of that I'm founding two startups: <b>Planura</b>, an NYC outing planner, and <b>Whats Trending</b>, which puts trends from everywhere in one place.</p>
+          <p class="src">Evidence — <a href="https://github.com/w3bcooki3" target="_blank" rel="noopener"><b>github.com/w3bcooki3</b></a> · 1st place, John Jay College cybersecurity hackathon · 3rd place, AWS hackathon at Queensborough · <b>rank 115, TryHackMe Hackfinity Battle 2025</b>.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <p class="sec-mark"><span>02 — Chronology</span><span>3 stops · current at the top</span></p>
+    <h2>The line</h2>
+
+    <div class="linemap">
+      <article class="station now rv">
+        <p class="when">Jan 2024 — Present <span class="tag">Current</span></p>
+        <h3>Security Operations Engineer</h3>
+        <p class="org">NYC Office of Technology &amp; Innovation</p>
+        <ul>
+          <li>Design, implement and optimise firewall rules across <b>Palo Alto Panorama</b> and <b>Checkpoint</b> — tighter policy, no agency downtime.</li>
+          <li>Administer <b>Ivanti Connect Secure</b> for SSL VPN and <b>Zero Trust access</b>, giving administrators secure, policy-based access to only the internal resources they need.</li>
+          <li>Configure and maintain <b>Infoblox DNS</b> records (A, CNAME, MX, TXT, SRV) for multiple city agencies, including email authentication (SPF, DKIM, DMARC).</li>
+          <li>Respond to live outages, find the <b>root cause</b>, and provide findings for the documented RCA, then close corrective actions so incidents don't repeat.</li>
+          <li>Automated daily platform health checks that previously needed manual logins: <b>PowerShell + Ansible</b> pull status via REST API and email the team scheduled HTML reports — <b>40+ minutes saved a day, 170+ hours a year</b>.</li>
+          <li>Work with <b>NETSCOUT Arbor</b> DDoS protection alongside firewall and proxy controls at the network edge.</li>
+          <li>Onboard log sources, deploy NXLog and fix parsing so logs land correctly in <b>IBM QRadar</b>, closing gaps that were quietly costing visibility.</li>
+          <li>Work with <b>AWS</b> load balancers, NAT gateways and routes, plus <b>Azure Front Door</b>, for city applications.</li>
+        </ul>
+      </article>
+
+      <article class="station rv">
+        <p class="when">Sep 2022 — Dec 2023</p>
+        <h3>IT Support Specialist Intern</h3>
+        <p class="org">NYC Department of Education — DIIT</p>
+        <ul>
+          <li>Benchmark-tested device fleets (Lenovo, Acer, Apple, Dell, Lexmark) and reported defects to engineering with reproduction steps.</li>
+          <li>Wrote the hardware and software configuration documentation the wider org used for troubleshooting.</li>
+        </ul>
+      </article>
+
+      <article class="station rv">
+        <p class="when">Oct 2021 — Jun 2022</p>
+        <h3>IT Support Specialist Intern</h3>
+        <p class="org">NYC Department of Education — Schools</p>
+        <ul>
+          <li>Troubleshot <b>150+ devices</b> and kept a 200+ device inventory accurate.</li>
+          <li>Kept school technology operational for teaching staff, end to end.</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="credentials">
+  <div class="wrap">
+    <p class="sec-mark"><span>03 — Credentials</span><span>independently verifiable</span></p>
+    <h2>Papers, checked</h2>
+    <p class="intro">Tiered the way an analyst tiers alerts — by how hard the signal is to fake. Tap a badge to see the certificate; tap Verify to check it on Credly without emailing me.</p>
+
+    <div class="credtier">
+      <h3><span>Tier I — Proctored exams</span><em>hardest to fake</em></h3>
+
+      <div class="cred">
+        <button class="credmain" data-t="CompTIA Security Analytics Professional (CSAP)" data-i="CompTIA — stackable: Security+ and CySA+">
+          <span class="thumb"><img src="./media/comptia-csap-stackable-certification.png" alt="CompTIA CSAP badge" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="fb">CSAP</span></span>
+          <span class="name">CompTIA Security Analytics Professional<small>Stackable — Security+ and CySA+ · earned 2026</small></span>
+        </button>
+        <a class="vr" href="https://www.credly.com/badges/47f1bd77-1cce-4681-a334-c037b04a2fcc/public_url" target="_blank" rel="noopener">Verify ↗</a>
+      </div>
+
+      <div class="cred">
+        <button class="credmain" data-t="CompTIA CySA+" data-i="CompTIA">
+          <span class="thumb"><img src="./media/comptia-cysa-ce-certification.png" alt="CompTIA CySA+ badge" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="fb">CYSA+</span></span>
+          <span class="name">CompTIA CySA+<small>Cybersecurity Analyst</small></span>
+        </button>
+        <a class="vr" href="https://www.credly.com/badges/2fe7daed-7a29-4888-9098-3ac1ad3399bc/public_url" target="_blank" rel="noopener">Verify ↗</a>
+      </div>
+
+      <div class="cred">
+        <button class="credmain" data-t="CompTIA Security+" data-i="CompTIA">
+          <span class="thumb"><img src="./media/comptia-security-ce-certification.png" alt="CompTIA Security+ badge" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="fb">SEC+</span></span>
+          <span class="name">CompTIA Security+<small>Renewed 2026 — current, not expired</small></span>
+        </button>
+        <a class="vr" href="https://www.credly.com/badges/4f726f6c-4db0-41fe-88a5-9efab7d48ecc/public_url" target="_blank" rel="noopener">Verify ↗</a>
+      </div>
+
+      <div class="cred">
+        <button class="credmain" data-t="AWS Certified Solutions Architect — Associate" data-i="Amazon Web Services">
+          <span class="thumb"><img src="./media/aws-certified-solutions-architect-associate.png" alt="AWS Solutions Architect Associate badge" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="fb">AWS SAA</span></span>
+          <span class="name">AWS Solutions Architect — Associate<small>Self-taught, off-hours</small></span>
+        </button>
+        <a class="vr" href="https://www.credly.com/badges/60b9b70d-426c-461e-92c0-ed31cd081d82/public_url" target="_blank" rel="noopener">Verify ↗</a>
+      </div>
+
+      <div class="cred">
+        <button class="credmain" data-t="AWS Certified Cloud Practitioner" data-i="Amazon Web Services">
+          <span class="thumb"><img src="./media/aws-certified-cloud-practitioner.png" alt="AWS Cloud Practitioner badge" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="fb">AWS CCP</span></span>
+          <span class="name">AWS Cloud Practitioner<small>Amazon Web Services</small></span>
+        </button>
+        <a class="vr" href="https://www.credly.com/badges/1f70c580-45c4-44d4-b485-07eab1444798/public_url" target="_blank" rel="noopener">Verify ↗</a>
+      </div>
+    </div>
+
+    <div class="credtier">
+      <h3><span>In progress — next on the list</span><em>not yet earned · listed so you know what's coming</em></h3>
+
+      <div class="cred wip">
+        <div class="credmain" role="group" aria-label="AWS Certified Security Specialty, in progress">
+          <span class="thumb"><span class="fb show">AWS<br>SCS</span></span>
+          <span class="name">AWS Certified Security — Specialty<small>Preparing now (SCS-C03) · target December 2026</small></span>
+        </div>
+        <span class="vr">In progress</span>
+      </div>
+
+      <p class="credpledge"><b>Need a different cert for the role?</b> Tell me which one. Depending on the offer and start date, I'll earn it before I join or within my first few weeks.</p>
+    </div>
+
+    <div class="credtier">
+      <h3><span>Tier II — Vendor training</span><em>instructor-led · applied on live infrastructure</em></h3>
+
+      <div class="cred">
+        <button class="credmain" data-t="Palo Alto Firewall Essentials (EDU-210)" data-i="Palo Alto Networks">
+          <span class="thumb"><img src="./media/paloedu-210.png" alt="Palo Alto EDU-210 certificate" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="fb">EDU-210</span></span>
+          <span class="name">Firewall Essentials — EDU-210<small>Palo Alto Networks · employer-sponsored</small></span>
+        </button>
+        <span class="vr">View ↗</span>
+      </div>
+
+      <div class="cred">
+        <button class="credmain" data-t="Palo Alto Firewall Troubleshooting (EDU-330)" data-i="Palo Alto Networks">
+          <span class="thumb"><img src="./media/paloedu-330.png" alt="Palo Alto EDU-330 certificate" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="fb">EDU-330</span></span>
+          <span class="name">Firewall Troubleshooting — EDU-330<small>Palo Alto Networks</small></span>
+        </button>
+        <span class="vr">View ↗</span>
+      </div>
+
+      <div class="cred">
+        <button class="credmain" data-t="Palo Alto Panorama: NGFW Management" data-i="Palo Alto Networks">
+          <span class="thumb"><img src="./media/paloedu-management.png" alt="Palo Alto Panorama certificate" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="fb">PANORAMA</span></span>
+          <span class="name">Panorama: NGFW Management<small>Palo Alto Networks</small></span>
+        </button>
+        <span class="vr">View ↗</span>
+      </div>
+    </div>
+
+    <div class="credtier">
+      <h3><span>Tier III — Coursework</span><em>foundations and breadth</em></h3>
+
+      <div class="cred">
+        <button class="credmain" data-t="Google Cybersecurity Certificate" data-i="Coursera">
+          <span class="thumb"><img src="./media/google-cybersecurity-certificate.png" alt="Google Cybersecurity certificate" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="fb">GOOGLE</span></span>
+          <span class="name">Google Cybersecurity Certificate<small>Coursera</small></span>
+        </button>
+        <span class="vr">View ↗</span>
+      </div>
+
+      <div class="cred">
+        <button class="credmain" data-t="Cyber Security Micro-Credential" data-i="BMCC · NY Jobs CEO Council">
+          <span class="thumb"><img src="./media/micro%20cyber-1.png" alt="BMCC Cyber Security micro-credential" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="fb">BMCC</span></span>
+          <span class="name">Cyber Security Micro-Credential<small>BMCC · NY Jobs CEO Council</small></span>
+        </button>
+        <span class="vr">View ↗</span>
+      </div>
+
+      <div class="cred">
+        <button class="credmain" data-t="Systems Administration Micro-Credential" data-i="CUNY School of Professional Studies">
+          <span class="thumb"><img src="./media/Certificate%20of%20Completion_Systems%20Administration_SPS_Aug22-FR-1.png" alt="Systems Administration micro-credential" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="fb">SYSADMIN</span></span>
+          <span class="name">Systems Administration<small>CUNY School of Professional Studies</small></span>
+        </button>
+        <span class="vr">View ↗</span>
+      </div>
+
+      <div class="cred">
+        <button class="credmain" data-t="Codepath Cybersecurity Course" data-i="Codepath.org">
+          <span class="thumb"><img src="./media/codepath%20cybersecurity%20certificate-1.png" alt="Codepath Cybersecurity certificate" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="fb">CODEPATH</span></span>
+          <span class="name">Codepath Cybersecurity<small>Codepath.org</small></span>
+        </button>
+        <span class="vr">View ↗</span>
+      </div>
+
+      <div class="cred">
+        <button class="credmain" data-t="Hackfinity Battle 2025 — Rank 115" data-i="TryHackMe · 1,200 points · 33 tasks">
+          <span class="thumb"><img src="./media/hackfinity-battle-2025.png" alt="TryHackMe Hackfinity Battle certificate" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="fb">THM CTF</span></span>
+          <span class="name">Hackfinity Battle 2025 — Rank 115<small>TryHackMe CTF · 1,200 points · 33 tasks</small></span>
+        </button>
+        <span class="vr">View ↗</span>
+      </div>
+
+      <div class="cred">
+        <button class="credmain" data-t="TEALS 2023–24 Volunteer — Cybersecurity" data-i="Microsoft">
+          <span class="thumb"><img src="./media/teals-2023-24-volunteer-badge.png" alt="Microsoft TEALS volunteer badge" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="fb">TEALS</span></span>
+          <span class="name">TEALS Volunteer — Cybersecurity<small>Microsoft · taught high-school security</small></span>
+        </button>
+        <span class="vr">View ↗</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="capability">
+  <div class="wrap">
+    <p class="sec-mark"><span>04 — Capability</span><span>grouped by the work, not the vendor</span></p>
+    <h2>What I can be handed</h2>
+    <p class="intro">Production experience unless stated otherwise. Where the honest answer is "lab only" or "basic", it says so.</p>
+
+    <dl class="captable">
+      <div class="caprow">
+        <span class="dotmark b-blue" aria-hidden="true"></span>
+        <dt>Firewall &amp; policy</dt>
+        <dd><b>Palo Alto PAN-OS, Panorama, Checkpoint.</b> Rule design, review, cleanup and change control on multi-agency networks · <b>NETSCOUT Arbor</b> DDoS protection.</dd>
+      </div>
+      <div class="caprow">
+        <span class="dotmark b-orange" aria-hidden="true"></span>
+        <dt>Detection &amp; logging</dt>
+        <dd><b>IBM QRadar</b> log source onboarding, parsing, AQL and reports · <b>NXLog</b> · CrowdStrike Falcon <em>(host lookups)</em> · Splunk, Sentinel, Elastic <em>(labs and coursework)</em>.</dd>
+      </div>
+      <div class="caprow">
+        <span class="dotmark b-green" aria-hidden="true"></span>
+        <dt>Network services</dt>
+        <dd><b>Infoblox DNS</b> (incl. SPF, DKIM, DMARC), Bluecoat proxy, site-to-site tunnels.</dd>
+      </div>
+      <div class="caprow">
+        <span class="dotmark b-purple" aria-hidden="true"></span>
+        <dt>Remote &amp; Zero Trust access</dt>
+        <dd><b>Ivanti Connect Secure</b> for SSL VPN and <b>Zero Trust access</b>: policy-based administrator access to specific internal resources, user access troubleshooting, upgrades and security patching.</dd>
+      </div>
+      <div class="caprow">
+        <span class="dotmark b-yellow" aria-hidden="true"></span>
+        <dt>Automation</dt>
+        <dd><b>PowerShell</b>, <b>Ansible (YAML)</b>, runbook documentation · REST APIs <em>(basic — learned from vendor docs for health checks)</em>.</dd>
+      </div>
+      <div class="caprow">
+        <span class="dotmark b-purple" aria-hidden="true"></span>
+        <dt>Incident &amp; analysis</dt>
+        <dd><b>Incident response</b>, root cause investigation, log analysis, phishing triage, Wireshark · Burp Suite <em>(lab and hackathons)</em>.</dd>
+      </div>
+      <div class="caprow">
+        <span class="dotmark b-red" aria-hidden="true"></span>
+        <dt>Cloud</dt>
+        <dd><b>AWS</b> load balancers, NAT gateways and routes · <b>Azure Front Door</b> · Entra ID — on the job. EC2, S3, CloudFront <em>(certified and hackathon projects)</em> · AWS Security Specialty <em>(in progress, target December 2026)</em>.</dd>
+      </div>
+      <div class="caprow">
+        <span class="dotmark" style="background:var(--ink)" aria-hidden="true"></span>
+        <dt>Platforms &amp; build</dt>
+        <dd>Windows, Linux, macOS · protocol-level troubleshooting (TCP/IP, TLS, DNS, SAML) · vanilla JS front-end for my own tools <em>(AI-assisted)</em> · PowerShell tooling · <b>n8n</b> workflows · Git/GitHub Actions · Docker <em>(labs)</em> · building with <b>Claude</b> as a coding partner.</dd>
+      </div>
+      <div class="caprow">
+        <span class="dotmark" style="background:var(--grey)" aria-hidden="true"></span>
+        <dt>Ongoing practice</dt>
+        <dd>Weekly <a href="https://tryhackme.com/p/j0b" target="_blank" rel="noopener">TryHackMe</a> reps — SOC and defensive security labs. Real boxes, real logs. <b>Hackfinity Battle 2025: rank 115, 33 challenges solved.</b></dd>
+      </div>
+    </dl>
+
+    <div class="offrecord rv">
+      <h3>Appendix — off the record</h3>
+      <p class="hint">Redacted for the file. Tap to declassify.</p>
+      <div class="qa">
+        <p><span class="q">Known weakness</span><button class="redact">Will rewrite any manual process the third time he sees it, whether or not it was on the sprint.</button></p>
+        <p><span class="q">Compensation expectations</span><button class="redact">Negotiable and honest — tell me the band and I'll tell you straight away if it works.</button></p>
+        <p><span class="q">What he actually wants next</span><button class="redact">A SOC, SIEM, security engineering or AI security role where automation and new ideas are encouraged, not merely tolerated.</button></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <p class="sec-mark"><span>05 — Independent work</span><span>startups, projects &amp; competitions</span></p>
+    <h2>Built, not configured</h2>
+    <p class="intro">I bring the ideas, brainstorm the design and own the security decisions and testing. I build with Claude as a coding partner, which lets one person ship what used to need a team.</p>
+
+    <article class="projrow rv">
+      <span class="projmark b-yellow" aria-hidden="true">01</span>
+      <div>
+        <p class="tp">Startup · founder</p>
+        <h3>Planura</h3>
+        <p>An outing planner for New York City. Tell it what you're in the mood for — a birthday, a date, a Friday night or a weekend hangout with friends — and it lines up a plan of places in order, mapped and timed, with booking links, in about 30 seconds. My idea, product design and build.</p>
+        <p class="aw build">In development</p>
+        <p class="st">Web app — <a href="https://vybedev.up.railway.app/" target="_blank" rel="noopener">try the preview</a></p>
+      </div>
+    </article>
+
+    <article class="projrow rv">
+      <span class="projmark b-red" aria-hidden="true">02</span>
+      <div>
+        <p class="tp">Startup · founder</p>
+        <h3>Whats Trending</h3>
+        <p>An app that collects trends from across the internet and puts them in one place, so creators and everyday users can see what's happening right now without checking ten different platforms.</p>
+        <p class="aw build">In development</p>
+      </div>
+    </article>
+
+    <article class="projrow rv">
+      <span class="projmark b-blue" aria-hidden="true">03</span>
+      <div>
+        <p class="tp">OSINT &amp; investigation workspace</p>
+        <h3>OSINTrix</h3>
+        <p>A private OSINT investigation workspace that runs entirely in the browser. No server, no account, no tracking: cases never leave the analyst's machine. It pulls indicators out of pasted evidence automatically, parses logs (CEF, LEEF, Windows event XML, Zeek, Cisco ASA, syslog and more), builds a link graph from the evidence, and includes a PCAP reader, SQLite and browser-history viewer, file inspector and Sigma/YARA rule testing.</p>
+        <p>Optional AES-256-GCM encryption for the whole workspace, a tamper-evident audit log and signed chain-of-custody reports. Covered by Playwright end-to-end tests that run on every push.</p>
+        <p class="st">HTML · CSS · vanilla JS · IndexedDB · Cytoscape · Leaflet — <a href="https://w3bcooki3.github.io/osintrix/" target="_blank" rel="noopener">launch the app</a> · <a href="https://github.com/w3bcooki3/osintrix" target="_blank" rel="noopener">github.com/w3bcooki3/osintrix</a></p>
+      </div>
+    </article>
+
+    <article class="projrow rv">
+      <span class="projmark b-purple" aria-hidden="true">04</span>
+      <div>
+        <p class="tp">Private messaging</p>
+        <h3>Ghost Chat</h3>
+        <p>End-to-end encrypted chat between browsers for two to six people. No account, no app to install, nothing stored: close the tab and it's gone. Hybrid post-quantum key exchange (ECDH P-384 plus ML-KEM-1024), a fresh AES-256 key for every message, safety numbers to catch a man in the middle, file sharing and a one-tap panic wipe.</p>
+        <p>Honest status: internally reviewed and covered by automated browser tests, but not independently audited.</p>
+        <p class="st">WebRTC · Web Crypto · open source (MIT) — <a href="https://w3bcooki3.github.io/ghostchat/" target="_blank" rel="noopener">open Ghost Chat</a> · <a href="https://github.com/w3bcooki3/ghostchat" target="_blank" rel="noopener">github.com/w3bcooki3/ghostchat</a></p>
+      </div>
+    </article>
+
+    <article class="projrow rv">
+      <span class="projmark b-orange" aria-hidden="true">05</span>
+      <div>
+        <p class="tp">DFIR triage · Windows</p>
+        <h3>WinForensicX</h3>
+        <p>A read-only incident-triage toolkit for Windows. One command collects the state of a host, checks it against detection rules mapped to MITRE ATT&amp;CK (living-off-the-land abuse, persistence, C2 and beaconing, ransomware, exposed secrets, AI-era threats), scores the risk, and writes a self-contained HTML report with a SHA-256 manifest for chain of custody. It never dumps or decrypts credentials.</p>
+        <p class="aw build">In build · not yet field-tested</p>
+        <p class="st">PowerShell · JSON rule packs · Pester tests — <a href="https://github.com/w3bcooki3/WinForensicX" target="_blank" rel="noopener">github.com/w3bcooki3/WinForensicX</a></p>
+      </div>
+    </article>
+
+    <article class="projrow rv">
+      <span class="projmark b-green" aria-hidden="true">06</span>
+      <div>
+        <p class="tp">Civic security platform</p>
+        <h3>PROTECT</h3>
+        <p>A cybercrime reporting platform built so ordinary New Yorkers can report a threat without knowing the vocabulary. I led the team and the build. Now rebuilding it to help people of all ages report cybercrime and learn how to stay safe online.</p>
+        <p class="aw">1st place — Cybersecurity Hackathon, John Jay College (2023) · rebuild in progress</p>
+        <p class="st">Team lead · full build — <a href="https://github.com/w3bcooki3/report-cybercrime" target="_blank" rel="noopener">github.com/w3bcooki3/report-cybercrime</a></p>
+      </div>
+    </article>
+
+    <article class="projrow rv">
+      <span class="projmark b-blue" aria-hidden="true">07</span>
+      <div>
+        <p class="tp">Threat intelligence automation · n8n</p>
+        <h3>OSINTrix Threat Intel Pipeline</h3>
+        <p>An n8n workflow that runs every three hours across nine security feeds (BleepingComputer, The Hacker News, SecurityWeek, CISA advisories and KEV, NCSC UK, Palo Alto PSIRT, The DFIR Report, abuse.ch Feodo). It normalises the items, extracts IOCs and CVEs, enriches them with EPSS scores and lookups, scores the risk, alerts only on what's new, and outputs STIX 2.1 for OSINTrix.</p>
+        <p class="aw">Running end to end · 165 items, 16 IOCs, 32 enrichment lookups in one run</p>
+      </div>
+    </article>
+
+    <article class="projrow rv">
+      <span class="projmark b-red" aria-hidden="true">08</span>
+      <div>
+        <p class="tp">Capture the flag · TryHackMe</p>
+        <h3>Hackfinity Battle 2025</h3>
+        <p>TryHackMe's global CTF event. Worked through 33 challenges against the clock and finished at rank 115 on the scoreboard.</p>
+        <p class="aw">Rank 115 · 1,200 points · 33 tasks completed</p>
+        <p class="st">March 2025 — <a href="./media/hackfinity-battle-2025.png" target="_blank" rel="noopener">view certificate</a> · <a href="https://tryhackme.com/p/j0b" target="_blank" rel="noopener">tryhackme.com/p/j0b</a></p>
+      </div>
+    </article>
+
+    <div class="edugrid">
+      <div class="edu rv">
+        <p class="when">Sep 2021 — Dec 2023 · Manhattan, NY</p>
+        <h3>B.S. Computer Science &amp; Information Security</h3>
+        <p class="school">John Jay College of Criminal Justice</p>
+        <p>Operating systems · network security &amp; forensics · cybercrime · cryptography &amp; cryptanalysis · computer networking</p>
+      </div>
+      <div class="edu rv">
+        <p class="when">Sep 2019 — Jun 2021 · Bayside, NY</p>
+        <h3>A.S. Computer Science &amp; Information Security</h3>
+        <p class="school">Queensborough Community College</p>
+        <p>Linux fundamentals · network security · cloud computing · 3rd place, AWS hackathon</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="promise">
+  <div class="wrap">
+    <p class="sec-mark"><span>06 — Promise</span><span>two things you can hold me to</span></p>
+    <h2>Before you decide</h2>
+    <p class="intro">Hiring someone is a bet. Here's how I make it an easier one.</p>
+
+    <div class="pledges rv">
+      <div class="pledge learn">
+        <span class="ptag">Learn first</span>
+        <h3>I'll learn your stack before day one</h3>
+        <p>If the role needs a tool I haven't run in production, I'll get hands-on with it between the offer and my start date — so <b>you're not teaching me from zero</b>. If it needs a certification I don't hold yet, <b>I'll earn it before I join or within my first few weeks</b>, depending on the offer.</p>
+        <ul>
+          <li>Vendor training and official docs</li>
+          <li>Hands-on labs or a home setup</li>
+          <li>Any certification the role calls for</li>
+          <li>Questions ready for my first week, not my first month</li>
+        </ul>
+        <p class="pfoot">Track record: QRadar, Panorama, Ansible and scripting self-taught on the job; Security+, CySA+ and AWS certifications earned on my own time. Next up: AWS Security Specialty, target December 2026.</p>
+      </div>
+      <div class="pledge refs">
+        <span class="ptag">Don't take my word</span>
+        <h3>Ask the people I've worked for</h3>
+        <p>Before you make a decision, <b>talk to my current and previous supervisors and managers</b>. They'll tell you how I actually work — the effort, the follow-through, and how I handle it when things break.</p>
+        <ul>
+          <li>NYC Office of Technology &amp; Innovation — current supervisors and team</li>
+          <li>NYC Department of Education — past supervisors</li>
+        </ul>
+        <p class="pfoot">Email <a href="mailto:hicanwetalk@proton.me?subject=Reference%20request">hicanwetalk@proton.me</a> and I'll connect you with references the same day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <p class="sec-mark"><span>07 — Escalation path</span><span>same-day reply</span></p>
+    <h2>Next stop:<br>your SOC</h2>
+    <p class="intro">
+      Send the job description, ask for references, or just say hello. Open to relocation,
+      ready to learn whatever your team runs — I'd like to hear what you're defending.
+    </p>
+    <div class="acts">
+      <a class="btn btn-solid" href="mailto:hicanwetalk@proton.me"><span class="lc">hicanwetalk@proton.me</span></a>
+      <a class="btn btn-line" href="https://www.linkedin.com/in/fnu-rahul" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn btn-line" href="https://github.com/w3bcooki3" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn btn-line" href="https://tryhackme.com/p/j0b" target="_blank" rel="noopener">TryHackMe</a>
+      <a class="btn btn-line" href="./docs/Resume_Rahul.pdf" download>Resume</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<div class="endbar">
+  <div class="wrap">
+    <span>End of file — Rahul · Security Operations · New York City</span>
+    <span>Built by hand. <b>Defended by habit.</b></span>
+  </div>
+</div>
+
+<a class="totop" id="toTop" href="#top" aria-label="Back to top">↑</a>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Credential viewer">
+  <button class="x" id="mClose">Close · Esc</button>
+  <div>
+    <img id="mImg" src="" alt="Credential, full size">
+    <p class="cap"><strong id="mTitle"></strong><span id="mIssuer"></span></p>
+  </div>
+</div>
+
+<script>
+(function(){
+  /* live UTC clock */
+  var clock=document.getElementById('clock');
+  function tick(){clock.textContent=new Date().toISOString().substr(11,8)+' UTC';}
+  tick();setInterval(tick,1000);
+
+  /* years of experience, auto-updates from Jan 2024 */
+  var yrs=document.getElementById('yrs');
+  if(yrs){
+    var start=new Date(Date.UTC(2024,0,1)),now=new Date();
+    var y=(now-start)/(365.25*24*3600*1000);
+    yrs.textContent=(Math.floor(y*10)/10).toFixed(1);
+  }
+
+  /* reveal on scroll (falls back to visible if unsupported) */
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+    },{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+    document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
+  }else{document.documentElement.classList.add('no-io');}
+
+  /* redactions */
+  document.querySelectorAll('.redact').forEach(function(b){
+    b.addEventListener('click',function(){b.classList.toggle('open');});
+  });
+
+  /* mobile menu */
+  var mb=document.getElementById('menuBtn'),mn=document.getElementById('mobileNav');
+  function setMenu(open){
+    mb.setAttribute('aria-expanded',open?'true':'false');
+    mb.setAttribute('aria-label',open?'Close menu':'Open menu');
+    mn.classList.toggle('on',open);
+  }
+  mb.addEventListener('click',function(){setMenu(mb.getAttribute('aria-expanded')!=='true');});
+  mn.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  window.addEventListener('resize',function(){if(window.innerWidth>1100)setMenu(false);});
+
+  /* back to top */
+  var tt=document.getElementById('toTop');
+  window.addEventListener('scroll',function(){tt.classList.toggle('on',window.scrollY>900);},{passive:true});
+
+  /* credential modal (only real badges, not in-progress rows) */
+  var modal=document.getElementById('modal'),mImg=document.getElementById('mImg'),
+      mTitle=document.getElementById('mTitle'),mIssuer=document.getElementById('mIssuer'),last=null;
+
+  document.querySelectorAll('button.credmain').forEach(function(c){
+    c.addEventListener('click',function(){
+      var img=c.querySelector('img');
+      if(!img||img.style.display==='none')return;
+      last=c;mImg.src=img.src;mTitle.textContent=c.dataset.t;mIssuer.textContent=c.dataset.i;
+      modal.classList.add('on');document.body.style.overflow='hidden';
+      document.getElementById('mClose').focus();
+    });
+  });
+
+  function closeM(){modal.classList.remove('on');document.body.style.overflow='';if(last)last.focus();}
+  document.getElementById('mClose').addEventListener('click',closeM);
+  modal.addEventListener('click',function(e){if(e.target===modal)closeM();});
+  document.addEventListener('keydown',function(e){
+    if(e.key!=='Escape')return;
+    if(modal.classList.contains('on'))closeM();
+    else if(mb.getAttribute('aria-expanded')==='true'){setMenu(false);mb.focus();}
+  });
+})();
+</script>
+</body>
+</html>
